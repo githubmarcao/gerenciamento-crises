@@ -1,0 +1,51 @@
+@charset "iso-8859-1";
+/* CSS Document */
+
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+
+#topo {
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	background:#DEDEDD;
+	height:46px;
+	
+}
+
+#login {
+	
+	position: absolute;
+	width:300px;
+	height:220px;
+	left:50%;
+	top:50%;
+	margin-left:-150px;
+	margin-top:-90px;
+	background:#CCC;
+	padding: 10px;
+	border: 3px solid #999;
+	
+	
+}
+
+#rodape{
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:100%;
+	height:46px;
+	background:#CCC;
+}
+
+#rodape p.copyright {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size: 11px;
+	text-align:right;
+	padding-top:10px;
+	margin-right:10px;
+	color:#333;
+}

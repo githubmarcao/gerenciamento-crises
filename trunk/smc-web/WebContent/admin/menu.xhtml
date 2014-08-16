@@ -1,0 +1,27 @@
+<ui:fragment xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:form>
+   <p:menu type="tiered" style="width:180px">  
+        <p:submenu label="Especialidade" icon="ui-icon-refresh">  
+            <p:menuitem value="Cadastrar" url="/admin/especialidade.xhtml" icon="ui-icon-disk" />  
+            <p:menuitem value="Consultar" url="/admin/consultaEspecialidade.xhtml" icon="ui-icon-search" />
+            <p:menuitem value="Listar"    url="/admin/listarEspecialidade.xhtml" icon="ui-icon-arrowrefresh-1-w" />  
+        </p:submenu>
+        <p:submenu label="Paciente" icon="ui-icon-refresh">  
+            <p:menuitem value="Cadastrar" url="/admin/paciente.xhtml" icon="ui-icon-disk" />  
+            <p:menuitem value="Listar"    url="/admin/listarPaciente.xhtml" icon="ui-icon-arrowrefresh-1-w" />  
+        </p:submenu>  
+        <p:submenu label="Medico" icon="ui-icon-refresh">  
+            <p:menuitem value="Cadastrar" url="/admin/medico.xhtml" icon="ui-icon-disk" />  
+            <p:menuitem value="Listar"    url="/admin/listarMedico.xhtml" icon="ui-icon-arrowrefresh-1-w" />  
+        </p:submenu>
+          <p:submenu label="Consulta" icon="ui-icon-refresh">  
+            <p:menuitem value="Marcar" ajax="false" action="#{consultaMB.preparaCadastro}" icon="ui-icon-disk" />  
+            <p:menuitem value="Listar"    url="/admin/listarConsulta.xhtml" icon="ui-icon-arrowrefresh-1-w" />  
+        </p:submenu>
+          
+    </p:menu>
+</h:form>     	
+</ui:fragment>

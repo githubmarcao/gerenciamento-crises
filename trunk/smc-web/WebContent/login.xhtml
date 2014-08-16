@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>SMC</title>
+	<h:outputStylesheet library="css" name="login.css"/>
+	<h:outputStylesheet library="css" name="formulario.css"/>
+</h:head>
+
+<h:body>
+
+	<div id="login">
+        <p align="center">SISTEMA DE GERENCIAMENTO DE CRISES E EMERGÊNCIAS</p>
+            <h:form>
+                <p:panel >                    
+                    <p>
+                        <label for="field_login">Login: </label>                        
+                        <p:inputText value="#{usuarioMB.usuario.login}" />
+                    </p>
+                    <p>
+                        <label for="senha">Senha: </label>                        
+                        <p:password  value="#{usuarioMB.usuario.senha}" />
+                    </p>
+                    <p>
+                    	<h:commandButton action="#{usuarioMB.autenticar}" image="resources/images/bt_entrar.png">
+							
+                    	</h:commandButton>
+                    </p>
+                    <p:messages />                    
+                </p:panel>
+                			
+            </h:form>
+        </div>
+</h:body>
+</html>
