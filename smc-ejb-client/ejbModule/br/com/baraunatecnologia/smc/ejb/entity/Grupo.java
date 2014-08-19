@@ -34,6 +34,9 @@ public class Grupo implements Serializable {
     @Column(name = "nome")
     private String nome;
     @Basic(optional = false)
+    @Column(name = "icone")
+    private String icone;
+    @Basic(optional = false)
     @Column(name = "id_visualizacao")
     private Integer id_visualizacao;
 
@@ -65,7 +68,15 @@ public class Grupo implements Serializable {
         this.nome = nome;
     }
 
-    public Integer getId_visualizacao() {
+    public String getIcone() {
+		return icone;
+	}
+
+	public void setIcone(String icone) {
+		this.icone = icone;
+	}
+
+	public Integer getId_visualizacao() {
 		return id_visualizacao;
 	}
 

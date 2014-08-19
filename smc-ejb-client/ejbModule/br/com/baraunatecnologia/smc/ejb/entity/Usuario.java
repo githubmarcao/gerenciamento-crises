@@ -22,7 +22,7 @@ import javax.persistence.Table;
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
 	@Id
-	@SequenceGenerator(name = "seq_usuario", sequenceName = "id")// TODO - TESTAR SEM ISSO PARA VER SE PEGA ', allocationSize = 1)'
+	@SequenceGenerator(name = "seq_usuario", sequenceName = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
 	@Basic(optional = false)
 	@Column(name = "id", unique = true, nullable = false)

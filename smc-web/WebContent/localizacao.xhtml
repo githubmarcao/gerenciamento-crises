@@ -6,14 +6,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
     xmlns:p="http://primefaces.org/ui"
 	>
-<body>
+<body onload="getLocation();">
 	<form>
 		Latitude: <h:outputText id="latitude" value="#{localizacaoMB.localizacao.latitude}" /> <br/>
 	    Longitude: <h:outputText id="longitude" value="#{localizacaoMB.localizacao.longitude}" /> <br/>
 	
 		<p id="demo">Clique no botão para obter sua localização:</p>
-		
-		<button onclick="getLocation()">Clique aqui</button>
 		
 		<div id="mapholder"></div>
 		
@@ -35,8 +33,8 @@ function showPosition(position)
   lat = position.coords.latitude;
   lon = position.coords.longitude;
 
-  document.getElementById('latitude').value = lat;
-  document.getElementById('longitude').value = lon;
+  document.getElementById('latitude').innerHTML = lat;
+  document.getElementById('longitude').innerHTML = lon;
 
   #{localizacaoMB.salvarLocalizacao()}
   latlon=new google.maps.LatLng(lat, lon);
@@ -60,7 +58,7 @@ function showPosition(position)
   var marker=new google.maps.Marker(
   		  {
   			  position:latlon,
-  			  icon:'#{usuarioMB.usuario.icone}',
+  			  icon:'#{usuarioMB.usuario.grupo.icone}',
   			  title:"Você está Aqui!"
   			  //,animation:google.maps.Animation.BOUNCE // Animacao
   			});
