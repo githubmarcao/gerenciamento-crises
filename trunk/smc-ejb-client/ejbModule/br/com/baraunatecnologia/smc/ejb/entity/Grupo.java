@@ -40,16 +40,21 @@ public class Grupo implements Serializable {
     @Column(name = "id_visualizacao")
     private Integer id_visualizacao;
 
+    public static String ICONE_PADRAO = "resources/images/usuarios/icone.png";
+
     public Grupo() {
+    	this.nome = "Padrao";
+    	this.icone = ICONE_PADRAO;
     }
 
     public Grupo(Integer id) {
         this.id = id;
     }
 
-    public Grupo(Integer id, String nome) {
+    public Grupo(Integer id, String nome, String icone) {
         this.id = id;
         this.nome = nome;
+        this.icone = icone;
     }
 
     public Integer getId() {

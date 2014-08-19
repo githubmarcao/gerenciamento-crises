@@ -31,6 +31,10 @@ public class UsuarioMB {
 		this.usuario = usuario;
 	}
 	
+	public Usuario getUsuarioSessao() {
+		return (Usuario) JSFUtil.getSessionAttribute("usuario");
+	}
+
 	public String autenticar(){			
 		Usuario usuarioRecuperado = usuarioLocal.autenticar(usuario);
 		if(usuarioRecuperado!=null){
@@ -38,28 +42,9 @@ public class UsuarioMB {
 			//return "admin\\principal";
 			return "localizacao";
 		}else{
-			JSFUtil.addErrorMessage("Usuario ou senha nï¿½o confere");
+			JSFUtil.addErrorMessage("Usuario ou senha não confere");
 			return null;
 		}
-	}
-
-	private Double latitude = -33.9;
-	private Double longitude = 151.2;
-
-	public Double getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(Double latitude) {
-		this.latitude = latitude;
-	}
-
-	public Double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(Double longitude) {
-		this.longitude = longitude;
 	}
 
 }
