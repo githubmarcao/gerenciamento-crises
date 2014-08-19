@@ -37,10 +37,12 @@ public class LocalizacaoMB {
 
 	public void salvarLocalizacao() {
 		try {
-			this.localizacao.setUsuario((Usuario) JSFUtil.getSessionAttribute("usuario"));
-			this.localizacao.setHorario(new Date());
-			localizacaoLocal.inserirEditar(this.localizacao);
-			JSFUtil.addInfoMessage("Registro salvo com sucesso!");
+			if (this.localizacao.getLatitude() != null && this.localizacao.getLongitude() != null) {
+				this.localizacao.setUsuario((Usuario) JSFUtil.getSessionAttribute("usuario"));
+				this.localizacao.setHorario(new Date());
+				localizacaoLocal.inserirEditar(this.localizacao);
+				JSFUtil.addInfoMessage("Registro salvo com sucesso!");
+			}
 		} catch (NegocioException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

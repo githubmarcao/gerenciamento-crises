@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -21,9 +22,10 @@ import javax.persistence.Table;
 public class Localizacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "seq_localizacao", sequenceName = "id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_localizacao")
 	@Basic(optional = false)
-	@Column(name = "id")
+	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
 
 	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
