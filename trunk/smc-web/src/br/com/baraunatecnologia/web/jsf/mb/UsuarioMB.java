@@ -36,14 +36,13 @@ public class UsuarioMB {
 		if(usuarioRecuperado!=null){
 			JSFUtil.setSessionAttribute("usuario", usuarioRecuperado);
 			//return "admin\\principal";
-			return "login_localizacao";
+			return "localizacao";
 		}else{
 			JSFUtil.addErrorMessage("Usuario ou senha n�o confere");
 			return null;
-		}		
-		
+		}
 	}
-	
+
 	private Double latitude = -33.9;
 	private Double longitude = 151.2;
 
@@ -62,7 +61,5 @@ public class UsuarioMB {
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
-	
-	
 
 }

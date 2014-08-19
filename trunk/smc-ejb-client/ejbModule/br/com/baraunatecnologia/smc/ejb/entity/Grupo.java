@@ -20,7 +20,7 @@ import javax.persistence.Table;
  * @author Marco
  */
 @Entity
-@Table(name = "especialidade")
+@Table(name = "grupo")
 @NamedQueries({
     @NamedQuery(name = "Grupo.findAll", query = "SELECT e FROM Grupo e")})
 public class Grupo implements Serializable {
