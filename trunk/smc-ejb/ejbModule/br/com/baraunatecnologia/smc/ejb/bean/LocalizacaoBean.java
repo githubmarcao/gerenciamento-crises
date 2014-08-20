@@ -42,5 +42,7 @@ public class LocalizacaoBean implements ILocalizacaoRemote, ILocalizacaoLocal {
 		return new LocalizacaoDAO(em).listar();
 	}
 
-	
+	public List<Localizacao> listarPorUsuario(Integer idUsuario) {
+		return new LocalizacaoDAO(em).listarPorUsuario(idUsuario);
+	}
 }
