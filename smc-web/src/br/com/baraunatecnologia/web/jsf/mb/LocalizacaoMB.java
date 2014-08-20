@@ -1,6 +1,7 @@
 package br.com.baraunatecnologia.web.jsf.mb;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -37,6 +38,25 @@ public class LocalizacaoMB {
 
 	public void salvarLocalizacao() {
 		try {
+			if (this.localizacao.getLatitude() != null && this.localizacao.getLongitude() != null) {
+				this.localizacao.setUsuario((Usuario) JSFUtil.getSessionAttribute("usuario"));
+				this.localizacao.setHorario(new Date());
+				localizacaoLocal.inserirEditar(this.localizacao);
+				JSFUtil.addInfoMessage("Registro salvo com sucesso!");
+			}
+		} catch (NegocioException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void obterCaminhoUsuario(Usuario usuario) {
+		try {
+			if (usuario != null) {
+				List<Localizacao> list = localizacaoLocal.listarPorUsuario(1/*TODO colocar o usuario*/);
+				
+				
+			}
 			if (this.localizacao.getLatitude() != null && this.localizacao.getLongitude() != null) {
 				this.localizacao.setUsuario((Usuario) JSFUtil.getSessionAttribute("usuario"));
 				this.localizacao.setHorario(new Date());

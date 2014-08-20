@@ -11,6 +11,8 @@
 		Latitude: <h:outputText id="latitude" value="#{localizacaoMB.localizacao.latitude}" /> <br/>
 	    Longitude: <h:outputText id="longitude" value="#{localizacaoMB.localizacao.longitude}" /> <br/>
 	
+		<p id="demo">Clique no botão para obter sua localização:</p>
+		
 		<div id="mapholder"></div>
 		
 		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -31,12 +33,6 @@ function showPosition(position)
   lat = position.coords.latitude;
   lon = position.coords.longitude;
 
-  if (lat == null) {
-	  lat = 0;
-  }
-  if (lon == null) {
-	  lon = 0;
-  }
   document.getElementById('latitude').innerHTML = lat;
   document.getElementById('longitude').innerHTML = lon;
 
