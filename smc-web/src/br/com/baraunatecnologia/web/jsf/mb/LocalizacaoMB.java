@@ -50,12 +50,14 @@ public class LocalizacaoMB {
 		}
 	}
 
-	public void obterCaminhoUsuario(Usuario usuario) {
+	public List<Object> getCaminhoUsuario() {
+		return getCaminhoUsuario(null);
+	}
+
+	public List<Object> getCaminhoUsuario(Usuario usuario) {
 		try {
 			if (usuario != null) {
-				List<Localizacao> list = localizacaoLocal.listarPorUsuario(1/*TODO colocar o usuario*/);
-				
-				
+				// TODO
 			}
 			if (this.localizacao.getLatitude() != null && this.localizacao.getLongitude() != null) {
 				this.localizacao.setUsuario((Usuario) JSFUtil.getSessionAttribute("usuario"));
@@ -67,6 +69,7 @@ public class LocalizacaoMB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 }

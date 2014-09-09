@@ -40,7 +40,6 @@ function showPosition(position)
   document.getElementById('latitude').innerHTML = lat;
   document.getElementById('longitude').innerHTML = lon;
 
-  #{localizacaoMB.salvarLocalizacao()}
   latlon=new google.maps.LatLng(lat, lon);
   mapholder=document.getElementById('mapholder');
   mapholder.style.height='500px';
@@ -59,14 +58,35 @@ function showPosition(position)
   };
   //Create a Map Object
   var map=new google.maps.Map(document.getElementById("mapholder"),myOptions);
-  var marker=new google.maps.Marker(
-  		  {
-  			  position:latlon,
-  			  icon:'#{usuarioMB.usuarioSessao.grupo.icone}',
-  			  title:"Você está Aqui!"
-  			  //,animation:google.maps.Animation.BOUNCE // Animacao
-  			});
-	marker.setMap(map);
+  var total = 5;
+  var marker, i;
+  var infowindow = new google.maps.InfoWindow();
+
+  var locations = [
+	  ['Bondi Beach', -33.890542, 151.274856, 4],
+	  ['Coogee Beach', -33.923036, 151.259052, 5],
+	  ['Cronulla Beach', -34.028249, 151.157507, 3],
+	  ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+	  ['Maroubra Beach', -33.950198, 151.259302, 1]
+	];
+	
+  for (i = 0; i &lt; '#{usuarioMB.total}'; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+		icon:'#{usuarioMB.usuarioSessao.grupo.icone}',
+	    //title:"Você está Aqui!",
+        map: map
+		  //,animation:google.maps.Animation.BOUNCE // Animacao
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+
   // Tipos de overlays
   //Marker - Single locations on a map. Markers can also display custom icon images
   //Polyline - Series of straight lines on a map
