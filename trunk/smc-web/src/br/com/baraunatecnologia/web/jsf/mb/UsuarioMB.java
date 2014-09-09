@@ -14,6 +14,7 @@ import br.com.baraunatecnologia.web.jsf.util.JSFUtil;
 public class UsuarioMB {
 	
 	private Usuario usuario;
+	private Integer total = 5; // Total do array que ira percorrer os usuarios
 	
 	@EJB
 	private IUsuarioLocal usuarioLocal;
@@ -45,6 +46,14 @@ public class UsuarioMB {
 			JSFUtil.addErrorMessage("Usuario ou senha não confere");
 			return null;
 		}
+	}
+
+	public Integer getTotal() {
+		return total;
+	}
+
+	public void setTotal(Integer total) {
+		this.total = total;
 	}
 
 }
