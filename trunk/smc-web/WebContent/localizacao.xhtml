@@ -63,14 +63,36 @@ function showPosition(position)
   var infowindow = new google.maps.InfoWindow();
 
   var locations = [
-	  ['Bondi Beach', -33.890542, 151.274856, 4],
-	  ['Coogee Beach', -33.923036, 151.259052, 5],
-	  ['Cronulla Beach', -34.028249, 151.157507, 3],
-	  ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-	  ['Maroubra Beach', -33.950198, 151.259302, 1]
+	  ['Bondi Beach', -12.8404204, -38.465213899999995, 4],
+	  ['Coogee Beach', -12.9436698, -38.52521, 5],
+	  ['Cronulla Beach', -13.0234523, -38.6752521, 3],
+	  ['Manly Beach', -13.04034523, -38.989752521, 2],
+	  ['Maroubra Beach', -13.59034523, -39.9897525212, 1]
 	];
-	
-  for (i = 0; i &lt; '#{usuarioMB.total}'; i++) {  
+
+  var temp = '#{usuarioMB.toJavascriptArray()}';
+  var array = new Array();
+  array = temp.split(',');
+
+  for (i = 0; i &lt; 2; i++) {  
+	  marker = new google.maps.Marker({
+	        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+			icon:'#{usuarioMB.usuarioSessao.grupo.icone}',
+		    //title:"Você está Aqui!",
+	        map: map
+			  //,animation:google.maps.Animation.BOUNCE // Animacao
+	      });
+
+	      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+	        return function() {
+	          infowindow.setContent(array[i]);
+	          infowindow.open(map, marker);
+	        }
+	      })(marker, i));
+
+  }
+	  
+  /*for  (i = 0; i &lt; '#{usuarioMB.total}'; i++) {  
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
 		icon:'#{usuarioMB.usuarioSessao.grupo.icone}',
@@ -85,7 +107,7 @@ function showPosition(position)
           infowindow.open(map, marker);
         }
       })(marker, i));
-    }
+    } */
 
   // Tipos de overlays
   //Marker - Single locations on a map. Markers can also display custom icon images

@@ -14,7 +14,8 @@ import br.com.baraunatecnologia.web.jsf.util.JSFUtil;
 public class UsuarioMB {
 	
 	private Usuario usuario;
-	private Integer total = 5; // Total do array que ira percorrer os usuarios
+	private Integer total = 2; // Total do array que ira percorrer os usuarios
+	private String[] nomes = {"maria", "joao"};
 	
 	@EJB
 	private IUsuarioLocal usuarioLocal;
@@ -36,7 +37,7 @@ public class UsuarioMB {
 		return (Usuario) JSFUtil.getSessionAttribute("usuario");
 	}
 
-	public String autenticar(){			
+	public String autenticar(){
 		Usuario usuarioRecuperado = usuarioLocal.autenticar(usuario);
 		if(usuarioRecuperado!=null){
 			JSFUtil.setSessionAttribute("usuario", usuarioRecuperado);
@@ -54,6 +55,31 @@ public class UsuarioMB {
 
 	public void setTotal(Integer total) {
 		this.total = total;
+	}
+
+	public String toJavascriptArray(){
+		return toJavascriptArray(nomes);
+	}
+
+	public static String toJavascriptArray(String[] arr){
+	    StringBuffer sb = new StringBuffer();
+	    //sb.append("[");
+	    for(int i=0; i<arr.length; i++){
+	        sb
+//	        .append("\"")
+	        .append(arr[i])
+//	        .append("\"")
+	        ;
+	        if(i+1 < arr.length){
+	            sb.append(",");
+	        }
+	    }
+	    //sb.append("]");
+	    return sb.toString();
+	}
+	
+	public String[] getNomes() {
+		return nomes;
 	}
 
 }
