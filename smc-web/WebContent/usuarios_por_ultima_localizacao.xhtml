@@ -27,8 +27,10 @@ function getLocation() {
 }
 
 function showPosition(position) {
+
 	lat = position.coords.latitude;
 	lon = position.coords.longitude;
+
 	if (lat == null) {
 		lat = 0;
 	}
@@ -37,63 +39,77 @@ function showPosition(position) {
 	}
 	document.getElementById('latitude').innerHTML = lat;
 	document.getElementById('longitude').innerHTML = lon;
+
 	latlon = new google.maps.LatLng(lat, lon);
 	mapholder = document.getElementById('mapholder');
 	mapholder.style.height = '500px';
 	mapholder.style.width = '1000px';
+
 	var myOptions = {
 		center: latlon,
 		zoom: 14,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		// Tipos de MapTypeId
-		//ROADMAP (normal, default 2D map)
-		//SATELLITE (photographic map)
-		//HYBRID (photographic map + roads and city names)
-		//TERRAIN (map with mountains, rivers, etc.)
+		// ROADMAP (normal, default 2D map)
+		// SATELLITE (photographic map)
+		// HYBRID (photographic map + roads and city names)
+		// TERRAIN (map with mountains, rivers, etc.)
 		mapTypeControl: false,
 		navigationControlOptions: {
 			style: google.maps.NavigationControlStyle.SMALL
 		}
 	};
-	//Create a Map Object
+	// Create a Map Object
 	var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-	var marker, i;
+	var marker;
 	var infowindow = new google.maps.InfoWindow();
-	marker = new google.maps.Marker({
-		position: new google.maps.LatLng(lat, lon),
-		icon: '#{usuarioMB.usuarioSessao.grupo.icone}',
-		//title:"Você está Aqui!",
-		map: map
-			//,animation:google.maps.Animation.BOUNCE // Animacao
-	});
-	google.maps.event.addListener(marker, 'click', (function(marker) {
-		return function() {
-			infowindow.setContent("Meu local!!");
-			infowindow.open(map, marker);
-		}
-	})(marker));
 
-	/*for  (i = 0; i &lt; '#{usuarioMB.total}'; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-		icon:'#{usuarioMB.usuarioSessao.grupo.icone}',
-	    //title:"Você está Aqui!",
-        map: map
-		  //,animation:google.maps.Animation.BOUNCE // Animacao
-      });
+	if (window.jQuery) {
+		alert("jQuery is loaded");
+	} else {
+		alert("jQuery is not loaded");
+	}
 
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
-    } */
+	var parsedJSON = $.parseJSON('#{caminhoUsuarioMB.ultimaLocalizacaoUsuarios}');
+
+	for (var i in parsedJSON) {
+		marker = new google.maps.Marker({
+			position: new google.maps.LatLng(parsedJSON[i].latitude, parsedJSON[i].longitude),
+			icon: parsedJSON[i].icone,
+			// title:"Você está Aqui!",
+			map: map
+			// ,animation:google.maps.Animation.BOUNCE // Animacao
+		});
+
+		google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			return function() {
+				infowindow.setContent(parsedJSON[i].usuario);
+				infowindow.open(map, marker);
+			}
+		})(marker, i));
+	}
+
+	/*
+	 * var total = 5;
+	 * for (i = 0; i &lt; '#{usuarioMB.total}'; i++) { marker = new
+	 * google.maps.Marker({ position: new google.maps.LatLng(locations[i][1],
+	 * locations[i][2]), icon:'#{usuarioMB.usuarioSessao.grupo.icone}',
+	 * //title:"Você está Aqui!", map: map
+	 * //,animation:google.maps.Animation.BOUNCE // Animacao });
+	 *
+	 * google.maps.event.addListener(marker, 'click', (function(marker, i) {
+	 * return function() { infowindow.setContent(locations[i][0]);
+	 * infowindow.open(map, marker); } })(marker, i)); }
+	 */
+
 	// Tipos de overlays
-	//Marker - Single locations on a map. Markers can also display custom icon images
-	//Polyline - Series of straight lines on a map
-	//Polygon - Series of straight lines on a map, and the shape is "closed" Circle and Rectangle
-	//Info Windows - Displays content within a popup balloon on top of a map Custom overlays
+	// Marker - Single locations on a map. Markers can also display custom icon
+	// images
+	// Polyline - Series of straight lines on a map
+	// Polygon - Series of straight lines on a map, and the shape is "closed"
+	// Circle and Rectangle
+	// Info Windows - Displays content within a popup balloon on top of a map
+	// Custom overlays
 }
 
 function showError(error) {
