@@ -38,4 +38,22 @@ public class LocalizacaoDAO extends GenericDAO<Localizacao> {
 		return retorno;
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Localizacao> listarUltimaLocalizacaoUsuarios() {
+		Query query = super.getEntityManager().createQuery(
+				"from Localizacao where horario in ("
+					+ "select max(horario) from Localizacao "
+					+ "group by id_usuario"
+				+ ") order by id_usuario");
+
+		List<Localizacao> retorno = new ArrayList<Localizacao>();
+		try {
+			retorno = query.getResultList();
+		} catch (NoResultException ex) {
+			return null;
+		}
+
+		return retorno;
+	}
+
 }

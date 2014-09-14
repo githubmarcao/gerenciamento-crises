@@ -207,3 +207,12 @@ function validaHora(campo){
 }
 
 function Trim(str){return str.replace(/^\s+|\s+$/g,"");}
+
+function toJavascriptArray(string) {
+	if (string.length > 0) {
+		var array = new Array();
+		array = temp.split(',');
+		return array;
+	}
+	return new Array();
+}
