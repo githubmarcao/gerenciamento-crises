@@ -9,4 +9,6 @@ import br.com.baraunatecnologia.smc.ejb.entity.Localizacao;
 public interface ILocalizacaoLocal extends ICRUDBean<Localizacao>{
 
 	public List<Localizacao> listarPorUsuario(Integer idUsuario);
+	public List<Localizacao> listarUltimaLocalizacaoUsuarios();
+
 }
