@@ -82,4 +82,30 @@ public class CaminhoUsuarioMB {
 		}
 	}
 
+	public String getCaminhoUsuario(Integer idUsuario) {
+		try {
+			JSONArray array = new JSONArray();
+
+			/*
+			 * Criação do Objeto JSONObject
+			 */
+			localizacoes = localizacaoLocal.listarPorUsuario(idUsuario);
+
+			for (Localizacao localizacao : localizacoes) {
+				JSONObject json = new JSONObject();
+				json.put("usuario", localizacao.getUsuario().getNome());
+				json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
+				json.put("latitude", localizacao.getLatitude());
+				json.put("longitude", localizacao.getLongitude());
+				array.put(json);
+			}
+
+			return array.toString();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "";
+		}
+	}
+
 }
