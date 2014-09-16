@@ -24,7 +24,8 @@ public class LocalizacaoDAO extends GenericDAO<Localizacao> {
 	@SuppressWarnings("unchecked")
 	public List<Localizacao> listarPorUsuario(Integer idUsuario) {
 		Query query = super.getEntityManager().createQuery(
-				"from Localizacao l where l.id_usuario=:id_usuario");
+				"from Localizacao where id_usuario=:id_usuario "
+				+ "order by horario desc");
 
 		query.setParameter("id_usuario", idUsuario);
 
