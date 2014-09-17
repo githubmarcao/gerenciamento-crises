@@ -1,5 +1,7 @@
 package br.com.baraunatecnologia.web.jsf.mb;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -9,7 +11,9 @@ import org.primefaces.json.JSONArray;
 import org.primefaces.json.JSONException;
 import org.primefaces.json.JSONObject;
 
+import br.com.baraunatecnologia.smc.ejb.entity.Grupo;
 import br.com.baraunatecnologia.smc.ejb.entity.Usuario;
+import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
 import br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioLocal;
 import br.com.baraunatecnologia.web.jsf.util.JSFUtil;
 
@@ -22,6 +26,8 @@ public class UsuarioMB {
 	
 	@EJB
 	private IUsuarioLocal usuarioLocal;
+	
+	private List<Grupo> grupos;
 
 	@PostConstruct
 	public void init(){
@@ -35,6 +41,14 @@ public class UsuarioMB {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public List<Grupo> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(List<Grupo> grupos) {
+		this.grupos = grupos;
+	}
 	
 	public Usuario getUsuarioSessao() {
 		return (Usuario) JSFUtil.getSessionAttribute("usuario");
@@ -44,12 +58,25 @@ public class UsuarioMB {
 		Usuario usuarioRecuperado = usuarioLocal.autenticar(usuario);
 		if(usuarioRecuperado!=null){
 			JSFUtil.setSessionAttribute("usuario", usuarioRecuperado);
-			//return "admin\\principal";
-			return "localizacao";
+			return "admin\\principal";
+//			return "localizacao";
 		}else{
 			JSFUtil.addErrorMessage("Usuario ou senha não confere");
 			return null;
 		}
+	}
+
+	public String inserirEditar() {
+
+		try {
+			usuarioLocal.inserirEditar(usuario);
+			JSFUtil.addInfoMessage("Registro salvo com sucesso!");
+		} catch (NegocioException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 
 	public Integer getTotal() {

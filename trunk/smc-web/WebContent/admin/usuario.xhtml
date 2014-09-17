@@ -1,0 +1,39 @@
+<ui:composition template="template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+
+    
+	<ui:define name="conteudo">
+      <h:form>
+      <h:inputHidden value="#{medicoMB.medico.id}"/> 
+		<p:panelGrid  columns="2" style="margin-top:60px;margin-left:100px">
+			<f:facet name="header">  
+               Cadastrar Usuário  
+           </f:facet>
+
+			<h:outputLabel for="nome" value="Nome: *" />
+			<p:inputText id="nome" value="#{usuarioMB.usuario.nome}"  label="Nome" />
+
+			<h:outputLabel for="login" value="Login: *" />
+			<p:inputText id="login" value="#{usuarioMB.usuario.login}"  label="Login" />
+
+			<h:outputLabel for="senha" value="Senha: *" />
+			<p:password id="senha" value="#{usuarioMB.usuario.senha}"  label="Senha" />
+
+			<h:outputLabel for="grupo" value="Grupo: *" />
+			<p:selectOneMenu id="grupo" value="#{usuarioMB.usuario.grupo.id}" required="true">  
+				<f:selectItems value="#{usuarioMB.grupos}" var="grupo" itemLabel="#{grupo.nome}" itemValue="#{grupo.id}" />                        
+            </p:selectOneMenu>
+
+			<f:facet name="footer">
+				<p:commandButton update="msg" value="Salvar" action="#{usuarioMB.inserirEditar}" icon="ui-icon-check" style="margin:0"/>
+				<p:messages id="msg"/>
+			</f:facet>
+		</p:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

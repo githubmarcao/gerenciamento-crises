@@ -8,11 +8,15 @@
 	>
 <body onload="getLocation();">
 	<form>
-		Latitude: <h:outputText id="latitude" value="#{localizacaoMB.localizacao.latitude}" /> <br/>
-	    Longitude: <h:outputText id="longitude" value="#{localizacaoMB.localizacao.longitude}" /> <br/>
-	
+		<p id="demo"></p>
+		<label for="latitude">Latitude: </label> 
+		<h:outputText id="latitude" value="#{localizacaoMB.localizacao.latitude}" /> <br/>
+
+		<label for="longitude">Longitude: </label> 
+	    <h:outputText id="longitude" value="#{localizacaoMB.localizacao.longitude}" /> <br/>
+
 		<div id="mapholder" style="height: 500px; width: 700px"></div>
-		
+
 		<script src="resources/js/jquery-1.11.1.js"></script>
 		<!-- Maps API Javascript -->
 		<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -44,8 +48,17 @@ function showPosition(position) {
 
 	latlon = new google.maps.LatLng(lat, lon);
 	
-	var directionsService = new google.maps.DirectionsService();
-	var directionsDisplay = new google.maps.DirectionsRenderer();
+	var directionsService 
+		= new google.maps.DirectionsService({
+			//avoidHighways: true
+		});
+
+	
+	var directionsDisplay 
+		= new google.maps.DirectionsRenderer({
+			//suppressMarkers: true,
+			//suppressInfoWindows: false
+		}); 
 
 	var options = {
 		zoom: 5,
@@ -67,20 +80,38 @@ function showPosition(position) {
 
 	var parsedJSON = $.parseJSON('#{caminhoUsuarioMB.getCaminhoUsuario(2)}');
 
-	var origin, destination, icon, usuario;
+	var origin, destination, usuario;
 	var waypoints = [];
 	var markerArray = [];
 
 	for (var i in parsedJSON) {
+		var latLngLocal = new google.maps.LatLng(parsedJSON[i].latitude, parsedJSON[i].longitude);
+
+		// Marcador com algum detalhe esses pontos
+		var marker = new google.maps.Marker({
+			position: latLngLocal,
+			draggable: true,
+			icon: parsedJSON[i].icone,
+			map: map
+		});
+
+		google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			return function() {
+				alert("Cliquei");
+				infowindow.setContent(usuario);
+				infowindow.open(map, marker);
+			}
+		})(marker, i));
+
+		// Salvar os dados para criar a rota
 		if (i == 0) {
-			destination = new google.maps.LatLng(parsedJSON[i].latitude, parsedJSON[i].longitude);
-			icon = parsedJSON[i].icone;
+			destination = latLngLocal;
 			usuario = parsedJSON[i].usuario;
 		} else {
 			waypoints.push({
-				location: new google.maps.LatLng(parsedJSON[i].latitude, parsedJSON[i].longitude)
+				location: latLngLocal
 			});
-			origin = new google.maps.LatLng(parsedJSON[i].latitude, parsedJSON[i].longitude);
+			origin = latLngLocal;
 		}
 	}
 
@@ -96,14 +127,15 @@ function showPosition(position) {
 	};
 
 	directionsService.route(request, function(result, status) {
-		alert('aqui, status-'+status);
 		if (status == google.maps.DirectionsStatus.OK) { // Se deu tudo certo
 			directionsDisplay.setDirections(result); // Renderizamos no mapa o resultado
 			//showSteps(result, usuario);
+		} else {
+			alert("Problema ao carregar a rota, status: "+status);
 		}
 	});
 
-	function showSteps(directionResult, usuario) {
+	/*function showSteps(directionResult, usuario) {
 		// For each step, place a marker, and add the text to the marker's
 		// info window. Also attach the marker to an array so we
 		// can keep track of it and remove it when calculating new
@@ -125,7 +157,7 @@ function showPosition(position) {
 			stepDisplay.setContent(text);
 			stepDisplay.open(map, marker);
 		});
-	}
+	} */
 
 	// Tipos de overlays
 	// Marker - Single locations on a map. Markers can also display custom icon
