@@ -3,8 +3,16 @@
     xmlns:p="http://primefaces.org/ui">
 
 <h:form>
-   <p:menu type="tiered" style="width:180px">  
-        <p:submenu label="Especialidade" icon="ui-icon-refresh">  
+   <p:menu type="tiered" style="width:180px">
+		
+        <p:submenu label="Usuario" icon="ui-icon-refresh">  
+            <p:menuitem value="Cadastrar" url="/admin/usuario.xhtml" icon="ui-icon-disk" />  
+            <p:menuitem value="Consultar" url="/admin/consultaUsuario.xhtml" icon="ui-icon-search" />
+            <p:menuitem value="Listar"    url="/admin/listarUsuario.xhtml" icon="ui-icon-arrowrefresh-1-w" />  
+            <p:menuitem value="Caminho do Usuario" url="/caminho_usuario.xhtml" icon="" />  
+        </p:submenu>
+
+<!--         <p:submenu label="Especialidade" icon="ui-icon-refresh">  
             <p:menuitem value="Cadastrar" url="/admin/especialidade.xhtml" icon="ui-icon-disk" />  
             <p:menuitem value="Consultar" url="/admin/consultaEspecialidade.xhtml" icon="ui-icon-search" />
             <p:menuitem value="Listar"    url="/admin/listarEspecialidade.xhtml" icon="ui-icon-arrowrefresh-1-w" />  
@@ -20,7 +28,7 @@
           <p:submenu label="Consulta" icon="ui-icon-refresh">  
             <p:menuitem value="Marcar" ajax="false" action="#{consultaMB.preparaCadastro}" icon="ui-icon-disk" />  
             <p:menuitem value="Listar"    url="/admin/listarConsulta.xhtml" icon="ui-icon-arrowrefresh-1-w" />  
-        </p:submenu>
+        </p:submenu> -->
           
     </p:menu>
 </h:form>     	
