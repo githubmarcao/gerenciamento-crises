@@ -14,24 +14,36 @@ import org.primefaces.json.JSONObject;
 import br.com.baraunatecnologia.smc.ejb.entity.Grupo;
 import br.com.baraunatecnologia.smc.ejb.entity.Usuario;
 import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
+import br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoLocal;
 import br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioLocal;
 import br.com.baraunatecnologia.web.jsf.util.JSFUtil;
 
 @ManagedBean
 @RequestScoped
 public class UsuarioMB {
-	
+
 	private Usuario usuario;
+	private Usuario usuarioNaoLogado;
 	private Integer total = 2; // Total do array que ira percorrer os usuarios
-	
+
 	@EJB
 	private IUsuarioLocal usuarioLocal;
-	
+
+	@EJB
+	private IGrupoLocal grupoLocal;
+
+	private List<Usuario> usuarios;
+
 	private List<Grupo> grupos;
 
 	@PostConstruct
 	public void init(){
 		usuario = new Usuario();
+		usuario.setGrupo(new Grupo());
+		usuarioNaoLogado = new Usuario();
+		usuarioNaoLogado.setGrupo(new Grupo());
+		carregarUsuarios();
+		carregarGrupos();
 	}
 	
 	public Usuario getUsuario() {
@@ -42,6 +54,14 @@ public class UsuarioMB {
 		this.usuario = usuario;
 	}
 
+	public Usuario getUsuarioNaoLogado() {
+		return usuarioNaoLogado;
+	}
+
+	public void setUsuarioNaoLogado(Usuario usuarioNaoLogado) {
+		this.usuarioNaoLogado = usuarioNaoLogado;
+	}
+
 	public List<Grupo> getGrupos() {
 		return grupos;
 	}
@@ -50,6 +70,14 @@ public class UsuarioMB {
 		this.grupos = grupos;
 	}
 	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
 	public Usuario getUsuarioSessao() {
 		return (Usuario) JSFUtil.getSessionAttribute("usuario");
 	}
@@ -61,7 +89,7 @@ public class UsuarioMB {
 			return "admin\\principal";
 //			return "localizacao";
 		}else{
-			JSFUtil.addErrorMessage("Usuario ou senha n„o confere");
+			JSFUtil.addErrorMessage("Usuario ou senha n√£o confere");
 			return null;
 		}
 	}
@@ -69,7 +97,7 @@ public class UsuarioMB {
 	public String inserirEditar() {
 
 		try {
-			usuarioLocal.inserirEditar(usuario);
+			usuarioLocal.inserirEditar(usuarioNaoLogado);
 			JSFUtil.addInfoMessage("Registro salvo com sucesso!");
 		} catch (NegocioException e) {
 			// TODO Auto-generated catch block
@@ -77,6 +105,62 @@ public class UsuarioMB {
 		}
 
 		return null;
+	}
+
+	public String carregarUsuarios() {
+
+		try {
+			usuarios = usuarioLocal.listar();
+		} catch (NegocioException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "listarUsuario";
+	}
+
+	public String excluir() {
+
+		try {
+			
+			usuarioLocal.deletar(usuarioNaoLogado);
+			
+		} catch (NegocioException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "listarUsuario";
+	}
+	
+	public List<Grupo> carregarGrupos() {
+		   
+		try {
+			grupos = grupoLocal.listar();
+			
+		} catch (NegocioException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return grupos;
+	}
+
+	public String buscar() {
+
+		try {
+			usuarioNaoLogado = usuarioLocal.buscar(usuarioNaoLogado.getId());
+
+			if(usuarioNaoLogado==null){
+				JSFUtil.addErrorMessage("Registro n√£o localizado!");
+			}
+			
+		} catch (NegocioException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "usuario";
 	}
 
 	public Integer getTotal() {
@@ -92,7 +176,7 @@ public class UsuarioMB {
 			JSONArray array = new JSONArray();
 
 			/*
-			 * CriaÁ„o do Objeto JSONObject
+			 * Criacao do Objeto JSONObject
 			 */
 			JSONObject jsonOne = new JSONObject();
 

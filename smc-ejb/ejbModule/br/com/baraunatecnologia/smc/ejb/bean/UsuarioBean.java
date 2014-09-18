@@ -11,8 +11,6 @@ import br.com.baraunatecnologia.smc.ejb.entity.Usuario;
 import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
 import br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioLocal;
 import br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioRemote;
-import br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioLocal;
-import br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioRemote;
 
 /**
  * Session Bean implementation class CadastrarUsuarioBean

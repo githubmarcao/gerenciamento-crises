@@ -28,7 +28,7 @@ public class TelefoneValidador implements Validator {
 		String valorStr = value.toString();
 		
 		if(valorStr.equals("") || !valorStr.contains("-")){
-			FacesMessage msg = new FacesMessage("Insira um telefone válido com formato 9999-9999.",
+			FacesMessage msg = new FacesMessage("Insira um telefone valido com formato 9999-9999.",
 			"Formato de telefone invalido");
 			
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);

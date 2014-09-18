@@ -107,7 +107,7 @@ public class EspecialidadeMB {
 			especialidade = especialidadeLocal.buscar(especialidade.getId());
 
 			if(especialidade==null){
-				JSFUtil.addErrorMessage("Registro n„o localizado!");
+				JSFUtil.addErrorMessage("Registro n√£o localizado!");
 			}
 
 		} catch (NegocioException e) {

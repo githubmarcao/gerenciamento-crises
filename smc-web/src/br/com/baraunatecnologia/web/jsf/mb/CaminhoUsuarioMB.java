@@ -35,7 +35,7 @@ public class CaminhoUsuarioMB {
 			JSONArray array = new JSONArray();
 
 			/*
-			 * Criação do Objeto JSONObject
+			 * Criacao do Objeto JSONObject
 			 */
 			localizacoes = localizacaoLocal.listar();
 
@@ -61,7 +61,7 @@ public class CaminhoUsuarioMB {
 			JSONArray array = new JSONArray();
 
 			/*
-			 * Criação do Objeto JSONObject
+			 * Criacao do Objeto JSONObject
 			 */
 			localizacoes = localizacaoLocal.listarUltimaLocalizacaoUsuarios();
 
@@ -87,7 +87,7 @@ public class CaminhoUsuarioMB {
 			JSONArray array = new JSONArray();
 
 			/*
-			 * Criação do Objeto JSONObject
+			 * Criacao do Objeto JSONObject
 			 */
 			localizacoes = localizacaoLocal.listarPorUsuario(idUsuario);
 
