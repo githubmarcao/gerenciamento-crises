@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-	<p id="demo">Clique no bot„o para obter sua localizaÁ„o:</p>
+	<p id="demo">Clique no bot√£o para obter sua localiza√ßao:</p>
 	<button onclick="getLocation()">Clique aqui</button>
 	<div id="mapholder"></div>
 	<script>
@@ -28,13 +28,13 @@
 		function showError(error) {
 			switch (error.code) {
 			case error.PERMISSION_DENIED:
-				x.innerHTML = "Usu·rio rejeitou a solicitaÁ„o de GeolocalizaÁ„o."
+				x.innerHTML = "Usu√°rio rejeitou a solicita√ß√£o de Geolocaliza√ß√£o."
 				break;
 			case error.POSITION_UNAVAILABLE:
-				x.innerHTML = "LocalizaÁ„o indisponÌvel."
+				x.innerHTML = "Localiza√ß√£o indispon√≠vel."
 				break;
 			case error.TIMEOUT:
-				x.innerHTML = "O tempo da requisiÁ„o expirou."
+				x.innerHTML = "O tempo da requisi√ß√£o expirou."
 				break;
 			case error.UNKNOWN_ERROR:
 				x.innerHTML = "Algum erro desconhecido aconteceu."

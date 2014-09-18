@@ -1,5 +1,5 @@
 /**
- * Funções genéricas
+ * Funcoes genericas
  */
 
 function permiteNumeros(e) {
@@ -117,7 +117,7 @@ function formataCpf(campo, teclapres)
 	}
 }
 
-// Função responsável por formatar e válidar o campo de data
+// Funcao responsavel por formatar e validar o campo de data
 function formatarData(campo) {
 
 	if ((campo.value.length > 2) && (campo.value.charAt(2) != '/')) {
@@ -149,7 +149,7 @@ function validaData(campo){
 		if ((temp.getDate() != dia) || (temp.getMonth() != mes)
 				|| (temp.getFullYear() != ano)) {
 			
-			alert("Data inválida.");
+			alert("Data invalida.");
 			
 			setTimeout("document.getElementById('"+campo.id+"').focus();",1);
 		    setTimeout("document.getElementById('"+campo.id+"').select();",1);
@@ -160,7 +160,7 @@ function validaData(campo){
 }
 
 
-//Função responsável por formatar e válidar o campo de hora
+//Funcao responsavel por formatar e validar o campo de hora
 function formatarHora(campo) {
 
 	if ((campo.value.length > 2) && (campo.value.charAt(2) != ':')) {
@@ -185,7 +185,7 @@ function validaHora(campo){
 
 		if ((temp.getHours() != horas) || (temp.getMinutes() != minutos)) {
 			
-			alert("Hora inválida.");
+			alert("Hora invalida.");
 			
 			setTimeout("document.getElementById('"+campo.id+"').focus();",1);
 		    setTimeout("document.getElementById('"+campo.id+"').select();",1);
@@ -200,7 +200,7 @@ function validaHora(campo){
 	       alert ("Este numero de telefone esta incorreto!");
 	       x.Phone.focus();
 	    } else { 
-	       alert ("Obrigado, seu numero de telefone eh » " + OK[0]);
+	       alert ("Obrigado, seu numero de telefone eh " + OK[0]);
 	    }
 	}
 
