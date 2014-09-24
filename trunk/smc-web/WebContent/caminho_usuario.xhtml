@@ -1,19 +1,29 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html>
 
-<html 
-	xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:p="http://primefaces.org/ui"
+	xmlns:p="http://primefaces.org/ui"
 	>
 <body onload="getLocation();">
-	<form>
+	<h:form id="caminhoUsuario">
 		<p id="demo"></p>
-		<label for="latitude">Latitude: </label> 
-		<h:outputText id="latitude" value="#{localizacaoMB.localizacao.latitude}" /> <br/>
+		<label for="idUsuario">Id UsuÃ¡rio: </label>
+		<h:inputText id="idUsuario" value="#{caminhoUsuarioMB.idUsuario}" />
+		<br />
 
-		<label for="longitude">Longitude: </label> 
-	    <h:outputText id="longitude" value="#{localizacaoMB.localizacao.longitude}" /> <br/>
+		<h:commandButton value="Caminho do UsuÃ¡rio" onclick="getLocation();" />
+		<br />
+		<br />
+
+		<label for="latitude">Latitude: </label>
+		<h:outputText id="latitude"
+			value="#{localizacaoMB.localizacao.latitude}" />
+		<br />
+
+		<label for="longitude">Longitude: </label>
+		<h:outputText id="longitude"
+			value="#{localizacaoMB.localizacao.longitude}" />
+		<br />
 
 		<div id="mapholder" style="height: 500px; width: 700px"></div>
 
@@ -21,19 +31,19 @@
 		<!-- Maps API Javascript -->
 		<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
-<script>
+<script type="text/javascript">
 var x = document.getElementById("demo");
+var map;
 
 function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPosition, showError);
 	} else {
-		x.innerHTML = "Geolocalização não é suportada nesse browser.";
+		alert("GeolocalizaÃ§Ã£o nÃ£o Ã© suportada nesse browser.");
 	}
 }
 
 function showPosition(position) {
-
 	lat = position.coords.latitude;
 	lon = position.coords.longitude;
 
@@ -43,8 +53,8 @@ function showPosition(position) {
 	if (lon == null) {
 		lon = 0;
 	}
-	document.getElementById('latitude').innerHTML = lat;
-	document.getElementById('longitude').innerHTML = lon;
+	document.getElementById('caminhoUsuario:latitude').innerHTML = lat;
+	document.getElementById('caminhoUsuario:longitude').innerHTML = lon;
 
 	latlon = new google.maps.LatLng(lat, lon);
 	
@@ -66,7 +76,7 @@ function showPosition(position) {
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 
-	var map = new google.maps.Map(document.getElementById("mapholder"), options);
+	map = new google.maps.Map(document.getElementById("mapholder"), options);
 
 	directionsDisplay.setMap(map); // Relacionamos o directionsDisplay com o mapa desejado
 
@@ -78,7 +88,7 @@ function showPosition(position) {
 	};
 	*/
 
-	var parsedJSON = $.parseJSON('#{caminhoUsuarioMB.getCaminhoUsuario(2)}');
+	var parsedJSON = $.parseJSON('#{caminhoUsuarioMB.getCaminhoUsuario()}');
 
 	var origin, destination, usuario;
 	var waypoints = [];
@@ -107,12 +117,11 @@ function showPosition(position) {
 		if (i == 0) {
 			destination = latLngLocal;
 			usuario = parsedJSON[i].usuario;
-		} else {
-			waypoints.push({
-				location: latLngLocal
-			});
-			origin = latLngLocal;
 		}
+		waypoints.push({
+			location: latLngLocal
+		});
+		origin = latLngLocal;
 	}
 
 	//Apos o for, remover o ultimo elemento do array, pois ele e o ponto de origem.
@@ -122,8 +131,8 @@ function showPosition(position) {
 		origin: origin,
 		destination: destination,
 		waypoints: waypoints,
-		//travelMode: google.maps.TravelMode.DRIVING // indica rotas de trânsito padrão usando a rede rodoviária.
-		travelMode: google.maps.TravelMode.WALKING // solicita rotas a pé por faixas de pedestre e calçadas.
+		//travelMode: google.maps.TravelMode.DRIVING // indica rotas de trÃ¢nsito padrÃ£o usando a rede rodoviÃ¡ria.
+		travelMode: google.maps.TravelMode.WALKING // solicita rotas a pÃ© por faixas de pedestre e calÃ§adas.
 	};
 
 	directionsService.route(request, function(result, status) {
@@ -172,20 +181,20 @@ function showPosition(position) {
 function showError(error) {
 	switch (error.code) {
 		case error.PERMISSION_DENIED:
-			x.innerHTML = "Usuário rejeitou a solicitação de Geolocalização."
+			x.innerHTML = "UsuÃ¡rio rejeitou a solicitaÃ§Ã£o de GeolocalizaÃ§Ã£o.";
 			break;
 		case error.POSITION_UNAVAILABLE:
-			x.innerHTML = "Localização indisponível."
+			x.innerHTML = "LocalizaÃ§Ã£o indisponÃ­vel.";
 			break;
 		case error.TIMEOUT:
-			x.innerHTML = "O tempo da requisição expirou."
+			x.innerHTML = "O tempo da requisiÃ§Ã£o expirou.";
 			break;
 		case error.UNKNOWN_ERROR:
-			x.innerHTML = "Algum erro desconhecido aconteceu."
+			x.innerHTML = "Algum erro desconhecido aconteceu.";
 			break;
 	}
 }
 </script>
-	</form>
+	</h:form>
 </body>
 </html>

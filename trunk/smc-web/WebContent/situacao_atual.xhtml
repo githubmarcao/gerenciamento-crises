@@ -7,8 +7,7 @@
     xmlns:p="http://primefaces.org/ui"
 	>
 <body onload="getLocation();">
-	<h:form id="usuariosPorUltimaLocalizacao">
-		<p id="demo"></p>
+	<h:form>
 		Latitude: <h:outputText id="latitude" value="#{localizacaoMB.localizacao.latitude}" /> <br/>
 	    Longitude: <h:outputText id="longitude" value="#{localizacaoMB.localizacao.longitude}" /> <br/>
 	
@@ -23,7 +22,7 @@ function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPosition, showError);
 	} else {
-		alert("Geolocalização não é suportada nesse browser.");
+		x.innerHTML = "Geolocalização não é suportada nesse browser.";
 	}
 }
 
@@ -38,8 +37,8 @@ function showPosition(position) {
 	if (lon == null) {
 		lon = 0;
 	}
-	document.getElementById('usuariosPorUltimaLocalizacao:latitude').innerHTML = lat;
-	document.getElementById('usuariosPorUltimaLocalizacao:longitude').innerHTML = lon;
+	document.getElementById('latitude').innerHTML = lat;
+	document.getElementById('longitude').innerHTML = lon;
 
 	latlon = new google.maps.LatLng(lat, lon);
 	mapholder = document.getElementById('mapholder');

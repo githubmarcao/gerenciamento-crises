@@ -6,7 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 import org.primefaces.json.JSONArray;
 import org.primefaces.json.JSONException;
@@ -17,8 +17,8 @@ import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
 import br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoLocal;
 
 @ManagedBean
-@RequestScoped
-public class CaminhoUsuarioMB {
+@SessionScoped
+public class UsuarioIncidenteMB {
 
 	private Integer idUsuario;
 
@@ -140,6 +140,7 @@ public class CaminhoUsuarioMB {
 				array.put(json);
 			}
 
+			System.out.println(array.toString());
 			return array.toString();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
