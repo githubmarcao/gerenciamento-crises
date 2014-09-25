@@ -12,86 +12,29 @@ import org.primefaces.json.JSONArray;
 import org.primefaces.json.JSONException;
 import org.primefaces.json.JSONObject;
 
+import br.com.baraunatecnologia.smc.ejb.entity.Incidente;
 import br.com.baraunatecnologia.smc.ejb.entity.Localizacao;
-import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
+import br.com.baraunatecnologia.smc.ejb.interfaces.IIncidenteLocal;
 import br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoLocal;
 
 @ManagedBean
 @SessionScoped
 public class UsuarioIncidenteMB {
 
-	private Integer idUsuario;
-
 	private List<Localizacao> localizacoes;
+
+	private List<Incidente> incidentes;
 
 	@EJB
 	private ILocalizacaoLocal localizacaoLocal;
 
+	@EJB
+	private IIncidenteLocal incidenteLocal;
+
 	@PostConstruct
 	public void init(){
 		localizacoes = new ArrayList<Localizacao>();
-		idUsuario = 2;
-	}
-
-	public Integer getIdUsuario() {
-		return idUsuario;
-	}
-
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-
-	public String getLocalizacoes() {
-		try {
-			JSONArray array = new JSONArray();
-
-			/*
-			 * Criacao do Objeto JSONObject
-			 */
-			localizacoes = localizacaoLocal.listar();
-
-			for (Localizacao localizacao : localizacoes) {
-				JSONObject json = new JSONObject();
-				json.put("usuario", localizacao.getUsuario().getNome());
-				json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
-				json.put("latitude", localizacao.getLatitude());
-				json.put("longitude", localizacao.getLongitude());
-				array.put(json);
-			}
-
-			return array.toString();
-		} catch (JSONException | NegocioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "";
-		}
-	}
-
-	public String getUltimaLocalizacaoUsuarios() {
-		try {
-			JSONArray array = new JSONArray();
-
-			/*
-			 * Criacao do Objeto JSONObject
-			 */
-			localizacoes = localizacaoLocal.listarUltimaLocalizacaoUsuarios();
-
-			for (Localizacao localizacao : localizacoes) {
-				JSONObject json = new JSONObject();
-				json.put("idUsuario", localizacao.getUsuario().getId());
-				json.put("usuario", localizacao.getUsuario().getNome());
-				json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
-				json.put("latitude", localizacao.getLatitude());
-				json.put("longitude", localizacao.getLongitude());
-				array.put(json);
-			}
-
-			return array.toString();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "";
-		}
+		incidentes = new ArrayList<Incidente>();
 	}
 
 	public String getSituacaoAtual() {
@@ -113,34 +56,17 @@ public class UsuarioIncidenteMB {
 				array.put(json);
 			}
 
-			return array.toString();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "";
-		}
-	}
-
-	public String getCaminhoUsuario() {
-		try {
-			System.out.println("getCaminhoUsuario, idUsuario: "+idUsuario);
-			JSONArray array = new JSONArray();
-
-			/*
-			 * Criacao do Objeto JSONObject
-			 */
-			localizacoes = localizacaoLocal.listarPorUsuario(idUsuario);
-
-			for (Localizacao localizacao : localizacoes) {
+			incidentes = incidenteLocal.listarIncidenteIntervalo();
+			for (Incidente incidente : incidentes) {
 				JSONObject json = new JSONObject();
-				json.put("usuario", localizacao.getUsuario().getNome());
-				json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
-				json.put("latitude", localizacao.getLatitude());
-				json.put("longitude", localizacao.getLongitude());
+				json.put("idIncidente", incidente.getLatitude());
+				json.put("incidente", incidente.getDescricao());
+				json.put("icone", Incidente.ICONE_PADRAO);
+				json.put("latitude", incidente.getLatitude());
+				json.put("longitude", incidente.getLongitude());
 				array.put(json);
 			}
 
-			System.out.println(array.toString());
 			return array.toString();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

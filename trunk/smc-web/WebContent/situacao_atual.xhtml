@@ -17,7 +17,7 @@
 		<script src="resources/js/jquery-1.11.1.js"></script>
 <script>
 var x = document.getElementById("demo");
-
+x.innerHTML = "teste.................";
 function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -64,13 +64,7 @@ function showPosition(position) {
 	var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
 	var infowindow = new google.maps.InfoWindow();
 
-	//if (window.jQuery) {
-	//	alert("jQuery is loaded");
-	//} else {
-	//	alert("jQuery is not loaded");
-	//}
-
-	var parsedJSON = $.parseJSON('#{caminhoUsuarioMB.ultimaLocalizacaoUsuarios}');
+	var parsedJSON = $.parseJSON('#{usuarioIncidenteMB.getSituacaoAtual()}');
 
 	var i;
 	for (i in parsedJSON) {
