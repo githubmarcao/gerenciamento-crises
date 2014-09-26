@@ -28,7 +28,12 @@ public class IncidenteDAO extends GenericDAO<Incidente> {
 				"from Incidente where horario in ("
 				+ "select max(horario) from Incidente ic "
 				+ "group by ic.latitude, ic.longitude"
-				+ ") order by horario desc ");
+				+ ") " +
+				"where horario BETWEEN :inicio AND :fim " +
+				"order by horario desc ");
+
+		query.setParameter("inicio", inicio);
+		query.setParameter("fim", fim);
 
 		List<Incidente> retorno = new ArrayList<Incidente>();
 		try {
