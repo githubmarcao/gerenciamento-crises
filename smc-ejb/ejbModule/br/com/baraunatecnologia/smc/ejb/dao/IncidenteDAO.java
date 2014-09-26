@@ -1,6 +1,7 @@
 package br.com.baraunatecnologia.smc.ejb.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -22,11 +23,12 @@ public class IncidenteDAO extends GenericDAO<Incidente> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Incidente> listarIncidenteIntervalo() {
+	public List<Incidente> listarIncidenteIntervalo(Date inicio, Date fim) {
 		Query query = super.getEntityManager().createQuery(
-				" SELECT distinct(i.latitude, i.longitude), i.id, i.descricao, i.latitude, i.longitude, i.horario"
-				+ " FROM Incidente i"
-				+ " Order by i.horario desc, i.id, i.descricao, i.latitude, i.longitude, (i.latitude, i.longitude)");
+				"from Incidente where horario in ("
+				+ "select max(horario) from Incidente ic "
+				+ "group by ic.latitude, ic.longitude"
+				+ ") order by horario desc ");
 
 		List<Incidente> retorno = new ArrayList<Incidente>();
 		try {
