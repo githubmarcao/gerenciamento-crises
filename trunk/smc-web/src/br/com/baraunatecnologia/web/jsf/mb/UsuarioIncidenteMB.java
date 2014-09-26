@@ -22,6 +22,12 @@ import br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoLocal;
 @RequestScoped
 public class UsuarioIncidenteMB {
 
+	private Localizacao localizacao;
+
+	private Date dataInicio;
+
+	private Date dataFim;
+
 	private List<Localizacao> localizacoes;
 
 	private List<Incidente> incidentes;
@@ -36,6 +42,30 @@ public class UsuarioIncidenteMB {
 	public void init(){
 		localizacoes = new ArrayList<Localizacao>();
 		incidentes = new ArrayList<Incidente>();
+	}
+
+	public Localizacao getLocalizacao() {
+		return localizacao;
+	}
+
+	public void setLocalizacao(Localizacao localizacao) {
+		this.localizacao = localizacao;
+	}
+
+	public Date getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public Date getDataFim() {
+		return dataFim;
+	}
+
+	public void setDataFim(Date dataFim) {
+		this.dataFim = dataFim;
 	}
 
 	public String getSituacaoAtual() {
@@ -57,7 +87,7 @@ public class UsuarioIncidenteMB {
 				array.put(json);
 			}
 
-			incidentes = incidenteLocal.listarIncidenteIntervalo(new Date(), new Date());
+			incidentes = incidenteLocal.listarIncidenteIntervalo(dataInicio, dataFim);
 			for (Incidente incidente : incidentes) {
 				JSONObject json = new JSONObject();
 				json.put("idIncidente", incidente.getLatitude());

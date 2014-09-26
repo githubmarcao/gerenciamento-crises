@@ -8,8 +8,10 @@
 <body>
 	<h:form id="mapform">
 		<p id="demo"/>
-		Latitude: <h:outputText id="latitude" value="#{localizacaoMB.localizacao.latitude}" /> <br/>
-	    Longitude: <h:outputText id="longitude" value="#{localizacaoMB.localizacao.longitude}" /> <br/>
+		Latitude: <h:outputText id="latitude" value="#{usuarioIncidenteMB.localizacao.latitude}" /> <br/>
+	    Longitude: <h:outputText id="longitude" value="#{usuarioIncidenteMB.localizacao.longitude}" /> <br/>
+	    Data Início: <h:inputText id="dataInicio" value="#{usuarioIncidenteMB.dataInicio}" maxlength="19" size="19" onkeypress="DataHora(event, this)" /> dd/mm/aaaa hh:mm <br/>
+	    Data Fim: <h:inputText id="dataFim" value="#{usuarioIncidenteMB.dataFim}" maxlength="19" size="19" onkeypress="DataHora(event, this)" /> dd/mm/aaaa hh:mm <br/>
 
 		<h:commandButton type="button" value="Situação atual"
 			onclick="getLocation();showPositionJSON('#{usuarioIncidenteMB.getSituacaoAtual()}');" />
@@ -19,9 +21,10 @@
 		<div id="mapholder" style="height: 500px; width: 700px"></div>
 
 		<script src="resources/js/jquery-1.11.1.js"></script>
+		<script src="resources/js/geral.js"></script>
 		<!-- Maps API Javascript -->
 		<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-		
+
 		<script src="resources/js/mapa.js"/>
 	</h:form>
 </body>
