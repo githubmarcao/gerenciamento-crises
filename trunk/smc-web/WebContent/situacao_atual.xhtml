@@ -5,19 +5,26 @@
 	xmlns:h="http://java.sun.com/jsf/html"
     xmlns:p="http://primefaces.org/ui"
 	>
-<body>
+<body onload="getLocation();showPositionJSON('#{usuarioIncidenteMB.getSituacaoAtual()}');">
 	<h:form id="mapform">
 		<p id="demo"/>
 		Latitude: <h:outputText id="latitude" value="#{usuarioIncidenteMB.localizacao.latitude}" /> <br/>
 	    Longitude: <h:outputText id="longitude" value="#{usuarioIncidenteMB.localizacao.longitude}" /> <br/>
-	    Data Início: <h:inputText id="dataInicio" value="#{usuarioIncidenteMB.dataInicio}" maxlength="19" size="19" onkeypress="DataHora(event, this)" /> dd/mm/aaaa hh:mm <br/>
-	    Data Fim: <h:inputText id="dataFim" value="#{usuarioIncidenteMB.dataFim}" maxlength="19" size="19" onkeypress="DataHora(event, this)" /> dd/mm/aaaa hh:mm <br/>
+	    Data Início:
+	    <h:inputText id="dataInicio"
+			value="#{usuarioIncidenteMB.dataInicio}" maxlength="19" size="19"
+			onkeypress="DataHora(event, this);" converter="converteTimestamp" >
+		</h:inputText> dd/mm/aaaa hh:mm:ss <br />
+	    Data Fim:
+		<h:inputText id="dataFim"
+			value="#{usuarioIncidenteMB.dataFim}" maxlength="19" size="19"
+			onkeypress="DataHora(event, this);" converter="converteTimestamp" >
+		</h:inputText> dd/mm/aaaa hh:mm:ss <br />
 
-		<h:commandButton type="button" value="Situação atual"
-			onclick="getLocation();showPositionJSON('#{usuarioIncidenteMB.getSituacaoAtual()}');" />
+		<h:commandButton value="Situação atual" />
 		<br />
 		<br />
-	
+
 		<div id="mapholder" style="height: 500px; width: 700px"></div>
 
 		<script src="resources/js/jquery-1.11.1.js"></script>

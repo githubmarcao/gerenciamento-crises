@@ -32,6 +32,11 @@ function showPosition(position) {
 }
 
 function showPositionJSON(json) {
+	// Caso venha vazio nao faz nada
+	if (json == null || json == '') {
+		return;
+	}
+
 	bounds = new google.maps.LatLngBounds(); //centralizar automaticamente o mapa
 
 	var myOptions = {
