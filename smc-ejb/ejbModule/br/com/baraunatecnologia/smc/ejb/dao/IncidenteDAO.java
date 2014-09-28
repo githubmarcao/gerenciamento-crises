@@ -25,12 +25,13 @@ public class IncidenteDAO extends GenericDAO<Incidente> {
 	@SuppressWarnings("unchecked")
 	public List<Incidente> listarIncidenteIntervalo(Date inicio, Date fim) {
 		Query query = super.getEntityManager().createQuery(
-				"from Incidente where horario in ("
-				+ "select max(horario) from Incidente ic "
-				+ "group by ic.latitude, ic.longitude"
-				+ ") " +
-				"where horario BETWEEN :inicio AND :fim " +
-				"order by horario desc ");
+				"from Incidente "
+				+ "where horario in ("
+					+ "select max(horario) from Incidente ic "
+					+ "group by ic.latitude, ic.longitude"
+				+ ") "
+				+ "and horario BETWEEN :inicio AND :fim "
+				+ "order by horario desc ");
 
 		query.setParameter("inicio", inicio);
 		query.setParameter("fim", fim);

@@ -69,6 +69,9 @@ public class UsuarioIncidenteMB {
 	}
 
 	public String getSituacaoAtual() {
+		if (dataInicio == null || dataFim == null) {
+			return "";
+		}
 		try {
 			JSONArray array = new JSONArray();
 

@@ -4,21 +4,36 @@
  */
 package br.com.baraunatecnologia.web.jsf.util;
 
-import java.util.MissingResourceException;
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.faces.convert.ConverterException;
 
 /**
  * @author Marco
  */
 public class DateUtil {
 
-    public static String getMessage(String key, String resourceBundleID) {
+	public static final String PATTERN_PADRAO = "dd/MM/yyyy hh:mm:ss";
 
-        String result = null;
-        try {
-            //result = getBundle(resourceBundleID).getString(key);
-        } catch (MissingResourceException e) {
-            result = "???" + key + "??? not found";
-        }
-        return result;
-    }
+	public static String timestampToString(Date data) {
+		if (data != null) {
+			Format formatter = new SimpleDateFormat(DateUtil.PATTERN_PADRAO);
+			return formatter.format((Date) data);
+		} else {
+			return null;
+		}
+	}
+
+	public static Date stringToTimestamp(String data) {
+		SimpleDateFormat sdf = new SimpleDateFormat(DateUtil.PATTERN_PADRAO);
+		try {
+			return sdf.parse(data);
+		} catch (ParseException e) {
+			throw new ConverterException(
+					"Falha ao converter de String para Data.");
+		}
+	}
 }
