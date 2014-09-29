@@ -9,6 +9,7 @@ import br.com.baraunatecnologia.smc.ejb.entity.Incidente;
 @Remote
 public interface IIncidenteRemote extends ICRUDBean<Incidente> {
 
+	public List<Incidente> listarIncidenteIntervalo();
 	public List<Incidente> listarIncidenteIntervalo(Date inicio, Date fim);
 
 }

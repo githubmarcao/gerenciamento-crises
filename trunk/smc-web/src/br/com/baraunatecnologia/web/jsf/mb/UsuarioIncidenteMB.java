@@ -78,7 +78,7 @@ public class UsuarioIncidenteMB {
 			/*
 			 * Criacao do Objeto JSONObject
 			 */
-			localizacoes = localizacaoLocal.listarUltimaLocalizacaoUsuarios();
+			localizacoes = localizacaoLocal.listarUltimaLocalizacaoUsuarios(dataInicio, dataFim);
 
 			for (Localizacao localizacao : localizacoes) {
 				JSONObject json = new JSONObject();

@@ -43,6 +43,10 @@ public class IncidenteBean implements IIncidenteRemote, IIncidenteLocal {
 		return new IncidenteDAO(em).listar();
 	}
 
+	public List<Incidente> listarIncidenteIntervalo() {
+		return new IncidenteDAO(em).listarIncidenteIntervalo();
+	}
+
 	public List<Incidente> listarIncidenteIntervalo(Date inicio, Date fim) {
 		return new IncidenteDAO(em).listarIncidenteIntervalo(inicio, fim);
 	}
