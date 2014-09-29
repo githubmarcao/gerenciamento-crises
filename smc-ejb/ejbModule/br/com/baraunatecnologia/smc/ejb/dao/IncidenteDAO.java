@@ -22,19 +22,32 @@ public class IncidenteDAO extends GenericDAO<Incidente> {
 		return Incidente.class;
 	}
 
+	public List<Incidente> listarIncidenteIntervalo() {
+		return listarIncidenteIntervalo(null, null);
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<Incidente> listarIncidenteIntervalo(Date inicio, Date fim) {
-		Query query = super.getEntityManager().createQuery(
-				"from Incidente "
-				+ "where horario in ("
-					+ "select max(horario) from Incidente ic "
-					+ "group by ic.latitude, ic.longitude"
-				+ ") "
-				+ "and horario BETWEEN :inicio AND :fim "
-				+ "order by horario desc ");
+		StringBuffer sb = new StringBuffer();
+		sb.append("from Incidente ");
 
-		query.setParameter("inicio", inicio);
-		query.setParameter("fim", fim);
+		if (inicio != null && fim != null) {
+			sb.append("where horario BETWEEN :inicio AND :fim ");
+		} else {
+			sb.append("where horario in (");
+			sb.append("select max(horario) from Incidente ");
+			sb.append("group by latitude, longitude");
+			sb.append(") ");
+		}
+		
+		sb.append("order by horario desc ");
+
+		Query query = super.getEntityManager().createQuery(sb.toString());
+
+		if (inicio != null && fim != null) {
+			query.setParameter("inicio", inicio);
+			query.setParameter("fim", fim);
+		}
 
 		List<Incidente> retorno = new ArrayList<Incidente>();
 		try {

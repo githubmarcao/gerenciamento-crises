@@ -1,5 +1,6 @@
 package br.com.baraunatecnologia.smc.ejb.bean;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -48,5 +49,9 @@ public class LocalizacaoBean implements ILocalizacaoRemote, ILocalizacaoLocal {
 
 	public List<Localizacao> listarUltimaLocalizacaoUsuarios() {
 		return new LocalizacaoDAO(em).listarUltimaLocalizacaoUsuarios();
+	}
+
+	public List<Localizacao> listarUltimaLocalizacaoUsuarios(Date inicio, Date fim) {
+		return new LocalizacaoDAO(em).listarUltimaLocalizacaoUsuarios(inicio, fim);
 	}
 }
