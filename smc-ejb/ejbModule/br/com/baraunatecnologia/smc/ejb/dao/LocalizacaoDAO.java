@@ -50,7 +50,11 @@ public class LocalizacaoDAO extends GenericDAO<Localizacao> {
 		sb.append("from Localizacao ");
 
 		if (inicio != null && fim != null) {
-			sb.append("where horario BETWEEN :inicio AND :fim ");
+			sb.append("where horario in (");
+				sb.append("select max(horario) from Localizacao ");
+				sb.append("where horario BETWEEN :inicio AND :fim ");
+				sb.append("group by id_usuario ");
+			sb.append(") ");
 		} else {
 			sb.append("where horario in (");
 			sb.append("select max(horario) from Localizacao ");

@@ -16,7 +16,7 @@ import javax.faces.convert.ConverterException;
  */
 public class DateUtil {
 
-	public static final String PATTERN_PADRAO = "dd/MM/yyyy hh:mm:ss";
+	public static final String PATTERN_PADRAO = "dd/MM/yyyy HH:mm:ss";
 
 	public static String timestampToString(Date data) {
 		if (data != null) {
