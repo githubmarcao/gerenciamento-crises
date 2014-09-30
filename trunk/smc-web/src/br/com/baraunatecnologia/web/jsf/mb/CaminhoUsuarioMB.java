@@ -1,6 +1,7 @@
 package br.com.baraunatecnologia.web.jsf.mb;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -24,6 +25,10 @@ public class CaminhoUsuarioMB {
 
 	private List<Localizacao> localizacoes;
 
+	private Date dataInicio;
+
+	private Date dataFim;
+
 	@EJB
 	private ILocalizacaoLocal localizacaoLocal;
 
@@ -39,6 +44,22 @@ public class CaminhoUsuarioMB {
 
 	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+
+	public Date getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public Date getDataFim() {
+		return dataFim;
+	}
+
+	public void setDataFim(Date dataFim) {
+		this.dataFim = dataFim;
 	}
 
 	public String getLocalizacoes() {
@@ -74,39 +95,16 @@ public class CaminhoUsuarioMB {
 			/*
 			 * Criacao do Objeto JSONObject
 			 */
-			localizacoes = localizacaoLocal.listarUltimaLocalizacaoUsuarios();
-
-			for (Localizacao localizacao : localizacoes) {
-				JSONObject json = new JSONObject();
-				json.put("idUsuario", localizacao.getUsuario().getId());
-				json.put("usuario", localizacao.getUsuario().getNome());
-				json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
-				json.put("latitude", localizacao.getLatitude());
-				json.put("longitude", localizacao.getLongitude());
-				array.put(json);
+			if (dataInicio == null || dataFim == null) {
+				localizacoes = localizacaoLocal.listarUltimaLocalizacaoUsuarios();
+			} else {
+				localizacoes = localizacaoLocal.listarUltimaLocalizacaoUsuarios(dataInicio, dataFim);
 			}
 
-			return array.toString();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "";
-		}
-	}
-
-	public String getSituacaoAtual() {
-		try {
-			JSONArray array = new JSONArray();
-
-			/*
-			 * Criacao do Objeto JSONObject
-			 */
-			localizacoes = localizacaoLocal.listarUltimaLocalizacaoUsuarios();
-
 			for (Localizacao localizacao : localizacoes) {
 				JSONObject json = new JSONObject();
 				json.put("idUsuario", localizacao.getUsuario().getId());
-				json.put("usuario", localizacao.getUsuario().getNome());
+				json.put("detalhe", localizacao.getUsuario().getNome());
 				json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
 				json.put("latitude", localizacao.getLatitude());
 				json.put("longitude", localizacao.getLongitude());
