@@ -16,6 +16,7 @@ import org.primefaces.json.JSONObject;
 import br.com.baraunatecnologia.smc.ejb.entity.Localizacao;
 import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
 import br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoLocal;
+import br.com.baraunatecnologia.web.jsf.util.JSFUtil;
 
 @ManagedBean
 @RequestScoped
@@ -35,7 +36,16 @@ public class CaminhoUsuarioMB {
 	@PostConstruct
 	public void init(){
 		localizacoes = new ArrayList<Localizacao>();
-		idUsuario = 2;
+		Integer id = null;
+		try {
+			String param = JSFUtil.getRequestParameter("idUsuario");
+			id = Integer.parseInt(param);
+		} catch (Exception e) { }
+		if (id != null) {
+			idUsuario = id;
+		} else {
+			idUsuario = 2;
+		}
 	}
 
 	public Integer getIdUsuario() {
