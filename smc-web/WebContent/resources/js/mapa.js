@@ -6,6 +6,7 @@ var map;
 var infowindow;
 var latlon;
 var bounds;
+var paginaCaminhoUsuario = "caminho_usuario.xhtml";
 
 function getLocation() {
 	if (navigator.geolocation) {
@@ -199,8 +200,9 @@ function addMarkerPorUltimaLocalizacao(location, i, icone, idUsuario, title, act
 	// Evento de clicar
 	google.maps.event.addListener(marker, 'click', (function(marker, i) {
 		return function() {
-			alert('Nao faz nada ainda!');
-			// TODO enviar para proxima pagina com o idUsuario
+			if (confirm("Deseja rastrear esse usuário?")) {
+				window.location = paginaCaminhoUsuario + "?idUsuario=" + idUsuario;
+			}
 		}
 	})(marker, i));
 }
