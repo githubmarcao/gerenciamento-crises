@@ -13,6 +13,7 @@ import org.primefaces.json.JSONArray;
 import org.primefaces.json.JSONException;
 import org.primefaces.json.JSONObject;
 
+import br.com.baraunatecnologia.smc.ejb.entity.Grupo;
 import br.com.baraunatecnologia.smc.ejb.entity.Localizacao;
 import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
 import br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoLocal;
@@ -131,18 +132,25 @@ public class CaminhoUsuarioMB {
 
 	public String getCaminhoUsuario() {
 		try {
-			System.out.println("getCaminhoUsuario, idUsuario: "+idUsuario);
 			JSONArray array = new JSONArray();
 
 			/*
 			 * Criacao do Objeto JSONObject
 			 */
 			localizacoes = localizacaoLocal.listarPorUsuario(idUsuario);
+			boolean primeiraVez = true;
 
 			for (Localizacao localizacao : localizacoes) {
 				JSONObject json = new JSONObject();
 				json.put("usuario", localizacao.getUsuario().getNome());
-				json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
+				if (primeiraVez) {
+					json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
+					primeiraVez = false;
+				} else {
+					String iconeCinza = localizacao.getUsuario().getGrupo().getIcone();
+					iconeCinza = iconeCinza.replaceAll(".png", Grupo.NOME_USUARIO_APAGADO + ".png");
+					json.put("icone", iconeCinza);
+				}
 				json.put("latitude", localizacao.getLatitude());
 				json.put("longitude", localizacao.getLongitude());
 				array.put(json);
