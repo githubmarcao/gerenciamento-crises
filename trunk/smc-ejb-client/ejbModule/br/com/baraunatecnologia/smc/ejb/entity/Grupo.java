@@ -41,6 +41,7 @@ public class Grupo implements Serializable {
     private Integer id_visualizacao;
 
     public static String ICONE_PADRAO = "resources/images/usuarios/icone.png";
+    public static String NOME_USUARIO_APAGADO = "_cinza";
 
     public Grupo() {
     	this.nome = "Padrao";
