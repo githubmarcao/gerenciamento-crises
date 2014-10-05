@@ -85,14 +85,14 @@ function showPositionJSON(json) {
 			return function() {
 				infowindow.setContent(title);
 				infowindow.open(map, marker);
-			}
+			};
 		})(marker, i));
 
 		// Remover informacao do marcador ao retirar o mouse de cima
 		google.maps.event.addListener(marker, 'mouseout', (function(marker, i) {
 			return function() {
 				infowindow.close(map, marker);
-			}
+			};
 		})(marker, i));
 
 		// Evento de clicar
@@ -100,7 +100,7 @@ function showPositionJSON(json) {
 			return function() {
 				alert('Nao faz nada ainda!');
 				// TODO enviar para proxima pagina com o idUsuario
-			}
+			};
 		})(marker, i));
 	}
 
@@ -187,14 +187,14 @@ function addMarkerPorUltimaLocalizacao(location, i, icone, idUsuario, title, act
 		return function() {
 			infowindow.setContent(title);
 			infowindow.open(map, marker);
-		}
+		};
 	})(marker, i));
 
 	// Remover informacao do marcador ao retirar o mouse de cima
 	google.maps.event.addListener(marker, 'mouseout', (function(marker, i) {
 		return function() {
 			infowindow.close(map, marker);
-		}
+		};
 	})(marker, i));
 
 	// Evento de clicar
@@ -203,7 +203,7 @@ function addMarkerPorUltimaLocalizacao(location, i, icone, idUsuario, title, act
 			if (confirm("Deseja rastrear esse usuário?")) {
 				window.location = paginaCaminhoUsuario + "?idUsuario=" + idUsuario;
 			}
-		}
+		};
 	})(marker, i));
 }
 
@@ -234,7 +234,6 @@ function caminhoUsuario(json) {
 
 	// Relacionamos o directionsDisplay com o mapa desejado
 	directionsDisplay.setMap(map);
-
 
 	var parsedJSON = $.parseJSON(json);
 
@@ -275,35 +274,9 @@ function caminhoUsuario(json) {
 	directionsService.route(request, function(result, status) {
 		if (status == google.maps.DirectionsStatus.OK) { // Se deu tudo certo
 			directionsDisplay.setDirections(result); // Renderizamos no mapa o resultado
-			//showSteps(result, usuario);
 		} else {
 			alert("Problema ao carregar a rota, status: "+status);
 		}
-	});
-
-	function showSteps(directionResult, usuario) {
-		// For each step, place a marker, and add the text to the marker's
-		// info window. Also attach the marker to an array so we
-		// can keep track of it and remove it when calculating new
-		// routes.
-		var myRoute = directionResult.routes[0].legs[0];
-
-		for (i = 0; i < myRoute.steps.length; i++) {
-			var marker = new google.maps.Marker({
-				position: myRoute.steps[i].start_point,
-				map: map
-			});
-			attachInstructionText(marker, usuario + " -> " + myRoute.steps[i].instructions);
-			markerArray[i] = marker;
-		}
-	}
-}
-
-function attachInstructionText(marker, text) {
-	google.maps.event.addListener(marker, 'click', function() {
-		alert('cliquei,attachInstructionText: '+text);
-		infowindow.setContent(text);
-		infowindow.open(map, marker);
 	});
 }
 
@@ -322,23 +295,23 @@ function addMarkerCaminhoUsuario(location, i, icone, idUsuario, title, active) {
 		return function() {
 			infowindow.setContent(title);
 			infowindow.open(map, marker);
-		}
+		};
 	})(marker, i));
 
 	// Remover informacao do marcador ao retirar o mouse de cima
 	google.maps.event.addListener(marker, 'mouseout', (function(marker, i) {
 		return function() {
 			infowindow.close(map, marker);
-		}
+		};
 	})(marker, i));
 
 	// Evento de clicar
 	google.maps.event.addListener(marker, 'click', (function(marker, i) {
 		return function() {
-			alert("Cliquei");
+			//alert("Cliquei");
 			//infowindow.setContent(usuario);
 			//infowindow.open(map, marker);
-		}
+		};
 	})(marker, i));
 }
 
