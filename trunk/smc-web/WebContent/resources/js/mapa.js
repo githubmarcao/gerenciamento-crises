@@ -230,6 +230,7 @@ function caminhoUsuario(json) {
 
 	// Create a Map Object
 	map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+	infowindow = new google.maps.InfoWindow();
 
 	// Relacionamos o directionsDisplay com o mapa desejado
 	directionsDisplay.setMap(map);
@@ -280,14 +281,14 @@ function caminhoUsuario(json) {
 		}
 	});
 
-	/*function showSteps(directionResult, usuario) {
+	function showSteps(directionResult, usuario) {
 		// For each step, place a marker, and add the text to the marker's
 		// info window. Also attach the marker to an array so we
 		// can keep track of it and remove it when calculating new
 		// routes.
 		var myRoute = directionResult.routes[0].legs[0];
 
-		for (var i = 0; i &lt; myRoute.steps.length; i++) {
+		for (i = 0; i < myRoute.steps.length; i++) {
 			var marker = new google.maps.Marker({
 				position: myRoute.steps[i].start_point,
 				map: map
@@ -296,13 +297,14 @@ function caminhoUsuario(json) {
 			markerArray[i] = marker;
 		}
 	}
+}
 
-	function attachInstructionText(marker, text) {
-		google.maps.event.addListener(marker, 'click', function() {
-			stepDisplay.setContent(text);
-			stepDisplay.open(map, marker);
-		});
-	} */
+function attachInstructionText(marker, text) {
+	google.maps.event.addListener(marker, 'click', function() {
+		alert('cliquei,attachInstructionText: '+text);
+		infowindow.setContent(text);
+		infowindow.open(map, marker);
+	});
 }
 
 function addMarkerCaminhoUsuario(location, i, icone, idUsuario, title, active) {
