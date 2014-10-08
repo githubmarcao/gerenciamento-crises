@@ -140,16 +140,25 @@ public class CaminhoUsuarioMB {
 			localizacoes = localizacaoLocal.listarPorUsuario(idUsuario);
 			boolean primeiraVez = true;
 
-			for (Localizacao localizacao : localizacoes) {
+			for (int i = 0; i < localizacoes.size(); i++) {
+				Localizacao localizacao = localizacoes.get(i);
 				JSONObject json = new JSONObject();
 				json.put("detalhe", localizacao.getUsuario().getNome());
 				if (primeiraVez) {
+					// Imagem colorida para a localizacao mais recente do usuario
 					json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
 					primeiraVez = false;
 				} else {
-					String iconeCinza = localizacao.getUsuario().getGrupo().getIcone();
-					iconeCinza = iconeCinza.replaceAll(".png", Grupo.NOME_USUARIO_APAGADO + ".png");
-					json.put("icone", iconeCinza);
+					if (i == localizacoes.size() - 1) {
+						// Imagem preta e branca para a localizacao mais antiga do usuario
+						String iconeCinza = localizacao.getUsuario().getGrupo().getIcone();
+						iconeCinza = iconeCinza.replaceAll(".png", Grupo.NOME_USUARIO_APAGADO + ".png");
+						json.put("icone", iconeCinza);
+					} else {
+						String iconeIntermediario = localizacao.getUsuario().getGrupo().getIcone();
+						iconeIntermediario = iconeIntermediario.replaceAll(".png", Grupo.NOME_USUARIO_INTERMEDIARIO + ".png");
+						json.put("icone", iconeIntermediario);
+					}
 				}
 				json.put("latitude", localizacao.getLatitude());
 				json.put("longitude", localizacao.getLongitude());

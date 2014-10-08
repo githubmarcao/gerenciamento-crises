@@ -40,6 +40,7 @@ public class UsuarioIncidenteMB {
 
 	@PostConstruct
 	public void init(){
+		localizacao = new Localizacao();
 		localizacoes = new ArrayList<Localizacao>();
 		incidentes = new ArrayList<Incidente>();
 	}
@@ -69,9 +70,6 @@ public class UsuarioIncidenteMB {
 	}
 
 	public String getSituacaoAtual() {
-		if (dataInicio == null || dataFim == null) {
-			return "";
-		}
 		try {
 			JSONArray array = new JSONArray();
 
