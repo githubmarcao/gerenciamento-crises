@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html>
 
 <html 
@@ -6,21 +5,21 @@
 	xmlns:h="http://java.sun.com/jsf/html"
     xmlns:p="http://primefaces.org/ui"
 	>
-<body onload="getLocation();usuariosPorUltimaLocalizacaoNoIntervalo('#{caminhoUsuarioMB.ultimaLocalizacaoUsuarios}');">
-	<h:form id="usuariosPorUltimaLocalizacao">
+<body onload="getLocation();usuariosPorLocalizacao('#{caminhoUsuarioMB.ultimaLocalizacaoUsuarios}');">
+	<h:form id="mapform">
 		<p id="demo"></p>
 		Latitude: <h:outputText id="latitude" value="#{localizacaoMB.localizacao.latitude}" /> <br/>
 	    Longitude: <h:outputText id="longitude" value="#{localizacaoMB.localizacao.longitude}" /> <br/>
-		Data Início:
+		Data InÃ­cio:
 	    <h:inputText id="dataInicio"
 			value="#{caminhoUsuarioMB.dataInicio}" maxlength="19" size="19"
 			onkeypress="DataHora(event, this);" converter="converteTimestamp" >
-		</h:inputText> Máscara (dd/mm/aaaa hh:mm:ss) <br />
+		</h:inputText> MÃ¡scara (dd/mm/aaaa hh:mm:ss) <br />
 	    Data Fim:
 		<h:inputText id="dataFim"
 			value="#{caminhoUsuarioMB.dataFim}" maxlength="19" size="19"
 			onkeypress="DataHora(event, this);" converter="converteTimestamp" >
-		</h:inputText> Máscara (dd/mm/aaaa hh:mm:ss) <br />
+		</h:inputText> MÃ¡scara (dd/mm/aaaa hh:mm:ss) <br />
 
 		<h:commandButton value="Usuarios neste tempo" />
 		<br />
