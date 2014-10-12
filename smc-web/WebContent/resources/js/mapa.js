@@ -73,14 +73,20 @@ function usuariosPorLocalizacao(json) {
 		var latLng = new google.maps.LatLng(parsedJSON[i].latitude, parsedJSON[i].longitude);
 		var icone = parsedJSON[i].icone;
 		var id = parsedJSON[i].idUsuario;
+		var idGrupo = parsedJSON[i].idGrupo;
 		var title = parsedJSON[i].detalhe;
 		var status = "active";
 
+		bounds.extend(latLng);
 		if (id == null || id == "") {
 			id = parsedJSON[i].idIncidente;
 		}
-		bounds.extend(latLng);
-		addMarkerPorUltimaLocalizacao(latLng, i, icone, id, title, status);
+		if (idGrupo == null || idGrupo == "") {
+			addMarkerPorUltimaLocalizacao(latLng, i, icone, id, title, status);
+		} else {
+			addMarkerPorUltimaLocalizacao(latLng, i, icone, id, idGrupo, title, status);
+		}
+		
 	}
 
 	map.fitBounds(bounds); //centralizar baseado nos marcadores
@@ -114,6 +120,42 @@ function addMarkerPorUltimaLocalizacao(location, i, icone, idUsuario, title, act
 	// Evento de clicar
 	google.maps.event.addListener(marker, 'click', (function(marker, i) {
 		return function() {
+			if (confirm("Deseja rastrear '" + title + "' ?")) {
+				window.location = paginaCaminhoUsuario + "?idUsuario=" + idUsuario;
+			}
+		};
+	})(marker, i));
+}
+
+function addMarkerPorUltimaLocalizacao(location, i, icone, idUsuario, idGrupo, title, active) {
+	var marker = new google.maps.Marker({
+		position: location,
+		icon: icone,
+		// title:"Você está Aqui!",
+        status: active,
+		map: map,
+		grupo: idGrupo
+	});
+
+	// Adicionar informacao no marcador ao passar o mouse em cima
+	google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+		return function() {
+			infowindow.setContent(title);
+			infowindow.open(map, marker);
+		};
+	})(marker, i));
+
+	// Remover informacao do marcador ao retirar o mouse de cima
+	google.maps.event.addListener(marker, 'mouseout', (function(marker, i) {
+		return function() {
+			infowindow.close(map, marker);
+		};
+	})(marker, i));
+
+	// Evento de clicar
+	google.maps.event.addListener(marker, 'click', (function(marker, i) {
+		return function() {
+			alert('Meu grupo e: '+marker.grupo);
 			if (confirm("Deseja rastrear '" + title + "' ?")) {
 				window.location = paginaCaminhoUsuario + "?idUsuario=" + idUsuario;
 			}
