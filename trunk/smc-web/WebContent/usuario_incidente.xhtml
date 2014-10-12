@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 
-<html 
+<html
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
     xmlns:p="http://primefaces.org/ui"
 	>
+	<h:head>
+    </h:head>
 <body onload="getLocation();usuariosPorLocalizacao('#{usuarioIncidenteMB.situacaoAtual}');">
 	<h:form id="mapform">
 		<p id="demo"/>
@@ -20,6 +23,17 @@
 			value="#{usuarioIncidenteMB.dataFim}" maxlength="19" size="19"
 			onkeypress="DataHora(event, this);" converter="converteTimestamp" >
 		</h:inputText> Máscara (dd/mm/aaaa hh:mm:ss) <br />
+
+		<h:panelGroup p:title="My title" layout="block" style="width: 350px;"
+			styleClass="ui-panel ui-widget ui-widget-content ui-corner-all">
+			<h:selectManyCheckbox layout="pageDirection"
+				selectedClass="ui-chkbox ui-widget"
+				styleClass="ui-selectmanycheckbox ui-widget"
+				value="#{usuarioIncidenteMB.gruposSelecionados}" 
+				immediate="true" converter="grupoUsuarioConverter">
+				<f:selectItems value="#{usuarioIncidenteMB.gruposDisponiveis}" />
+			</h:selectManyCheckbox>
+		</h:panelGroup>
 
 		<h:commandButton value="Situação atual" />
 		<br />
