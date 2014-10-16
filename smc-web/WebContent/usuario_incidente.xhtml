@@ -25,13 +25,13 @@
 		</h:inputText> Máscara (dd/mm/aaaa hh:mm:ss) <br />
 
 		<h:panelGroup p:title="My title" layout="block" style="width: 350px;"
-			styleClass="ui-panel ui-widget ui-widget-content ui-corner-all">
+			>
 			<h:selectManyCheckbox layout="pageDirection"
-				selectedClass="ui-chkbox ui-widget"
-				styleClass="ui-selectmanycheckbox ui-widget"
-				value="#{usuarioIncidenteMB.gruposSelecionados}" 
-				immediate="true" converter="grupoUsuarioConverter">
-				<f:selectItems value="#{usuarioIncidenteMB.gruposDisponiveis}" />
+				value="#{usuarioIncidenteMB.gruposSelecionados}"
+				converter="#{grupoUsuarioConverter}"
+				>
+				<f:selectItems value="#{usuarioIncidenteMB.gruposDisponiveis}"
+					var="item" itemValue="#{item}"  itemLabel="#{item.nome}" />
 			</h:selectManyCheckbox>
 		</h:panelGroup>
 

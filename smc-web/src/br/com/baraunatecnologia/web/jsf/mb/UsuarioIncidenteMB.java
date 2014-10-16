@@ -15,9 +15,9 @@ import org.primefaces.json.JSONArray;
 import org.primefaces.json.JSONException;
 import org.primefaces.json.JSONObject;
 
+import br.com.baraunatecnologia.smc.ejb.entity.Grupo;
 import br.com.baraunatecnologia.smc.ejb.entity.Incidente;
 import br.com.baraunatecnologia.smc.ejb.entity.Localizacao;
-import br.com.baraunatecnologia.smc.ejb.enumerator.GrupoUsuarioClassEnum.GrupoUsuarioEnum;
 import br.com.baraunatecnologia.smc.ejb.interfaces.IIncidenteLocal;
 import br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoLocal;
 
@@ -27,9 +27,9 @@ public class UsuarioIncidenteMB {
 
 	private Localizacao localizacao;
 
-	private List<GrupoUsuarioEnum> gruposSelecionados;
+	private List<Grupo> gruposSelecionados;
 
-	private Map<Object, GrupoUsuarioEnum> gruposDisponiveis;
+	private Map<Object, Grupo> gruposDisponiveis;
 
 	private Date dataInicio;
 
@@ -48,8 +48,8 @@ public class UsuarioIncidenteMB {
 	@PostConstruct
 	public void init() {
 		localizacao = new Localizacao();
-		gruposSelecionados = new ArrayList<GrupoUsuarioEnum>();
-		gruposDisponiveis = new LinkedHashMap<Object, GrupoUsuarioEnum>();
+		gruposSelecionados = new ArrayList<>();
+		gruposDisponiveis = new LinkedHashMap<Object, Grupo>();
 		localizacoes = new ArrayList<Localizacao>();
 		incidentes = new ArrayList<Incidente>();
 	}
@@ -62,19 +62,19 @@ public class UsuarioIncidenteMB {
 		this.localizacao = localizacao;
 	}
 
-	public List<GrupoUsuarioEnum> getGruposSelecionados() {
+	public List<Grupo> getGruposSelecionados() {
 		return gruposSelecionados;
 	}
 
-	public void setGruposSelecionados(List<GrupoUsuarioEnum> gruposSelecionados) {
+	public void setGruposSelecionados(List<Grupo> gruposSelecionados) {
 		this.gruposSelecionados = gruposSelecionados;
 	}
 
-	public Map<Object, GrupoUsuarioEnum> getGruposDisponiveis() {
+	public Map<Object, Grupo> getGruposDisponiveis() {
 		return gruposDisponiveis;
 	}
 
-	public void setGruposDisponiveis(Map<Object, GrupoUsuarioEnum> gruposDisponiveis) {
+	public void setGruposDisponiveis(Map<Object, Grupo> gruposDisponiveis) {
 		this.gruposDisponiveis = gruposDisponiveis;
 	}
 
@@ -98,32 +98,29 @@ public class UsuarioIncidenteMB {
 		try {
 			JSONArray array = new JSONArray();
 
-			/*
-			 * Criacao do Objeto JSONObject
-			 */
 			localizacoes = localizacaoLocal.listarUltimaLocalizacaoUsuarios(dataInicio, dataFim);
 
 			for (Localizacao localizacao : localizacoes) {
-				Integer idGrupo = localizacao.getUsuario().getGrupo().getId();
-				GrupoUsuarioEnum grupoUsuarioEnum = GrupoUsuarioEnum.getById(idGrupo);
+				Grupo grupo = localizacao.getUsuario().getGrupo();
+				String nomeGrupo = grupo.getNome();
 
 				// Carragar na tela apenas os grupos selecionados
 				if (gruposSelecionados == null
 						|| gruposSelecionados.size() <= 0
-						|| gruposSelecionados.contains(grupoUsuarioEnum)) {
+						|| gruposSelecionados.contains(grupo)) {
 					JSONObject json = new JSONObject();
 					json.put("idUsuario", localizacao.getUsuario().getId());
-					json.put("idGrupo", idGrupo);
+					json.put("idGrupo", grupo.getId());
 					json.put("detalhe", localizacao.getUsuario().getNome());
-					json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
+					json.put("icone", grupo.getIcone());
 					json.put("latitude", localizacao.getLatitude());
 					json.put("longitude", localizacao.getLongitude());
 					array.put(json);
 				}
 
 				// Salvar grupo no filtro
-				if (!gruposDisponiveis.containsKey(grupoUsuarioEnum)) {
-					gruposDisponiveis.put(idGrupo, grupoUsuarioEnum);
+				if (!gruposDisponiveis.containsKey(nomeGrupo)) {
+					gruposDisponiveis.put(nomeGrupo, grupo);
 				}
 			}
 

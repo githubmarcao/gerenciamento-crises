@@ -47,6 +47,18 @@ public class GrupoUsuarioClassEnum {
 			}
 			return null;
 		}
+
+		public static GrupoUsuarioEnum getByName(String nome) {
+			if (nome == null || nome.isEmpty()) {
+				return null;
+			}
+			for(GrupoUsuarioEnum item : GrupoUsuarioEnum.values()){
+				if (nome.equals(item.getNome())) {
+					return item;
+				}
+			}
+			return null;
+		}
 	}
 
 }

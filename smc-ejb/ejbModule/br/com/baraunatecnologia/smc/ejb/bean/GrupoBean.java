@@ -42,5 +42,8 @@ public class GrupoBean implements IGrupoRemote, IGrupoLocal {
 		return new GrupoDAO(em).listar();
 	}
 
-	
+	@Override
+	public Grupo buscar(String nome) {
+		return new GrupoDAO(em).buscar(nome);
+	}
 }
