@@ -84,7 +84,8 @@ public class CaminhoUsuarioMB {
 
 			for (Localizacao localizacao : localizacoes) {
 				JSONObject json = new JSONObject();
-				json.put("detalhe", localizacao.getUsuario().getNome());
+				json.put("idUsuario", localizacao.getUsuario().getId());
+				json.put("nomeUsuario", localizacao.getUsuario().getNome());
 				json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
 				json.put("latitude", localizacao.getLatitude());
 				json.put("longitude", localizacao.getLongitude());

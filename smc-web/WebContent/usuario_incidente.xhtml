@@ -7,13 +7,17 @@
     xmlns:p="http://primefaces.org/ui"
 	>
 	<h:head>
+		<!-- JQuery -->
+		<script src="resources/js/jquery-1.11.1.js"></script>
+		<!-- Maps API Javascript -->
+		<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+		<script src="resources/js/geral.js"></script>
     </h:head>
-<body onload="getLocation();usuariosPorLocalizacao('#{usuarioIncidenteMB.situacaoAtual}');">
+<h:body onload="usuariosIncidentes('#{usuarioIncidenteMB.situacaoAtual}');">
 	<h:form id="mapform">
 		<p id="demo"/>
-		Latitude: <h:outputText id="latitude" value="#{usuarioIncidenteMB.localizacao.latitude}" /> <br/>
-	    Longitude: <h:outputText id="longitude" value="#{usuarioIncidenteMB.localizacao.longitude}" /> <br/>
-	    Data Início:
+		Data Início:
 	    <h:inputText id="dataInicio"
 			value="#{usuarioIncidenteMB.dataInicio}" maxlength="19" size="19"
 			onkeypress="DataHora(event, this);" converter="converteTimestamp" >
@@ -26,6 +30,7 @@
 
 		<h:panelGroup p:title="My title" layout="block" style="width: 350px;"
 			>
+		<!-- <p:dialog rendered="true" visible="true" header="Grupos" style="width:320px; min-height:100px; z-index: 999 !important;" resizable="true" > -->
 			<h:selectManyCheckbox layout="pageDirection"
 				value="#{usuarioIncidenteMB.gruposSelecionados}"
 				converter="#{grupoUsuarioConverter}"
@@ -33,6 +38,7 @@
 				<f:selectItems value="#{usuarioIncidenteMB.gruposDisponiveis}"
 					var="item" itemValue="#{item}"  itemLabel="#{item.nome}" />
 			</h:selectManyCheckbox>
+		<!-- </p:dialog> -->
 		</h:panelGroup>
 
 		<h:commandButton value="Situação atual" />
@@ -40,14 +46,8 @@
 		<br />
 
 		<div id="mapholder" style="height: 500px; width: 700px"></div>
-
-		<!-- JQuery -->
-		<script src="resources/js/jquery-1.11.1.js"></script>
-		<!-- Maps API Javascript -->
-		<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
-		<script src="resources/js/geral.js"></script>
 		<script src="resources/js/mapa.js"/>
+
 	</h:form>
-</body>
+</h:body>
 </html>
