@@ -111,7 +111,7 @@ public class UsuarioIncidenteMB {
 					JSONObject json = new JSONObject();
 					json.put("idUsuario", localizacao.getUsuario().getId());
 					json.put("idGrupo", grupo.getId());
-					json.put("detalhe", localizacao.getUsuario().getNome());
+					json.put("nomeUsuario", localizacao.getUsuario().getNome());
 					json.put("icone", grupo.getIcone());
 					json.put("latitude", localizacao.getLatitude());
 					json.put("longitude", localizacao.getLongitude());
@@ -127,8 +127,8 @@ public class UsuarioIncidenteMB {
 			incidentes = incidenteLocal.listarIncidenteIntervalo(dataInicio, dataFim);
 			for (Incidente incidente : incidentes) {
 				JSONObject json = new JSONObject();
-				json.put("idIncidente", incidente.getLatitude());
-				json.put("detalhe", incidente.getDescricao());
+				json.put("idIncidente", incidente.getId());
+				json.put("descricaoIncidente", incidente.getDescricao());
 				json.put("icone", Incidente.ICONE_PADRAO);
 				json.put("latitude", incidente.getLatitude());
 				json.put("longitude", incidente.getLongitude());

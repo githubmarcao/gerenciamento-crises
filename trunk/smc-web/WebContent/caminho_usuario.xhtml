@@ -7,22 +7,11 @@
 <body onload="caminhoUsuario('#{caminhoUsuarioMB.getCaminhoUsuario()}');">
 	<h:form id="mapform">
 		<p id="demo"></p>
-		<label for="idUsuario">Id Usuário: </label>
+		<!-- <label for="idUsuario">Id Usuário: </label>
 		<h:inputText id="idUsuario" value="#{caminhoUsuarioMB.idUsuario}" />
-		<br />
+		<br /> -->
 
 		<h:commandButton value="Caminho do Usuário" onclick="getLocation();" />
-		<br />
-		<br />
-
-		<label for="latitude">Latitude: </label>
-		<h:outputText id="latitude"
-			value="#{localizacaoMB.localizacao.latitude}" />
-		<br />
-
-		<label for="longitude">Longitude: </label>
-		<h:outputText id="longitude"
-			value="#{localizacaoMB.localizacao.longitude}" />
 		<br />
 		<br />
 

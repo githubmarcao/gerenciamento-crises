@@ -41,10 +41,13 @@ function showPosition(position) {
 	// Custom overlays
 }
 
-function usuariosPorLocalizacao(json) {
+function usuariosIncidentes(json) {
 	// Caso venha vazio nao faz nada
 	if (json == null || json == '') {
+		x.innerHTML = "Nenhum usuário carregado.";
 		return;
+	} else {
+		x.innerHTML = "";
 	}
 
 	var myOptions = {
@@ -73,31 +76,38 @@ function usuariosPorLocalizacao(json) {
 		var latLng = new google.maps.LatLng(parsedJSON[i].latitude, parsedJSON[i].longitude);
 		var icone = parsedJSON[i].icone;
 		var id = parsedJSON[i].idUsuario;
-		var idGrupo = parsedJSON[i].idGrupo;
-		var title = parsedJSON[i].detalhe;
 		var status = "active";
 
 		bounds.extend(latLng);
-		if (id == null || id == "") {
-			id = parsedJSON[i].idIncidente;
-		}
-		if (idGrupo == null || idGrupo == "") {
-			addMarkerPorUltimaLocalizacao(latLng, i, icone, id, title, status);
+		// Usuario
+		if (id != null && id != "") {
+			var idGrupo = parsedJSON[i].idGrupo;
+			var nomeUsuario = parsedJSON[i].nomeUsuario;
+			var title = nomeUsuario + 
+						 "<br />" + "Latitude: " + parsedJSON[i].latitude +
+						 "<br />" + "Longitude: " + parsedJSON[i].longitude;
+			addMarkerUsuario(latLng, i, icone, id, idGrupo, nomeUsuario, title, status);
+
+		//incidente
 		} else {
-			addMarkerPorUltimaLocalizacao(latLng, i, icone, id, idGrupo, title, status);
-		}
-		
+			id = parsedJSON[i].idIncidente;
+			var descricaoIncidente = parsedJSON[i].descricaoIncidente;
+			var title = descricaoIncidente + 
+						 "<br />" + "Latitude: " + parsedJSON[i].latitude +
+						 "<br />" + "Longitude: " + parsedJSON[i].longitude;
+			addMarkerIncidente(latLng, i, icone, id, descricaoIncidente, title, status);
+		}		
 	}
 
 	map.fitBounds(bounds); //centralizar baseado nos marcadores
     map.panToBounds(bounds); //centralizar baseado nos marcadores
 }
 
-function addMarkerPorUltimaLocalizacao(location, i, icone, idUsuario, title, active) {
+function addMarkerIncidente(location, i, icone, idUsuario, descricaoIncidente, title, active) {
 	var marker = new google.maps.Marker({
 		position: location,
 		icon: icone,
-		// title:"Você está Aqui!",
+		//title:"Você está Aqui!",
         status: active,
 		map: map
 	});
@@ -105,7 +115,8 @@ function addMarkerPorUltimaLocalizacao(location, i, icone, idUsuario, title, act
 	// Adicionar informacao no marcador ao passar o mouse em cima
 	google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
 		return function() {
-			infowindow.setContent(title);
+			infowindow = new google.maps.InfoWindow();
+			infowindow.setContent("<p>" + title + "</p>");
 			infowindow.open(map, marker);
 		};
 	})(marker, i));
@@ -120,18 +131,16 @@ function addMarkerPorUltimaLocalizacao(location, i, icone, idUsuario, title, act
 	// Evento de clicar
 	google.maps.event.addListener(marker, 'click', (function(marker, i) {
 		return function() {
-			if (confirm("Deseja rastrear '" + title + "' ?")) {
-				window.location = paginaCaminhoUsuario + "?idUsuario=" + idUsuario;
-			}
+			//
 		};
 	})(marker, i));
 }
 
-function addMarkerPorUltimaLocalizacao(location, i, icone, idUsuario, idGrupo, title, active) {
+function addMarkerUsuario(location, i, icone, idUsuario, idGrupo, nomeUsuario, title, active) {
 	var marker = new google.maps.Marker({
 		position: location,
 		icon: icone,
-		// title:"Você está Aqui!",
+		//title:"Você está Aqui!",
         status: active,
 		map: map,
 		grupo: idGrupo
@@ -140,7 +149,8 @@ function addMarkerPorUltimaLocalizacao(location, i, icone, idUsuario, idGrupo, t
 	// Adicionar informacao no marcador ao passar o mouse em cima
 	google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
 		return function() {
-			infowindow.setContent(title);
+			infowindow = new google.maps.InfoWindow();
+			infowindow.setContent("<p>" + title + "</p>");
 			infowindow.open(map, marker);
 		};
 	})(marker, i));
@@ -155,8 +165,7 @@ function addMarkerPorUltimaLocalizacao(location, i, icone, idUsuario, idGrupo, t
 	// Evento de clicar
 	google.maps.event.addListener(marker, 'click', (function(marker, i) {
 		return function() {
-			alert('Meu grupo e: '+marker.grupo);
-			if (confirm("Deseja rastrear '" + title + "' ?")) {
+			if (confirm("Deseja rastrear '" + nomeUsuario + "' ?")) {
 				window.location = paginaCaminhoUsuario + "?idUsuario=" + idUsuario;
 			}
 		};
@@ -166,7 +175,10 @@ function addMarkerPorUltimaLocalizacao(location, i, icone, idUsuario, idGrupo, t
 function caminhoUsuario(json) {
 	// Caso venha vazio nao faz nada
 	if (json == null || json == '') {
+		x.innerHTML = "Caminho do usuário não carregado.";
 		return;
+	} else {
+		x.innerHTML = "";
 	}
 
 	var directionsService = new google.maps.DirectionsService({
@@ -200,10 +212,14 @@ function caminhoUsuario(json) {
 		var latLng = new google.maps.LatLng(parsedJSON[i].latitude, parsedJSON[i].longitude);
 		var icone = parsedJSON[i].icone;
 		var idUsuario = parsedJSON[i].idUsuario;
-		var title = parsedJSON[i].detalhe;
+		var nomeUsuario = parsedJSON[i].nomeUsuario;
 		var status = "active";
 
-		addMarkerCaminhoUsuario(latLng, i, icone, idUsuario, title, status);
+		var title = nomeUsuario +
+					"<br />" + "Latitude: " + parsedJSON[i].latitude +
+					"<br />" + "Longitude: " + parsedJSON[i].longitude;
+
+		addMarkerCaminhoUsuario(latLng, i, icone, idUsuario, nomeUsuario, title, status);
 
 		// Salvar os dados para criar a rota
 		if (i == 0) {
@@ -236,7 +252,7 @@ function caminhoUsuario(json) {
 	});
 }
 
-function addMarkerCaminhoUsuario(location, i, icone, idUsuario, title, active) {
+function addMarkerCaminhoUsuario(location, i, icone, idUsuario, nomeUsuario, title, active) {
 	var marker = new google.maps.Marker({
 		position: location,
 		draggable: true,
@@ -249,7 +265,8 @@ function addMarkerCaminhoUsuario(location, i, icone, idUsuario, title, active) {
 	// Adicionar informacao no marcador ao passar o mouse em cima
 	google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
 		return function() {
-			infowindow.setContent(title);
+			infowindow = new google.maps.InfoWindow();
+			infowindow.setContent("<p>" + title + "</p>");
 			infowindow.open(map, marker);
 		};
 	})(marker, i));
