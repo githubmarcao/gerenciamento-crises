@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -26,10 +27,10 @@ import javax.persistence.Table;
 public class Grupo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
+	@SequenceGenerator(name = "seq_grupo", sequenceName = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_grupo")
+	@Column(name = "id", unique = true, nullable = false)
+	private Integer id;
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
@@ -38,7 +39,7 @@ public class Grupo implements Serializable {
     private String icone;
     @Basic(optional = false)
     @Column(name = "id_visualizacao")
-    private Integer id_visualizacao;
+    private Integer idVisualizacao;
 
     public static String ICONE_PADRAO = "resources/images/usuarios/icone.png";
     public static String NOME_USUARIO_APAGADO = "_cinza";
@@ -83,12 +84,12 @@ public class Grupo implements Serializable {
 		this.icone = icone;
 	}
 
-	public Integer getId_visualizacao() {
-		return id_visualizacao;
+	public Integer getIdVisualizacao() {
+		return idVisualizacao;
 	}
 
-	public void setId_visualizacao(Integer id_visualizacao) {
-		this.id_visualizacao = id_visualizacao;
+	public void setIdVisualizacao(Integer idVisualizacao) {
+		this.idVisualizacao = idVisualizacao;
 	}
 
 	@Override

@@ -17,27 +17,24 @@ public abstract class GenericDAO <T extends Serializable>{
     public abstract Class<T> getEntityClass();
 
     public T inserirEditar(T entidade) {
-
-        return em.merge(entidade);
-
+    	entidade = em.merge(entidade);
+    	em.flush();
+        return entidade;
     }
 
     public void deletar(T entidade)  {
-    	
     	em.remove(em.merge(entidade));
-
+    	em.flush();
     }
 
     public T buscar(Integer id)  {
-
         return em.find(getEntityClass(), id);
 
     }
 
-    public List<T> listar() {
-
+    @SuppressWarnings("unchecked")
+	public List<T> listar() {
         Query dynaQuery = em.createQuery("FROM " + getEntityClass().getName());
-        
         return dynaQuery.getResultList();
     }
 

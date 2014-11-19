@@ -21,7 +21,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")})
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
-	// Sintaxe banco nextval('seq_grupo')
+	// Sintaxe banco nextva l ( 'seq_usuario')
     @Id
 	@SequenceGenerator(name = "seq_usuario", sequenceName = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")

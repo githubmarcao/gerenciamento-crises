@@ -15,16 +15,17 @@
            </f:facet>
 
 			<h:outputLabel for="nome" value="Nome: *" />
-			<p:inputText id="nome" value="#{usuarioMB.usuarioNaoLogado.nome}"  label="Nome" />
+			<p:inputText id="nome" value="#{usuarioMB.usuarioNaoLogado.nome}" label="Nome" required="true" />
 
 			<h:outputLabel for="login" value="Login: *" />
-			<p:inputText id="login" value="#{usuarioMB.usuarioNaoLogado.login}"  label="Login" />
+			<p:inputText id="login" value="#{usuarioMB.usuarioNaoLogado.login}" label="Login" required="true" />
 
 			<h:outputLabel for="senha" value="Senha: *" />
-			<p:password id="senha" value="#{usuarioMB.usuarioNaoLogado.senha}"  label="Senha" />
+			<p:password id="senha" value="#{usuarioMB.usuarioNaoLogado.senha}" label="Senha" required="true" />
 
 			<h:outputLabel for="grupo" value="Grupo: *" />
-			<p:selectOneMenu id="grupo" value="#{usuarioMB.usuarioNaoLogado.grupo.id}" required="true">  
+			<p:selectOneMenu id="grupo" value="#{usuarioMB.usuarioNaoLogado.grupo.id}" required="true" >
+				<f:selectItem itemLabel="Selecione" itemValue="" />
 				<f:selectItems value="#{usuarioMB.grupos}" var="grupo" itemLabel="#{grupo.nome}" itemValue="#{grupo.id}" />                        
             </p:selectOneMenu>
 

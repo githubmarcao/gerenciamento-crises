@@ -80,22 +80,6 @@ function showPosition(position) {
 		}
 	})(marker));
 
-	/*for  (i = 0; i &lt; '#{usuarioMB.total}'; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-		icon:'#{usuarioMB.usuarioSessao.grupo.icone}',
-	    //title:"Você está Aqui!",
-        map: map
-		  //,animation:google.maps.Animation.BOUNCE // Animacao
-      });
-
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
-    } */
 	// Tipos de overlays
 	//Marker - Single locations on a map. Markers can also display custom icon images
 	//Polyline - Series of straight lines on a map

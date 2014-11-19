@@ -116,7 +116,7 @@ public class CaminhoUsuarioMB {
 			for (Localizacao localizacao : localizacoes) {
 				JSONObject json = new JSONObject();
 				json.put("idUsuario", localizacao.getUsuario().getId());
-				json.put("detalhe", localizacao.getUsuario().getNome());
+				json.put("nomeUsuario", localizacao.getUsuario().getNome());
 				json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
 				json.put("latitude", localizacao.getLatitude());
 				json.put("longitude", localizacao.getLongitude());
@@ -144,7 +144,7 @@ public class CaminhoUsuarioMB {
 			for (int i = 0; i < localizacoes.size(); i++) {
 				Localizacao localizacao = localizacoes.get(i);
 				JSONObject json = new JSONObject();
-				json.put("detalhe", localizacao.getUsuario().getNome());
+				json.put("nomeUsuario", localizacao.getUsuario().getNome());
 				if (primeiraVez) {
 					// Imagem colorida para a localizacao mais recente do usuario
 					json.put("icone", localizacao.getUsuario().getGrupo().getIcone());

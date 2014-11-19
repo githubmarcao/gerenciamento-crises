@@ -7,10 +7,6 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import org.primefaces.json.JSONArray;
-import org.primefaces.json.JSONException;
-import org.primefaces.json.JSONObject;
-
 import br.com.baraunatecnologia.smc.ejb.entity.Grupo;
 import br.com.baraunatecnologia.smc.ejb.entity.Usuario;
 import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
@@ -24,7 +20,6 @@ public class UsuarioMB {
 
 	private Usuario usuario;
 	private Usuario usuarioNaoLogado;
-	private Integer total = 2; // Total do array que ira percorrer os usuarios
 
 	@EJB
 	private IUsuarioLocal usuarioLocal;
@@ -161,42 +156,6 @@ public class UsuarioMB {
 		}
 
 		return "usuario";
-	}
-
-	public Integer getTotal() {
-		return total;
-	}
-
-	public void setTotal(Integer total) {
-		this.total = total;
-	}
-
-	public String arrayToString() {
-		try {
-			JSONArray array = new JSONArray();
-
-			/*
-			 * Criacao do Objeto JSONObject
-			 */
-			JSONObject jsonOne = new JSONObject();
-
-			jsonOne.put("nome", "FlaviaJose");
-			jsonOne.put("idade", 10);
-
-			JSONObject jsonTwo = new JSONObject();
-
-			jsonTwo.put("nome", "JandroSales");
-			jsonTwo.put("idade", 43);
-
-			array.put(jsonOne);
-			array.put(jsonTwo);
-
-			return array.toString();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "";
-		}
 	}
 
 }
