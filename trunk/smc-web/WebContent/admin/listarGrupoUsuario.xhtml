@@ -1,0 +1,44 @@
+
+<ui:composition template="template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+	<ui:define name="conteudo">
+
+		<h:form>
+			<p:dataTable value="#{grupoUsuarioMB.gruposUsuario}" style="margin-top:60px;"
+				var="grupoUsuario" paginator="true" rows="4" paginatorPosition="bottom">
+
+				<f:facet name="header">  
+            		Lista de Grupo de Usuarios
+        		</f:facet>
+				<p:column headerText="Nome">
+					<h:outputText value="#{grupoUsuario.nome}" />
+				</p:column>
+
+				<p:column headerText="Alterar" style="width:40px">
+					<p:commandButton id="alterar" ajax="false" icon="ui-icon-search"
+						action="#{grupoUsuarioMB.buscar}">
+						<f:setPropertyActionListener target="#{grupoUsuarioMB.grupoUsuario}"
+							value="#{grupoUsuario}" />
+					</p:commandButton>
+				</p:column>
+
+				<p:column headerText="Excluir" style="width:40px">
+					<p:commandButton id="excluir" ajax="false" icon="ui-icon-trash"
+						action="#{grupoUsuarioMB.excluir}">
+						<f:setPropertyActionListener target="#{grupoUsuarioMB.grupoUsuario}"
+							value="#{grupoUsuario}" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
