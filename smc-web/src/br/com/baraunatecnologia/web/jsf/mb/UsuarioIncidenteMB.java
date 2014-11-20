@@ -20,6 +20,7 @@ import br.com.baraunatecnologia.smc.ejb.entity.Incidente;
 import br.com.baraunatecnologia.smc.ejb.entity.Localizacao;
 import br.com.baraunatecnologia.smc.ejb.interfaces.IIncidenteLocal;
 import br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoLocal;
+import br.com.baraunatecnologia.web.jsf.util.DateUtil;
 
 @ManagedBean
 @ViewScoped
@@ -115,6 +116,7 @@ public class UsuarioIncidenteMB {
 					json.put("icone", grupo.getIcone());
 					json.put("latitude", localizacao.getLatitude());
 					json.put("longitude", localizacao.getLongitude());
+					json.put("horario", DateUtil.timestampToString(localizacao.getHorario()));
 					array.put(json);
 				}
 
@@ -132,6 +134,7 @@ public class UsuarioIncidenteMB {
 				json.put("icone", Incidente.ICONE_PADRAO);
 				json.put("latitude", incidente.getLatitude());
 				json.put("longitude", incidente.getLongitude());
+				json.put("horario", DateUtil.timestampToString(incidente.getHorario()));
 				array.put(json);
 			}
 

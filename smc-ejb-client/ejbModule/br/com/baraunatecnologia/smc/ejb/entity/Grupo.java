@@ -41,9 +41,10 @@ public class Grupo implements Serializable {
     @Column(name = "id_visualizacao")
     private Integer idVisualizacao;
 
-    public static String ICONE_PADRAO = "resources/images/usuarios/icone.png";
-    public static String NOME_USUARIO_APAGADO = "_cinza";
-    public static String NOME_USUARIO_INTERMEDIARIO = "_intermediario";
+    public static final String ICONE_PADRAO = "resources/images/usuarios/icone.png";
+    public static final String NOME_USUARIO_APAGADO = "_cinza";
+    public static final String NOME_USUARIO_INTERMEDIARIO = "_intermediario";
+    public static final Integer ID_ADMINISTRADOR = 1;
 
     public Grupo() {
     	this.nome = "Padrao";

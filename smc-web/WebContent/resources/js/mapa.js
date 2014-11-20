@@ -76,6 +76,7 @@ function usuariosIncidentes(json) {
 		var latLng = new google.maps.LatLng(parsedJSON[i].latitude, parsedJSON[i].longitude);
 		var icone = parsedJSON[i].icone;
 		var id = parsedJSON[i].idUsuario;
+		var horario = parsedJSON[i].horario;
 		var status = "active";
 
 		bounds.extend(latLng);
@@ -83,18 +84,20 @@ function usuariosIncidentes(json) {
 		if (id != null && id != "") {
 			var idGrupo = parsedJSON[i].idGrupo;
 			var nomeUsuario = parsedJSON[i].nomeUsuario;
-			var title = nomeUsuario + 
+			var title = "<b>" + nomeUsuario + "</b>" +
 						 "<br />" + "Latitude: " + parsedJSON[i].latitude +
-						 "<br />" + "Longitude: " + parsedJSON[i].longitude;
+						 "<br />" + "Longitude: " + parsedJSON[i].longitude +
+						 "<br />" + "Horario: " + horario;
 			addMarkerUsuario(latLng, i, icone, id, idGrupo, nomeUsuario, title, status);
 
 		//incidente
 		} else {
 			id = parsedJSON[i].idIncidente;
 			var descricaoIncidente = parsedJSON[i].descricaoIncidente;
-			var title = descricaoIncidente + 
+			var title = "<b>" + descricaoIncidente + "</b>" +
 						 "<br />" + "Latitude: " + parsedJSON[i].latitude +
-						 "<br />" + "Longitude: " + parsedJSON[i].longitude;
+						 "<br />" + "Longitude: " + parsedJSON[i].longitude +
+						 "<br />" + "Horario: " + horario;
 			addMarkerIncidente(latLng, i, icone, id, descricaoIncidente, title, status);
 		}		
 	}
@@ -213,11 +216,13 @@ function caminhoUsuario(json) {
 		var icone = parsedJSON[i].icone;
 		var idUsuario = parsedJSON[i].idUsuario;
 		var nomeUsuario = parsedJSON[i].nomeUsuario;
+		var horario = parsedJSON[i].horario;
 		var status = "active";
 
-		var title = nomeUsuario +
-					"<br />" + "Latitude: " + parsedJSON[i].latitude +
-					"<br />" + "Longitude: " + parsedJSON[i].longitude;
+		var title = "<b>" + nomeUsuario + "</b>" +
+//					"<br />" + "Latitude: " + parsedJSON[i].latitude +
+//					"<br />" + "Longitude: " + parsedJSON[i].longitude +
+					"<br />" + "Horario: " + horario;
 
 		addMarkerCaminhoUsuario(latLng, i, icone, idUsuario, nomeUsuario, title, status);
 
