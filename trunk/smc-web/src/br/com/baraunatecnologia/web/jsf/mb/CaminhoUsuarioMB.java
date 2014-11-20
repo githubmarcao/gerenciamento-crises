@@ -17,6 +17,7 @@ import br.com.baraunatecnologia.smc.ejb.entity.Grupo;
 import br.com.baraunatecnologia.smc.ejb.entity.Localizacao;
 import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
 import br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoLocal;
+import br.com.baraunatecnologia.web.jsf.util.DateUtil;
 import br.com.baraunatecnologia.web.jsf.util.JSFUtil;
 
 @ManagedBean
@@ -163,6 +164,7 @@ public class CaminhoUsuarioMB {
 				}
 				json.put("latitude", localizacao.getLatitude());
 				json.put("longitude", localizacao.getLongitude());
+				json.put("horario", DateUtil.timestampToString(localizacao.getHorario()));
 				array.put(json);
 			}
 

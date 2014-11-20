@@ -24,7 +24,7 @@
 			<p:password id="senha" value="#{usuarioMB.usuarioNaoLogado.senha}" label="Senha" required="true" />
 
 			<h:outputLabel for="grupo" value="Grupo: *" />
-			<p:selectOneMenu id="grupo" value="#{usuarioMB.usuarioNaoLogado.grupo.id}" required="true" >
+			<p:selectOneMenu id="grupo" value="#{usuarioMB.usuarioNaoLogado.grupo.id}" required="true" label="Grupo" >
 				<f:selectItem itemLabel="Selecione" itemValue="" />
 				<f:selectItems value="#{usuarioMB.grupos}" var="grupo" itemLabel="#{grupo.nome}" itemValue="#{grupo.id}" />                        
             </p:selectOneMenu>

@@ -84,7 +84,7 @@ public class UsuarioMB {
 			return "admin\\principal";
 //			return "localizacao";
 		}else{
-			JSFUtil.addErrorMessage("Usuario ou senha não confere");
+			JSFUtil.addErrorMessage("Usuario ou senha não confere.");
 			return null;
 		}
 	}
@@ -95,8 +95,8 @@ public class UsuarioMB {
 			usuarioLocal.inserirEditar(usuarioNaoLogado);
 			JSFUtil.addInfoMessage("Registro salvo com sucesso!");
 		} catch (NegocioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
 		}
 
 		return null;
@@ -107,8 +107,8 @@ public class UsuarioMB {
 		try {
 			usuarios = usuarioLocal.listar();
 		} catch (NegocioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
 		}
 
 		return "listarUsuario";
@@ -117,12 +117,10 @@ public class UsuarioMB {
 	public String excluir() {
 
 		try {
-			
 			usuarioLocal.deletar(usuarioNaoLogado);
-			
 		} catch (NegocioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
 		}
 
 		return "listarUsuario";
@@ -132,10 +130,9 @@ public class UsuarioMB {
 		   
 		try {
 			grupos = grupoLocal.listar();
-			
 		} catch (NegocioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
 		}
 
 		return grupos;
@@ -149,10 +146,9 @@ public class UsuarioMB {
 			if(usuarioNaoLogado==null){
 				JSFUtil.addErrorMessage("Registro não localizado!");
 			}
-			
 		} catch (NegocioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
 		}
 
 		return "usuario";

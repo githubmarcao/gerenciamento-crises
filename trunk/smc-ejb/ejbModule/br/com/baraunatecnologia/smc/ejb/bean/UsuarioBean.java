@@ -20,14 +20,22 @@ public class UsuarioBean implements IUsuarioRemote, IUsuarioLocal {
 
 	@PersistenceContext(unitName = "SMC_UNIT")
 	private EntityManager em;
-	
+
 
 	@Override
 	public Usuario inserirEditar(Usuario usuario) throws NegocioException {
-		
+		// Apenas no insert
+		if (usuario.getId() == null || usuario.getId() <= 0) {
+			validarExisteLogin(usuario.getLogin());
+		}
 		return new UsuarioDAO(em).inserirEditar(usuario);
 	}
 
+	private void validarExisteLogin(String login) throws NegocioException {
+		if (!new UsuarioDAO(em).existeLogin(login)) {
+			throw new NegocioException("Já existe esse Login.");
+		}
+	}
 
 	@Override
 	public void deletar(Usuario usuario) throws NegocioException {	
@@ -44,10 +52,10 @@ public class UsuarioBean implements IUsuarioRemote, IUsuarioLocal {
 	public List<Usuario> listar() {
 		return new UsuarioDAO(em).listar();
 	}
-	
+
+	@Override
 	public Usuario autenticar(Usuario user) {
 		return new UsuarioDAO(em).autenticar(user);
 	}
 
-	
 }
