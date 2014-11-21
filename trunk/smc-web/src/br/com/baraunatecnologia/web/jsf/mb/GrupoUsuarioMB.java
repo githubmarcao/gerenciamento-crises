@@ -89,7 +89,7 @@ public class GrupoUsuarioMB {
 			JSFUtil.addErrorMessage(e.getMessage());
 			return null;
 		}
-
+		gruposUsuario.remove(grupoUsuario);
 		return "listarGrupoUsuario";
 	}
 
