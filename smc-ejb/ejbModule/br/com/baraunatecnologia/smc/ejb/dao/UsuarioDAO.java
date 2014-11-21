@@ -35,7 +35,7 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
 		return usuario;
 	}
 
-	public Boolean existeLogin(String login) {
+	public boolean existeLogin(String login) {
 		Query query = super.getEntityManager().createQuery(
 				"from Usuario u where u.login=:login");
 
@@ -45,13 +45,13 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
 		try {
 			usuario = (Usuario) query.getSingleResult();
 		} catch (NoResultException ex) {
-			return null;
+			return false;
 		}
 
 		if (usuario == null) {
-			return true;
-		} else {
 			return false;
+		} else {
+			return true;
 		}
 	}
 

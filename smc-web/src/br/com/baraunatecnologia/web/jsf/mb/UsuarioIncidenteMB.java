@@ -15,7 +15,7 @@ import org.primefaces.json.JSONArray;
 import org.primefaces.json.JSONException;
 import org.primefaces.json.JSONObject;
 
-import br.com.baraunatecnologia.smc.ejb.entity.Grupo;
+import br.com.baraunatecnologia.smc.ejb.entity.GrupoUsuario;
 import br.com.baraunatecnologia.smc.ejb.entity.Incidente;
 import br.com.baraunatecnologia.smc.ejb.entity.Localizacao;
 import br.com.baraunatecnologia.smc.ejb.interfaces.IIncidenteLocal;
@@ -28,9 +28,9 @@ public class UsuarioIncidenteMB {
 
 	private Localizacao localizacao;
 
-	private List<Grupo> gruposSelecionados;
+	private List<GrupoUsuario> gruposSelecionados;
 
-	private Map<Object, Grupo> gruposDisponiveis;
+	private Map<Object, GrupoUsuario> gruposDisponiveis;
 
 	private Date dataInicio;
 
@@ -50,7 +50,7 @@ public class UsuarioIncidenteMB {
 	public void init() {
 		localizacao = new Localizacao();
 		gruposSelecionados = new ArrayList<>();
-		gruposDisponiveis = new LinkedHashMap<Object, Grupo>();
+		gruposDisponiveis = new LinkedHashMap<Object, GrupoUsuario>();
 		localizacoes = new ArrayList<Localizacao>();
 		incidentes = new ArrayList<Incidente>();
 	}
@@ -63,19 +63,19 @@ public class UsuarioIncidenteMB {
 		this.localizacao = localizacao;
 	}
 
-	public List<Grupo> getGruposSelecionados() {
+	public List<GrupoUsuario> getGruposSelecionados() {
 		return gruposSelecionados;
 	}
 
-	public void setGruposSelecionados(List<Grupo> gruposSelecionados) {
+	public void setGruposSelecionados(List<GrupoUsuario> gruposSelecionados) {
 		this.gruposSelecionados = gruposSelecionados;
 	}
 
-	public Map<Object, Grupo> getGruposDisponiveis() {
+	public Map<Object, GrupoUsuario> getGruposDisponiveis() {
 		return gruposDisponiveis;
 	}
 
-	public void setGruposDisponiveis(Map<Object, Grupo> gruposDisponiveis) {
+	public void setGruposDisponiveis(Map<Object, GrupoUsuario> gruposDisponiveis) {
 		this.gruposDisponiveis = gruposDisponiveis;
 	}
 
@@ -102,7 +102,7 @@ public class UsuarioIncidenteMB {
 			localizacoes = localizacaoLocal.listarUltimaLocalizacaoUsuarios(dataInicio, dataFim);
 
 			for (Localizacao localizacao : localizacoes) {
-				Grupo grupo = localizacao.getUsuario().getGrupo();
+				GrupoUsuario grupo = localizacao.getUsuario().getGrupo();
 				String nomeGrupo = grupo.getNome();
 
 				// Carragar na tela apenas os grupos selecionados

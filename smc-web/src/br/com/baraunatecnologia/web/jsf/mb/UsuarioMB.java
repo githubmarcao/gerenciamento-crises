@@ -7,10 +7,10 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import br.com.baraunatecnologia.smc.ejb.entity.Grupo;
+import br.com.baraunatecnologia.smc.ejb.entity.GrupoUsuario;
 import br.com.baraunatecnologia.smc.ejb.entity.Usuario;
 import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
-import br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoLocal;
+import br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoUsuarioLocal;
 import br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioLocal;
 import br.com.baraunatecnologia.web.jsf.util.JSFUtil;
 
@@ -25,18 +25,18 @@ public class UsuarioMB {
 	private IUsuarioLocal usuarioLocal;
 
 	@EJB
-	private IGrupoLocal grupoLocal;
+	private IGrupoUsuarioLocal grupoLocal;
 
 	private List<Usuario> usuarios;
 
-	private List<Grupo> grupos;
+	private List<GrupoUsuario> grupos;
 
 	@PostConstruct
 	public void init(){
 		usuario = new Usuario();
-		usuario.setGrupo(new Grupo());
+		usuario.setGrupo(new GrupoUsuario());
 		usuarioNaoLogado = new Usuario();
-		usuarioNaoLogado.setGrupo(new Grupo());
+		usuarioNaoLogado.setGrupo(new GrupoUsuario());
 		carregarUsuarios();
 		carregarGrupos();
 	}
@@ -57,11 +57,11 @@ public class UsuarioMB {
 		this.usuarioNaoLogado = usuarioNaoLogado;
 	}
 
-	public List<Grupo> getGrupos() {
+	public List<GrupoUsuario> getGrupos() {
 		return grupos;
 	}
 
-	public void setGrupos(List<Grupo> grupos) {
+	public void setGrupos(List<GrupoUsuario> grupos) {
 		this.grupos = grupos;
 	}
 	
@@ -126,7 +126,7 @@ public class UsuarioMB {
 		return "listarUsuario";
 	}
 	
-	public List<Grupo> carregarGrupos() {
+	public List<GrupoUsuario> carregarGrupos() {
 		   
 		try {
 			grupos = grupoLocal.listar();

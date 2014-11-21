@@ -11,7 +11,7 @@
 	
 		<h:form>
 			<p:dataTable value="#{usuarioMB.usuarios}" style="margin-top:60px;" paginatorPosition="bottom"
-				var="usuarioNaoLogado" paginator="true" rows="4">
+				var="usuarioNaoLogado" paginator="true" rows="6">
 				
 				<f:facet name="header">  
             		Lista de Usuarios  
@@ -30,7 +30,7 @@
 				
 				<p:column headerText="Excluir" style="width:40px">
 					<p:commandButton id="excluir" ajax="false" icon="ui-icon-trash" 
-					action="#{usuarioMB.excluir}">
+						action="#{usuarioMB.excluir}">
 					   <f:setPropertyActionListener target="#{usuarioMB.usuarioNaoLogado}" value="#{usuarioNaoLogado}"/>
 					</p:commandButton>
 				</p:column>	

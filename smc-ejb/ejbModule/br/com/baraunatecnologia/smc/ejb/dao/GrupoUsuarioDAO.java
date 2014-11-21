@@ -4,29 +4,29 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import br.com.baraunatecnologia.smc.ejb.entity.Grupo;
+import br.com.baraunatecnologia.smc.ejb.entity.GrupoUsuario;
 
-public class GrupoDAO extends GenericDAO<Grupo> {
+public class GrupoUsuarioDAO extends GenericDAO<GrupoUsuario> {
 
-	public GrupoDAO(EntityManager em) {
+	public GrupoUsuarioDAO(EntityManager em) {
 		super(em);
 	}
 
 	@Override
-	public Class<Grupo> getEntityClass() {
+	public Class<GrupoUsuario> getEntityClass() {
 		// TODO Auto-generated method stub
-		return Grupo.class;
+		return GrupoUsuario.class;
 	}
 
-	public Grupo buscar(String nome) {
+	public GrupoUsuario buscar(String nome) {
 		Query query = super.getEntityManager().createQuery(
-				"from Grupo g where UPPER(g.nome) LIKE :nome");
+				"from GrupoUsuario g where UPPER(g.nome) LIKE :nome");
 
 		query.setParameter("nome", nome.toUpperCase());
 
-		Grupo grupo = null;
+		GrupoUsuario grupo = null;
 		try {
-			grupo = (Grupo) query.getSingleResult();
+			grupo = (GrupoUsuario) query.getSingleResult();
 		} catch (NoResultException ex) {
 			return null;
 		}
