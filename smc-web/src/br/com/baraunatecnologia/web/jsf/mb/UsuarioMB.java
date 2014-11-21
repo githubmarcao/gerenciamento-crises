@@ -122,7 +122,7 @@ public class UsuarioMB {
 			JSFUtil.addErrorMessage(e.getMessage());
 			return null;
 		}
-
+		usuarios.remove(usuarioNaoLogado);
 		return "listarUsuario";
 	}
 	
