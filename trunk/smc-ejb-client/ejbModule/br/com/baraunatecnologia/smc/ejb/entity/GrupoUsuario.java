@@ -23,8 +23,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "grupo")
 @NamedQueries({
-    @NamedQuery(name = "Grupo.findAll", query = "SELECT e FROM Grupo e")})
-public class Grupo implements Serializable {
+    @NamedQuery(name = "GrupoUsuario.findAll", query = "SELECT g FROM GrupoUsuario g")})
+public class GrupoUsuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
 	@SequenceGenerator(name = "seq_grupo", sequenceName = "id")
@@ -46,20 +46,6 @@ public class Grupo implements Serializable {
     public static final String NOME_USUARIO_INTERMEDIARIO = "_intermediario";
     public static final Integer ID_ADMINISTRADOR = 1;
 
-    public Grupo() {
-    	this.nome = "Padrao";
-    	this.icone = ICONE_PADRAO;
-    }
-
-    public Grupo(Integer id) {
-        this.id = id;
-    }
-
-    public Grupo(Integer id, String nome, String icone) {
-        this.id = id;
-        this.nome = nome;
-        this.icone = icone;
-    }
 
     public Integer getId() {
         return id;
@@ -103,19 +89,19 @@ public class Grupo implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Grupo)) {
+        if (!(object instanceof GrupoUsuario)) {
             return false;
         }
-        Grupo other = (Grupo) object;
+        GrupoUsuario other = (GrupoUsuario) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "newFolder.Grupo[ id=" + id + " ]";
-    }
-    
+	@Override
+	public String toString() {
+		return "Grupo [id=" + id + ", nome=" + nome + ", icone=" + icone + "]";
+	}
+
 }

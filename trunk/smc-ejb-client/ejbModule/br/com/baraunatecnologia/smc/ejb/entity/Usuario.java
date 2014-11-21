@@ -40,7 +40,7 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @JoinColumn(name = "id_grupo", referencedColumnName = "id")
     @OneToOne(optional = false)
-    private Grupo grupo;
+    private GrupoUsuario grupo;
 
     public Usuario() {
     }
@@ -49,7 +49,7 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public Usuario(Integer id, String login, String senha, String nome, Grupo grupo) {
+    public Usuario(Integer id, String login, String senha, String nome, GrupoUsuario grupo) {
         this.id = id;
         this.login = login;
         this.senha = senha;
@@ -89,11 +89,11 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
-	public Grupo getGrupo() {
+	public GrupoUsuario getGrupo() {
 		return grupo;
 	}
 
-	public void setGrupo(Grupo grupo) {
+	public void setGrupo(GrupoUsuario grupo) {
 		this.grupo = grupo;
 	}
 

@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import br.com.baraunatecnologia.smc.ejb.entity.Grupo;
+import br.com.baraunatecnologia.smc.ejb.entity.GrupoUsuario;
 import br.com.baraunatecnologia.smc.ejb.entity.Localizacao;
 
 public class LocalizacaoDAO extends GenericDAO<Localizacao> {
@@ -53,7 +53,7 @@ public class LocalizacaoDAO extends GenericDAO<Localizacao> {
 		// Nao mostrar usuarios administradores no mapa
 		sb.append("JOIN l.usuario as u ");
 		sb.append("WHERE u.id = l.usuario.id ");
-		sb.append("AND u.grupo.id <> " + Grupo.ID_ADMINISTRADOR + " ");
+		sb.append("AND u.grupo.id <> " + GrupoUsuario.ID_ADMINISTRADOR + " ");
 		// FIM - Nao mostrar usuarios administradores no mapa
 
 		if (inicio != null && fim != null) {

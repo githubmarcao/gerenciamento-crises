@@ -13,7 +13,7 @@ import org.primefaces.json.JSONArray;
 import org.primefaces.json.JSONException;
 import org.primefaces.json.JSONObject;
 
-import br.com.baraunatecnologia.smc.ejb.entity.Grupo;
+import br.com.baraunatecnologia.smc.ejb.entity.GrupoUsuario;
 import br.com.baraunatecnologia.smc.ejb.entity.Localizacao;
 import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
 import br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoLocal;
@@ -154,11 +154,11 @@ public class CaminhoUsuarioMB {
 					if (i == localizacoes.size() - 1) {
 						// Imagem preta e branca para a localizacao mais antiga do usuario
 						String iconeCinza = localizacao.getUsuario().getGrupo().getIcone();
-						iconeCinza = iconeCinza.replaceAll(".png", Grupo.NOME_USUARIO_APAGADO + ".png");
+						iconeCinza = iconeCinza.replaceAll(".png", GrupoUsuario.NOME_USUARIO_APAGADO + ".png");
 						json.put("icone", iconeCinza);
 					} else {
 						String iconeIntermediario = localizacao.getUsuario().getGrupo().getIcone();
-						iconeIntermediario = iconeIntermediario.replaceAll(".png", Grupo.NOME_USUARIO_INTERMEDIARIO + ".png");
+						iconeIntermediario = iconeIntermediario.replaceAll(".png", GrupoUsuario.NOME_USUARIO_INTERMEDIARIO + ".png");
 						json.put("icone", iconeIntermediario);
 					}
 				}

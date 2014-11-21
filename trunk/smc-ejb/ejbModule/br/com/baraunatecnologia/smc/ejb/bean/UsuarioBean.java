@@ -32,7 +32,7 @@ public class UsuarioBean implements IUsuarioRemote, IUsuarioLocal {
 	}
 
 	private void validarExisteLogin(String login) throws NegocioException {
-		if (!new UsuarioDAO(em).existeLogin(login)) {
+		if ((new UsuarioDAO(em).existeLogin(login)) == true) {
 			throw new NegocioException("Já existe esse Login.");
 		}
 	}

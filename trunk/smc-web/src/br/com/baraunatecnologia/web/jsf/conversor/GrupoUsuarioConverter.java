@@ -5,14 +5,14 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
-import br.com.baraunatecnologia.smc.ejb.entity.Grupo;
-import br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoLocal;
+import br.com.baraunatecnologia.smc.ejb.entity.GrupoUsuario;
+import br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoUsuarioLocal;
 
 
 public class GrupoUsuarioConverter implements Converter {
 
 	@EJB
-	private IGrupoLocal grupoLocal;
+	private IGrupoUsuarioLocal grupoLocal;
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component,
@@ -20,14 +20,14 @@ public class GrupoUsuarioConverter implements Converter {
 		if (value == null || value.trim() == "") {
 			return null;
 		}
-		Grupo grupo = grupoLocal.buscar(value);
+		GrupoUsuario grupo = grupoLocal.buscar(value);
 		return (Object) grupo;
 	}
 
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object value) {
 		try {
-			return ((Grupo) value).getNome();
+			return ((GrupoUsuario) value).getNome();
 		} catch (Exception e) { }
 		return "";
 	}

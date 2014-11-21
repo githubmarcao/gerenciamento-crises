@@ -11,11 +11,12 @@
 
 		<h:form>
 			<p:dataTable value="#{grupoUsuarioMB.gruposUsuario}" style="margin-top:60px;"
-				var="grupoUsuario" paginator="true" rows="4" paginatorPosition="bottom">
+				var="grupoUsuario" paginator="true" rows="10" paginatorPosition="bottom">
 
 				<f:facet name="header">  
             		Lista de Grupo de Usuarios
         		</f:facet>
+
 				<p:column headerText="Nome">
 					<h:outputText value="#{grupoUsuario.nome}" />
 				</p:column>

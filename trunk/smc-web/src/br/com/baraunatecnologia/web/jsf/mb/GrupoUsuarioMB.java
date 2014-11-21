@@ -7,20 +7,20 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import br.com.baraunatecnologia.smc.ejb.entity.Grupo;
+import br.com.baraunatecnologia.smc.ejb.entity.GrupoUsuario;
 import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
-import br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoLocal;
+import br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoUsuarioLocal;
 import br.com.baraunatecnologia.web.jsf.util.JSFUtil;
 
 @ManagedBean
 @RequestScoped
 public class GrupoUsuarioMB {
 	@EJB
-	private IGrupoLocal grupoLocal;
+	private IGrupoUsuarioLocal grupoUsuarioLocal;
 
-	private Grupo grupoUsuario;
+	private GrupoUsuario grupoUsuario;
 
-	private List<Grupo> gruposUsuario;
+	private List<GrupoUsuario> gruposUsuario;
 
 	public GrupoUsuarioMB() {
 
@@ -28,42 +28,42 @@ public class GrupoUsuarioMB {
 
 	@PostConstruct
 	public void init() {
-		grupoUsuario = new Grupo();
+		grupoUsuario = new GrupoUsuario();
 		carregaGrupos();
 	}
 
-	public IGrupoLocal getGrupoLocal() {
-		return grupoLocal;
+	public IGrupoUsuarioLocal getGrupoLocal() {
+		return grupoUsuarioLocal;
 	}
 
-	public void setGrupoLocal(IGrupoLocal grupoLocal) {
-		this.grupoLocal = grupoLocal;
+	public void setGrupoLocal(IGrupoUsuarioLocal grupoLocal) {
+		this.grupoUsuarioLocal = grupoLocal;
 	}
 
-	public Grupo getGrupoUsuario() {
+	public GrupoUsuario getGrupoUsuario() {
 		return grupoUsuario;
 	}
 
-	public void setGrupoUsuario(Grupo grupoUsuario) {
+	public void setGrupoUsuario(GrupoUsuario grupoUsuario) {
 		this.grupoUsuario = grupoUsuario;
 	}
 
-	public List<Grupo> getGruposUsuario() {
+	public List<GrupoUsuario> getGruposUsuario() {
 		return gruposUsuario;
 	}
 
-	public void setGruposUsuario(List<Grupo> gruposUsuario) {
+	public void setGruposUsuario(List<GrupoUsuario> gruposUsuario) {
 		this.gruposUsuario = gruposUsuario;
 	}
 
 	public String inserirEditar() {
 
 		try {
-			grupoLocal.inserirEditar(grupoUsuario);
+			grupoUsuarioLocal.inserirEditar(grupoUsuario);
 			JSFUtil.addInfoMessage("Registro salvo com sucesso!");
 		} catch (NegocioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
 		}
 
 		return null;
@@ -72,43 +72,41 @@ public class GrupoUsuarioMB {
 	public String carregaGrupos() {
 
 		try {
-			gruposUsuario = grupoLocal.listar();
+			gruposUsuario = grupoUsuarioLocal.listar();
 		} catch (NegocioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
 		}
 
-		return "listarGrupo";
+		return "listarGrupoUsuario";
 	}
 
 	public String excluir() {
 
 		try {
-			grupoLocal.deletar(grupoUsuario);
-
+			grupoUsuarioLocal.deletar(grupoUsuario);
 		} catch (NegocioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
 		}
 
-		return "listarGrupo";
+		return "listarGrupoUsuario";
 	}
 
 	public String buscar() {
 
 		try {
-			grupoUsuario = grupoLocal.buscar(grupoUsuario.getId());
+			grupoUsuario = grupoUsuarioLocal.buscar(grupoUsuario.getId());
 
 			if (grupoUsuario == null) {
 				JSFUtil.addErrorMessage("Registro não localizado!");
 			}
-
 		} catch (NegocioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
 		}
 
-		return "grupo";
+		return "grupoUsuario";
 	}
 
 }
