@@ -151,7 +151,7 @@ public class CaminhoUsuarioMB {
 					json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
 					primeiraVez = false;
 				} else {
-					if (i == localizacoes.size() - 1) {
+					if ((i == localizacoes.size() - 1) || (i == Localizacao.LIMITE_LOCALIZACAO_EXIBIR_MAPA - 1)) {
 						// Imagem preta e branca para a localizacao mais antiga do usuario
 						String iconeCinza = localizacao.getUsuario().getGrupo().getIcone();
 						iconeCinza = iconeCinza.replaceAll(".png", GrupoUsuario.NOME_USUARIO_APAGADO + ".png");
@@ -166,6 +166,11 @@ public class CaminhoUsuarioMB {
 				json.put("longitude", localizacao.getLongitude());
 				json.put("horario", DateUtil.timestampToString(localizacao.getHorario()));
 				array.put(json);
+
+				// Se for igual ao limite de MAX_WAYPOINTS_EXCEEDED do google termina o loop
+				if (i == Localizacao.LIMITE_LOCALIZACAO_EXIBIR_MAPA - 1) {
+					break;
+				}
 			}
 
 			return array.toString();

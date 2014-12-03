@@ -127,14 +127,12 @@ public class UsuarioMB {
 	}
 	
 	public List<GrupoUsuario> carregarGrupos() {
-		   
 		try {
 			grupos = grupoLocal.listar();
 		} catch (NegocioException e) {
 			JSFUtil.addErrorMessage(e.getMessage());
 			return null;
 		}
-
 		return grupos;
 	}
 

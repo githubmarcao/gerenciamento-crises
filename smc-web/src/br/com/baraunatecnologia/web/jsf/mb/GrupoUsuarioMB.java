@@ -22,22 +22,11 @@ public class GrupoUsuarioMB {
 
 	private List<GrupoUsuario> gruposUsuario;
 
-	public GrupoUsuarioMB() {
-
-	}
 
 	@PostConstruct
 	public void init() {
 		grupoUsuario = new GrupoUsuario();
 		carregaGrupos();
-	}
-
-	public IGrupoUsuarioLocal getGrupoLocal() {
-		return grupoUsuarioLocal;
-	}
-
-	public void setGrupoLocal(IGrupoUsuarioLocal grupoLocal) {
-		this.grupoUsuarioLocal = grupoLocal;
 	}
 
 	public GrupoUsuario getGrupoUsuario() {
