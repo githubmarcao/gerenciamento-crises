@@ -24,13 +24,16 @@ public class LocalizacaoBean implements ILocalizacaoRemote, ILocalizacaoLocal {
 	
 
 	@Override
-	public Localizacao inserirEditar(Localizacao especialidade) throws NegocioException {
-		return new LocalizacaoDAO(em).inserirEditar(especialidade);
+	public Localizacao inserirEditar(Localizacao localizacao) throws NegocioException {
+		if (localizacao != null && localizacao.getHorario() == null) {
+			localizacao.setHorario(new Date());
+		}
+		return new LocalizacaoDAO(em).inserirEditar(localizacao);
 	}
 
 	@Override
-	public void deletar(Localizacao especialidade) throws NegocioException {	
-		new LocalizacaoDAO(em).deletar(especialidade);
+	public void deletar(Localizacao localizacao) throws NegocioException {	
+		new LocalizacaoDAO(em).deletar(localizacao);
 	}
 
 	@Override

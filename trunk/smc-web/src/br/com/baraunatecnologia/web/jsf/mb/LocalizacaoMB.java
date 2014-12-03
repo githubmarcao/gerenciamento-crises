@@ -12,20 +12,31 @@ import br.com.baraunatecnologia.smc.ejb.entity.Localizacao;
 import br.com.baraunatecnologia.smc.ejb.entity.Usuario;
 import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
 import br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoLocal;
+import br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioLocal;
 import br.com.baraunatecnologia.web.jsf.util.JSFUtil;
 
 @ManagedBean
 @RequestScoped
 public class LocalizacaoMB {
-	
-	private Localizacao localizacao;
-	
 	@EJB
 	private ILocalizacaoLocal localizacaoLocal;
+
+	@EJB
+	private IUsuarioLocal usuarioLocal;
+
+	private Localizacao localizacao;
+
+	private List<Localizacao> localizacoes;
+
+	private List<Usuario> usuarios;
+
 
 	@PostConstruct
 	public void init(){
 		localizacao = new Localizacao();
+		localizacao.setUsuario(new Usuario());
+		carregarLocalizacoes();
+		carregarUsuarios();
 	}
 
 	public Localizacao getLocalizacao() {
@@ -36,18 +47,71 @@ public class LocalizacaoMB {
 		this.localizacao = localizacao;
 	}
 
-	public void salvarLocalizacao() {
+	public List<Localizacao> getLocalizacoes() {
+		return localizacoes;
+	}
+
+	public void setLocalizacoes(List<Localizacao> localizacoes) {
+		this.localizacoes = localizacoes;
+	}
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	public String inserirEditar() {
+
 		try {
-			if (this.localizacao.getLatitude() != null && this.localizacao.getLongitude() != null) {
-				this.localizacao.setUsuario((Usuario) JSFUtil.getSessionAttribute("usuario"));
-				this.localizacao.setHorario(new Date());
-				localizacaoLocal.inserirEditar(this.localizacao);
-				JSFUtil.addInfoMessage("Registro salvo com sucesso!");
+			localizacaoLocal.inserirEditar(localizacao);
+			JSFUtil.addInfoMessage("Registro salvo com sucesso!");
+		} catch (NegocioException e) {
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
+		}
+
+		return null;
+	}
+
+	public String carregarLocalizacoes() {
+		try {
+			localizacoes = localizacaoLocal.listar();
+		} catch (NegocioException e) {
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
+		}
+		return "listarLocalizacoes";
+	}
+
+	public String excluir() {
+
+		try {
+			localizacaoLocal.deletar(localizacao);
+		} catch (NegocioException e) {
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
+		}
+		localizacoes.remove(localizacao);
+		return "listarLocalizacao";
+	}
+
+	public String buscar() {
+
+		try {
+			localizacao = localizacaoLocal.buscar(localizacao.getId());
+
+			if (localizacao == null) {
+				JSFUtil.addErrorMessage("Registro não localizado!");
 			}
 		} catch (NegocioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
 		}
+
+		return "localizacao";
 	}
 
 	public List<Object> getCaminhoUsuario() {
@@ -66,10 +130,20 @@ public class LocalizacaoMB {
 				JSFUtil.addInfoMessage("Registro salvo com sucesso!");
 			}
 		} catch (NegocioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
 		}
 		return null;
+	}
+
+	public List<Usuario> carregarUsuarios() {
+		try {
+			usuarios = usuarioLocal.listar();
+		} catch (NegocioException e) {
+			JSFUtil.addErrorMessage(e.getMessage());
+			return null;
+		}
+		return usuarios;
 	}
 
 }

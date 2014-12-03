@@ -20,7 +20,10 @@ import javax.persistence.Table;
 @Table(name = "localizacao")
 @NamedQueries({ @NamedQuery(name = "Localizacao.findAll", query = "SELECT l FROM Localizacao l") })
 public class Localizacao implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
+	public static final Integer LIMITE_LOCALIZACAO_EXIBIR_MAPA = 8;
+
 	@Id
 	@SequenceGenerator(name = "seq_localizacao", sequenceName = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_localizacao")

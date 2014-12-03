@@ -20,7 +20,11 @@
 				<p:column headerText="Nome">
 					<h:outputText value="#{usuarioNaoLogado.nome}" />
 				</p:column>
-				
+
+				<p:column headerText="Grupo">
+					<h:outputText value="#{usuarioNaoLogado.grupo.nome}" />
+				</p:column>
+
 				<p:column headerText="Alterar" style="width:40px">
 					<p:commandButton id="alterar" ajax="false" icon="ui-icon-search" 
 					action="#{usuarioMB.buscar}">
