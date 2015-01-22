@@ -42,8 +42,9 @@ public class GrupoUsuario implements Serializable {
     private Integer idVisualizacao;
 
     public static final String ICONE_PADRAO = "resources/images/usuarios/icone.png";
-    public static final String NOME_USUARIO_APAGADO = "_cinza";
-    public static final String NOME_USUARIO_INTERMEDIARIO = "_intermediario";
+    public static final String ICONE_PEQUENO = "_36";
+    public static final String NOME_USUARIO_APAGADO = "_36_cinza";
+    public static final String NOME_USUARIO_INTERMEDIARIO = "_36_intermediario";
     public static final Integer ID_ADMINISTRADOR = 1;
 
 
@@ -65,6 +66,18 @@ public class GrupoUsuario implements Serializable {
 
     public String getIcone() {
 		return icone;
+	}
+
+    public String getIconePequeno() {
+		return icone.replaceAll(".png", ICONE_PEQUENO + ".png");
+	}
+
+    public String getIconeUsuarioApagado() {
+		return icone.replaceAll(".png", NOME_USUARIO_APAGADO + ".png");
+	}
+
+    public String getIconeUsuarioIntermediario() {
+		return icone.replaceAll(".png", NOME_USUARIO_INTERMEDIARIO + ".png");
 	}
 
 	public void setIcone(String icone) {
