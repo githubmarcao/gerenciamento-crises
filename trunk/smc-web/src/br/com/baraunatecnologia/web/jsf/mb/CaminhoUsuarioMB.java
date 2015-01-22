@@ -87,7 +87,7 @@ public class CaminhoUsuarioMB {
 				JSONObject json = new JSONObject();
 				json.put("idUsuario", localizacao.getUsuario().getId());
 				json.put("nomeUsuario", localizacao.getUsuario().getNome());
-				json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
+				json.put("icone", localizacao.getUsuario().getGrupo().getIconePequeno());
 				json.put("latitude", localizacao.getLatitude());
 				json.put("longitude", localizacao.getLongitude());
 				array.put(json);
@@ -118,7 +118,7 @@ public class CaminhoUsuarioMB {
 				JSONObject json = new JSONObject();
 				json.put("idUsuario", localizacao.getUsuario().getId());
 				json.put("nomeUsuario", localizacao.getUsuario().getNome());
-				json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
+				json.put("icone", localizacao.getUsuario().getGrupo().getIconePequeno());
 				json.put("latitude", localizacao.getLatitude());
 				json.put("longitude", localizacao.getLongitude());
 				array.put(json);
@@ -148,17 +148,15 @@ public class CaminhoUsuarioMB {
 				json.put("nomeUsuario", localizacao.getUsuario().getNome());
 				if (primeiraVez) {
 					// Imagem colorida para a localizacao mais recente do usuario
-					json.put("icone", localizacao.getUsuario().getGrupo().getIcone());
+					json.put("icone", localizacao.getUsuario().getGrupo().getIconePequeno());
 					primeiraVez = false;
 				} else {
 					if ((i == localizacoes.size() - 1) || (i == Localizacao.LIMITE_LOCALIZACAO_EXIBIR_MAPA - 1)) {
 						// Imagem preta e branca para a localizacao mais antiga do usuario
-						String iconeCinza = localizacao.getUsuario().getGrupo().getIcone();
-						iconeCinza = iconeCinza.replaceAll(".png", GrupoUsuario.NOME_USUARIO_APAGADO + ".png");
+						String iconeCinza = localizacao.getUsuario().getGrupo().getIconeUsuarioApagado();
 						json.put("icone", iconeCinza);
 					} else {
-						String iconeIntermediario = localizacao.getUsuario().getGrupo().getIcone();
-						iconeIntermediario = iconeIntermediario.replaceAll(".png", GrupoUsuario.NOME_USUARIO_INTERMEDIARIO + ".png");
+						String iconeIntermediario = localizacao.getUsuario().getGrupo().getIconeUsuarioIntermediario();
 						json.put("icone", iconeIntermediario);
 					}
 				}

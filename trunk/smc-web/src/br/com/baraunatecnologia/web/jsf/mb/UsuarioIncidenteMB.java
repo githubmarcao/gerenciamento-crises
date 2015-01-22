@@ -113,7 +113,7 @@ public class UsuarioIncidenteMB {
 					json.put("idUsuario", localizacao.getUsuario().getId());
 					json.put("idGrupo", grupo.getId());
 					json.put("nomeUsuario", localizacao.getUsuario().getNome());
-					json.put("icone", grupo.getIcone());
+					json.put("icone", grupo.getIconePequeno());
 					json.put("latitude", localizacao.getLatitude());
 					json.put("longitude", localizacao.getLongitude());
 					json.put("horario", DateUtil.timestampToString(localizacao.getHorario()));
