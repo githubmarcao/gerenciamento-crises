@@ -1,0 +1,48 @@
+@charset "iso-8859-1";
+/* CSS Document */
+
+/* Tabelas --------------------------------------------- */
+
+table {
+	border-collapse: collapse;
+	width:590px;
+}
+
+th, td {
+	padding:5px;
+	text-align:center;
+}
+
+thead {
+	background:#CCC;
+	
+}
+
+thead th {
+	border-right: 1px solid  #FFF;	
+}
+
+
+th {
+	text-align:center;	
+}
+
+
+tr {
+	border-bottom:1px solid #999;
+
+}
+
+tr a {
+	display:inline-block;
+	text-decoration:none;
+	background: #999;
+	color: #FFF;
+	padding:1px 4px;
+	border:1px solid #666;
+}
+
+tr:hover {
+	background:#069;
+	color:#FFF;
+}

@@ -1,0 +1,34 @@
+<ui:composition template="template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+    
+	<ui:define name="conteudo">
+      <h:form>
+      <h:inputHidden value="#{especialidadeMB.especialidade.id}"/>
+		<p:panelGrid  columns="2" style="margin-top:60px;margin-left:100px">
+			<f:facet name="header">  
+               Cadastrar Especialidade  
+           </f:facet>
+
+            <h:outputLabel for="idEspec" value="ID:" />
+			<p:inputText id="idEspec" value="#{especialidadeMB.especialidade.id}"  label="ID" >
+ 			   <p:ajax event="blur" listener="#{especialidadeMB.buscar}" update="desc,msg"/>
+			</p:inputText>
+
+			<h:outputLabel for="desc" value="Especialidade: *" />
+			<p:inputText id="desc" value="#{especialidadeMB.especialidade.descricao}"  label="Especialidade" />
+			
+			<f:facet name="footer">
+				<p:messages id="msg" />
+			</f:facet>
+			  
+		</p:panelGrid>
+			
+		
+		</h:form>
+	</ui:define>
+
+</ui:composition>
