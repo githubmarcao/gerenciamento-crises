@@ -1,0 +1,463 @@
+12:44:23,675 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.0.Final-redhat-2
+12:44:28,620 INFO  [org.jboss.msc] (main) JBoss MSC version 1.0.4.GA-redhat-1
+12:44:28,967 INFO  [org.jboss.as] (MSC service thread 1-2) JBAS015899: JBoss EAP 6.2.0.GA (AS 7.3.0.Final-redhat-14) starting
+12:44:29,050 DEBUG [org.jboss.as.config] (MSC service thread 1-2) Configured system properties:
+	awt.toolkit = sun.awt.windows.WToolkit
+	file.encoding = UTF-8
+	file.encoding.pkg = sun.io
+	file.separator = \
+	java.awt.graphicsenv = sun.awt.Win32GraphicsEnvironment
+	java.awt.headless = true
+	java.awt.printerjob = sun.awt.windows.WPrinterJob
+	java.class.path = D:\Marco\JBoss\runtimes\jboss-eap\jboss-modules.jar
+	java.class.version = 51.0
+	java.endorsed.dirs = C:\Program Files\Java\jdk1.7.0_51\jre\lib\endorsed
+	java.ext.dirs = C:\Program Files\Java\jdk1.7.0_51\jre\lib\ext;C:\Windows\Sun\Java\lib\ext
+	java.home = C:\Program Files\Java\jdk1.7.0_51\jre
+	java.io.tmpdir = D:\Users\Oliveira\AppData\Local\Temp\
+	java.library.path = C:\Program Files\Java\jdk1.7.0_51\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Java\jdk1.7.0_51\jre\bin;native;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Utilities 1.3.6\;.
+	java.net.preferIPv4Stack = true
+	java.runtime.name = Java(TM) SE Runtime Environment
+	java.runtime.version = 1.7.0_51-b13
+	java.specification.name = Java Platform API Specification
+	java.specification.vendor = Oracle Corporation
+	java.specification.version = 1.7
+	java.util.logging.manager = org.jboss.logmanager.LogManager
+	java.vendor = Oracle Corporation
+	java.vendor.url = http://java.oracle.com/
+	java.vendor.url.bug = http://bugreport.sun.com/bugreport/
+	java.version = 1.7.0_51
+	java.vm.info = mixed mode
+	java.vm.name = Java HotSpot(TM) Server VM
+	java.vm.specification.name = Java Virtual Machine Specification
+	java.vm.specification.vendor = Oracle Corporation
+	java.vm.specification.version = 1.7
+	java.vm.vendor = Oracle Corporation
+	java.vm.version = 24.51-b03
+	javax.management.builder.initial = org.jboss.as.jmx.PluggableMBeanServerBuilder
+	javax.xml.datatype.DatatypeFactory = __redirected.__DatatypeFactory
+	javax.xml.parsers.DocumentBuilderFactory = __redirected.__DocumentBuilderFactory
+	javax.xml.parsers.SAXParserFactory = __redirected.__SAXParserFactory
+	javax.xml.stream.XMLEventFactory = __redirected.__XMLEventFactory
+	javax.xml.stream.XMLInputFactory = __redirected.__XMLInputFactory
+	javax.xml.stream.XMLOutputFactory = __redirected.__XMLOutputFactory
+	javax.xml.transform.TransformerFactory = __redirected.__TransformerFactory
+	javax.xml.validation.SchemaFactory:http://www.w3.org/2001/XMLSchema = __redirected.__SchemaFactory
+	javax.xml.xpath.XPathFactory:http://java.sun.com/jaxp/xpath/dom = __redirected.__XPathFactory
+	jboss.bind.address = localhost
+	jboss.home.dir = D:\Marco\JBoss\runtimes\jboss-eap
+	jboss.host.name = oliveira-note
+	jboss.modules.dir = D:\Marco\JBoss\runtimes\jboss-eap\modules
+	jboss.modules.system.pkgs = org.jboss.byteman
+	jboss.node.name = oliveira-note
+	jboss.qualified.host.name = oliveira-note
+	jboss.server.base.dir = D:\Marco\JBoss\runtimes\jboss-eap\standalone
+	jboss.server.config.dir = D:\Marco\JBoss\runtimes\jboss-eap\standalone\configuration
+	jboss.server.data.dir = D:\Marco\JBoss\runtimes\jboss-eap\standalone\data
+	jboss.server.deploy.dir = D:\Marco\JBoss\runtimes\jboss-eap\standalone\data\content
+	jboss.server.log.dir = D:\Marco\JBoss\runtimes\jboss-eap\standalone\log
+	jboss.server.name = oliveira-note
+	jboss.server.persist.config = true
+	jboss.server.temp.dir = D:\Marco\JBoss\runtimes\jboss-eap\standalone\tmp
+	line.separator = 
+
+	logging.configuration = file:/D:/Marco/JBoss/runtimes/jboss-eap/standalone/configuration/logging.properties
+	module.path = D:/Marco/JBoss/runtimes/jboss-eap/modules
+	org.jboss.boot.log.file = D:/Marco/JBoss/runtimes/jboss-eap/standalone/log/boot.log
+	org.jboss.logmanager.nocolor = true
+	org.jboss.resolver.warning = true
+	org.xml.sax.driver = __redirected.__XMLReaderFactory
+	os.arch = x86
+	os.name = Windows 7
+	os.version = 6.1
+	path.separator = ;
+	program.name = JBossTools: jboss-eap
+	sun.arch.data.model = 32
+	sun.boot.class.path = C:\Program Files\Java\jdk1.7.0_51\jre\lib\resources.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\rt.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\jce.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.7.0_51\jre\classes
+	sun.boot.library.path = C:\Program Files\Java\jdk1.7.0_51\jre\bin
+	sun.cpu.endian = little
+	sun.cpu.isalist = pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86
+	sun.desktop = windows
+	sun.io.unicode.encoding = UnicodeLittle
+	sun.java.command = org.jboss.modules.Main -mp D:/Marco/JBoss/runtimes/jboss-eap/modules -jaxpmodule javax.xml.jaxp-provider org.jboss.as.standalone -b localhost --server-config=standalone.xml
+	sun.java.launcher = SUN_STANDARD
+	sun.jnu.encoding = Cp1252
+	sun.management.compiler = HotSpot Tiered Compilers
+	sun.os.patch.level = Service Pack 1
+	sun.rmi.dgc.client.gcInterval = 3600000
+	sun.rmi.dgc.server.gcInterval = 3600000
+	user.country = US
+	user.country.format = BR
+	user.dir = D:\Marco\JBoss\runtimes\jboss-eap\bin
+	user.home = D:\Users\Oliveira
+	user.language = en
+	user.language.format = pt
+	user.name = Oliveira
+	user.script = 
+	user.timezone = GMT-03:00
+	user.variant = 
+12:44:29,053 DEBUG [org.jboss.as.config] (MSC service thread 1-2) VM Arguments: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:52456 -Dprogram.name=JBossTools: jboss-eap -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dorg.jboss.resolver.warning=true -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Dorg.jboss.boot.log.file=D:/Marco/JBoss/runtimes/jboss-eap/standalone/log/boot.log -Dlogging.configuration=file:/D:/Marco/JBoss/runtimes/jboss-eap/standalone/configuration/logging.properties -Djboss.home.dir=D:/Marco/JBoss/runtimes/jboss-eap -Dorg.jboss.logmanager.nocolor=true -Dfile.encoding=UTF-8 
+12:44:47,177 INFO  [org.xnio] (MSC service thread 1-1) XNIO Version 3.0.7.GA-redhat-1
+12:44:47,151 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
+12:44:47,255 INFO  [org.xnio.nio] (MSC service thread 1-1) XNIO NIO Implementation Version 3.0.7.GA-redhat-1
+12:44:47,312 INFO  [org.jboss.remoting] (MSC service thread 1-1) JBoss Remoting version 3.2.18.GA-redhat-1
+12:44:48,210 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 46) JBAS015537: Activating WebServices Extension
+12:44:48,300 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 42) JBAS013171: Activating Security Subsystem
+12:44:48,357 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 37) JBAS011800: Activating Naming Subsystem
+12:44:48,400 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 35) JBAS012605: Activated the following JSF Implementations: [main, 1.2]
+12:44:48,993 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 29) JBAS010280: Activating Infinispan subsystem.
+12:44:49,676 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 25) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+12:44:52,186 INFO  [org.jboss.as.security] (MSC service thread 1-2) JBAS013170: Current PicketBox version=4.0.19.SP2-redhat-1
+12:44:52,676 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-1) JBAS010408: Starting JCA Subsystem (IronJacamar 1.0.23.Final-redhat-1)
+12:44:52,855 INFO  [org.jboss.as.naming] (MSC service thread 1-1) JBAS011802: Starting Naming Service
+12:44:53,504 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-1) JBAS015400: Bound mail session [java:jboss/mail/Default]
+12:44:53,724 INFO  [org.apache.coyote.http11] (MSC service thread 1-1) JBWEB003001: Coyote HTTP/1.1 initializing on : http-localhost/127.0.0.1:8080
+12:44:53,740 INFO  [org.apache.coyote.http11] (MSC service thread 1-1) JBWEB003000: Coyote HTTP/1.1 starting on: http-localhost/127.0.0.1:8080
+12:44:54,904 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-1) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
+12:44:58,835 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-1) JBAS015012: Started FileSystemDeploymentService for directory D:\Marco\JBoss\runtimes\jboss-eap\standalone\deployments
+12:44:58,937 INFO  [org.jboss.ws.common.management] (MSC service thread 1-2) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.2.3.Final-redhat-1
+12:44:59,040 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015876: Starting deployment of "postgresql-9.3-1102.jdbc4.jar" (runtime-name: "postgresql-9.3-1102.jdbc4.jar")
+12:44:59,182 INFO  [org.jboss.as.remoting] (MSC service thread 1-1) JBAS017100: Listening on 127.0.0.1:9999
+12:44:59,784 INFO  [org.jboss.as.remoting] (MSC service thread 1-1) JBAS017100: Listening on 127.0.0.1:4447
+12:45:00,170 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) JBAS010404: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 9.3)
+12:45:00,965 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-1) JBAS010400: Bound data source [java:/dsBANCO]
+12:45:03,248 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 26) JBAS018559: Deployed "postgresql-9.3-1102.jdbc4.jar" (runtime-name : "postgresql-9.3-1102.jdbc4.jar")
+12:45:03,717 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
+12:45:03,770 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
+12:45:03,771 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: JBoss EAP 6.2.0.GA (AS 7.3.0.Final-redhat-14) started in 45737ms - Started 162 of 222 services (58 services are passive or on-demand)
+12:47:04,556 INFO  [org.jboss.as.controller] (MSC service thread 1-1) JBAS014774: Service status report
+JBAS014775:    New missing/unsatisfied dependencies:
+      service jboss.server.controller.management.security_realm.ApplicationRealm.properties_authentication (missing) dependents: [service jboss.server.controller.management.security_realm.ApplicationRealm] 
+
+12:47:04,628 INFO  [org.jboss.as.controller] (MSC service thread 1-2) JBAS014774: Service status report
+JBAS014775:    New missing/unsatisfied dependencies:
+      service jboss.naming.context.java.module."postgresql-9.3-1102.jdbc4"."postgresql-9.3-1102.jdbc4".env (missing) dependents: [service jboss.deployment.unit."postgresql-9.3-1102.jdbc4.jar".jndiDependencyService] 
+
+12:47:04,632 INFO  [org.jboss.as.controller] (MSC service thread 1-1) JBAS014774: Service status report
+JBAS014775:    New missing/unsatisfied dependencies:
+      service jboss.connector.config (missing) dependents: [service jboss.connector.archive_validation.config, service jboss.connector.bean_validation.config, service jboss.connector.bootstrapcontext.default] 
+
+12:47:04,639 INFO  [org.apache.catalina.core] (MSC service thread 1-1) JBWEB001079: Container org.apache.catalina.core.ContainerBase.[jboss.web].[default-host].[/] has not been started
+12:47:04,653 INFO  [org.jboss.as.controller] (MSC service thread 1-1) JBAS014774: Service status report
+JBAS014775:    New missing/unsatisfied dependencies:
+      service jboss.server.controller.management.security_realm.ManagementRealm (missing) dependents: [service jboss.serverManagement.controller.management.http, service jboss.remoting.authentication_provider.management] 
+
+12:47:04,659 INFO  [org.jboss.as.controller] (MSC service thread 1-2) JBAS014774: Service status report
+JBAS014775:    New missing/unsatisfied dependencies:
+      service jboss.jndi-view.extension.registry (missing) dependents: [service jboss.jndi-view.extension.ee] 
+
+12:47:04,663 INFO  [org.jboss.as.controller] (MSC service thread 1-2) JBAS014774: Service status report
+JBAS014775:    New missing/unsatisfied dependencies:
+      service jboss.thread.executor.short-running-threads.default.thread-factory (missing) dependents: [service jboss.thread.executor.short-running-threads.default] 
+
+12:47:04,667 INFO  [org.jboss.as.controller] (MSC service thread 1-1) JBAS014774: Service status report
+JBAS014775:    New missing/unsatisfied dependencies:
+      service jboss.thread.executor.long-running-threads.default.thread-factory (missing) dependents: [service jboss.thread.executor.long-running-threads.default] 
+
+12:47:04,670 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) JBAS010409: Unbound data source [java:jboss/datasources/ExampleDS]
+12:47:04,793 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-1) JBAS010409: Unbound data source [java:/dsBANCO]
+12:47:04,919 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-1) JBAS015401: Unbound mail session [java:jboss/mail/Default]
+12:47:05,116 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015877: Stopped deployment postgresql-9.3-1102.jdbc4.jar (runtime-name: postgresql-9.3-1102.jdbc4.jar) in 441ms
+12:47:05,364 INFO  [org.apache.coyote.http11] (MSC service thread 1-2) JBWEB003075: Coyote HTTP/1.1 pausing on: http-localhost/127.0.0.1:8080
+12:47:05,392 INFO  [org.apache.coyote.http11] (MSC service thread 1-2) JBWEB003077: Coyote HTTP/1.1 stopping on : http-localhost/127.0.0.1:8080
+12:47:05,410 INFO  [org.jboss.as.controller] (MSC service thread 1-2) JBAS014774: Service status report
+JBAS014776:    Newly corrected services:
+      service jboss.connector.config (no longer required)
+      service jboss.jndi-view.extension.registry (no longer required)
+      service jboss.naming.context.java.module."postgresql-9.3-1102.jdbc4"."postgresql-9.3-1102.jdbc4".env (no longer required)
+      service jboss.server.controller.management.security_realm.ApplicationRealm.properties_authentication (no longer required)
+      service jboss.server.controller.management.security_realm.ManagementRealm (no longer required)
+      service jboss.thread.executor.long-running-threads.default.thread-factory (no longer required)
+      service jboss.thread.executor.short-running-threads.default.thread-factory (no longer required)
+
+12:47:05,490 INFO  [org.jboss.as] (MSC service thread 1-2) JBAS015950: JBoss EAP 6.2.0.GA (AS 7.3.0.Final-redhat-14) stopped in 570ms
+12:48:22,062 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.0.Final-redhat-2
+12:48:23,851 INFO  [org.jboss.msc] (main) JBoss MSC version 1.0.4.GA-redhat-1
+12:48:24,197 INFO  [org.jboss.as] (MSC service thread 1-1) JBAS015899: JBoss EAP 6.2.0.GA (AS 7.3.0.Final-redhat-14) starting
+12:48:24,255 DEBUG [org.jboss.as.config] (MSC service thread 1-1) Configured system properties:
+	awt.toolkit = sun.awt.windows.WToolkit
+	file.encoding = UTF-8
+	file.encoding.pkg = sun.io
+	file.separator = \
+	java.awt.graphicsenv = sun.awt.Win32GraphicsEnvironment
+	java.awt.headless = true
+	java.awt.printerjob = sun.awt.windows.WPrinterJob
+	java.class.path = D:\Marco\JBoss\runtimes\jboss-eap\jboss-modules.jar
+	java.class.version = 51.0
+	java.endorsed.dirs = C:\Program Files\Java\jdk1.7.0_51\jre\lib\endorsed
+	java.ext.dirs = C:\Program Files\Java\jdk1.7.0_51\jre\lib\ext;C:\Windows\Sun\Java\lib\ext
+	java.home = C:\Program Files\Java\jdk1.7.0_51\jre
+	java.io.tmpdir = D:\Users\Oliveira\AppData\Local\Temp\
+	java.library.path = C:\Program Files\Java\jdk1.7.0_51\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Java\jdk1.7.0_51\jre\bin;native;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Utilities 1.3.6\;.
+	java.net.preferIPv4Stack = true
+	java.runtime.name = Java(TM) SE Runtime Environment
+	java.runtime.version = 1.7.0_51-b13
+	java.specification.name = Java Platform API Specification
+	java.specification.vendor = Oracle Corporation
+	java.specification.version = 1.7
+	java.util.logging.manager = org.jboss.logmanager.LogManager
+	java.vendor = Oracle Corporation
+	java.vendor.url = http://java.oracle.com/
+	java.vendor.url.bug = http://bugreport.sun.com/bugreport/
+	java.version = 1.7.0_51
+	java.vm.info = mixed mode
+	java.vm.name = Java HotSpot(TM) Server VM
+	java.vm.specification.name = Java Virtual Machine Specification
+	java.vm.specification.vendor = Oracle Corporation
+	java.vm.specification.version = 1.7
+	java.vm.vendor = Oracle Corporation
+	java.vm.version = 24.51-b03
+	javax.management.builder.initial = org.jboss.as.jmx.PluggableMBeanServerBuilder
+	javax.xml.datatype.DatatypeFactory = __redirected.__DatatypeFactory
+	javax.xml.parsers.DocumentBuilderFactory = __redirected.__DocumentBuilderFactory
+	javax.xml.parsers.SAXParserFactory = __redirected.__SAXParserFactory
+	javax.xml.stream.XMLEventFactory = __redirected.__XMLEventFactory
+	javax.xml.stream.XMLInputFactory = __redirected.__XMLInputFactory
+	javax.xml.stream.XMLOutputFactory = __redirected.__XMLOutputFactory
+	javax.xml.transform.TransformerFactory = __redirected.__TransformerFactory
+	javax.xml.validation.SchemaFactory:http://www.w3.org/2001/XMLSchema = __redirected.__SchemaFactory
+	javax.xml.xpath.XPathFactory:http://java.sun.com/jaxp/xpath/dom = __redirected.__XPathFactory
+	jboss.bind.address = localhost
+	jboss.home.dir = D:\Marco\JBoss\runtimes\jboss-eap
+	jboss.host.name = oliveira-note
+	jboss.modules.dir = D:\Marco\JBoss\runtimes\jboss-eap\modules
+	jboss.modules.system.pkgs = org.jboss.byteman
+	jboss.node.name = oliveira-note
+	jboss.qualified.host.name = oliveira-note
+	jboss.server.base.dir = D:\Marco\JBoss\runtimes\jboss-eap\standalone
+	jboss.server.config.dir = D:\Marco\JBoss\runtimes\jboss-eap\standalone\configuration
+	jboss.server.data.dir = D:\Marco\JBoss\runtimes\jboss-eap\standalone\data
+	jboss.server.deploy.dir = D:\Marco\JBoss\runtimes\jboss-eap\standalone\data\content
+	jboss.server.log.dir = D:\Marco\JBoss\runtimes\jboss-eap\standalone\log
+	jboss.server.name = oliveira-note
+	jboss.server.persist.config = true
+	jboss.server.temp.dir = D:\Marco\JBoss\runtimes\jboss-eap\standalone\tmp
+	line.separator = 
+
+	logging.configuration = file:/D:/Marco/JBoss/runtimes/jboss-eap/standalone/configuration/logging.properties
+	module.path = D:/Marco/JBoss/runtimes/jboss-eap/modules
+	org.jboss.boot.log.file = D:/Marco/JBoss/runtimes/jboss-eap/standalone/log/boot.log
+	org.jboss.logmanager.nocolor = true
+	org.jboss.resolver.warning = true
+	org.xml.sax.driver = __redirected.__XMLReaderFactory
+	os.arch = x86
+	os.name = Windows 7
+	os.version = 6.1
+	path.separator = ;
+	program.name = JBossTools: jboss-eap
+	sun.arch.data.model = 32
+	sun.boot.class.path = C:\Program Files\Java\jdk1.7.0_51\jre\lib\resources.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\rt.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\jce.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.7.0_51\jre\classes
+	sun.boot.library.path = C:\Program Files\Java\jdk1.7.0_51\jre\bin
+	sun.cpu.endian = little
+	sun.cpu.isalist = pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86
+	sun.desktop = windows
+	sun.io.unicode.encoding = UnicodeLittle
+	sun.java.command = org.jboss.modules.Main -mp D:/Marco/JBoss/runtimes/jboss-eap/modules -jaxpmodule javax.xml.jaxp-provider org.jboss.as.standalone -b localhost --server-config=standalone.xml
+	sun.java.launcher = SUN_STANDARD
+	sun.jnu.encoding = Cp1252
+	sun.management.compiler = HotSpot Tiered Compilers
+	sun.os.patch.level = Service Pack 1
+	sun.rmi.dgc.client.gcInterval = 3600000
+	sun.rmi.dgc.server.gcInterval = 3600000
+	user.country = US
+	user.country.format = BR
+	user.dir = D:\Marco\JBoss\runtimes\jboss-eap\bin
+	user.home = D:\Users\Oliveira
+	user.language = en
+	user.language.format = pt
+	user.name = Oliveira
+	user.script = 
+	user.timezone = GMT-03:00
+	user.variant = 
+12:48:24,337 DEBUG [org.jboss.as.config] (MSC service thread 1-1) VM Arguments: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:52585 -Dprogram.name=JBossTools: jboss-eap -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dorg.jboss.resolver.warning=true -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Dorg.jboss.boot.log.file=D:/Marco/JBoss/runtimes/jboss-eap/standalone/log/boot.log -Dlogging.configuration=file:/D:/Marco/JBoss/runtimes/jboss-eap/standalone/configuration/logging.properties -Djboss.home.dir=D:/Marco/JBoss/runtimes/jboss-eap -Dorg.jboss.logmanager.nocolor=true -Dfile.encoding=UTF-8 
+12:48:30,250 INFO  [org.jboss.as.server.deployment.scanner] (DeploymentScanner-threads - 1) JBAS015003: Found smc-ear.ear in deployment directory. To trigger deployment create a file called smc-ear.ear.dodeploy
+12:48:30,395 INFO  [org.xnio] (MSC service thread 1-1) XNIO Version 3.0.7.GA-redhat-1
+12:48:30,410 INFO  [org.xnio.nio] (MSC service thread 1-1) XNIO NIO Implementation Version 3.0.7.GA-redhat-1
+12:48:30,446 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
+12:48:30,580 INFO  [org.jboss.remoting] (MSC service thread 1-1) JBoss Remoting version 3.2.18.GA-redhat-1
+12:48:31,102 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 46) JBAS015537: Activating WebServices Extension
+12:48:31,348 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 29) JBAS010280: Activating Infinispan subsystem.
+12:48:31,387 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 37) JBAS011800: Activating Naming Subsystem
+12:48:31,413 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 42) JBAS013171: Activating Security Subsystem
+12:48:31,861 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 35) JBAS012605: Activated the following JSF Implementations: [main, 1.2]
+12:48:34,021 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 25) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+12:48:37,625 INFO  [org.jboss.as.security] (MSC service thread 1-2) JBAS013170: Current PicketBox version=4.0.19.SP2-redhat-1
+12:48:37,774 INFO  [org.jboss.as.naming] (MSC service thread 1-2) JBAS011802: Starting Naming Service
+12:48:37,795 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-2) JBAS010408: Starting JCA Subsystem (IronJacamar 1.0.23.Final-redhat-1)
+12:48:38,229 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) JBAS015876: Starting deployment of "smc-ear.ear" (runtime-name: "smc-ear.ear")
+12:48:38,232 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) JBAS015876: Starting deployment of "postgresql-9.3-1102.jdbc4.jar" (runtime-name: "postgresql-9.3-1102.jdbc4.jar")
+12:48:38,272 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-1) JBAS015400: Bound mail session [java:jboss/mail/Default]
+12:48:38,393 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-2) JBAS015012: Started FileSystemDeploymentService for directory D:\Marco\JBoss\runtimes\jboss-eap\standalone\deployments
+12:48:39,289 INFO  [org.apache.coyote.http11] (MSC service thread 1-1) JBWEB003001: Coyote HTTP/1.1 initializing on : http-localhost/127.0.0.1:8080
+12:48:39,345 INFO  [org.apache.coyote.http11] (MSC service thread 1-1) JBWEB003000: Coyote HTTP/1.1 starting on: http-localhost/127.0.0.1:8080
+12:48:40,220 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) JBAS015876: Starting deployment of "null" (runtime-name: "smc-web.war")
+12:48:40,221 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) JBAS015876: Starting deployment of "null" (runtime-name: "smc-ejb.jar")
+12:48:40,245 INFO  [org.jboss.as.remoting] (MSC service thread 1-2) JBAS017100: Listening on 127.0.0.1:4447
+12:48:40,550 INFO  [org.jboss.as.remoting] (MSC service thread 1-2) JBAS017100: Listening on 127.0.0.1:9999
+12:48:41,012 INFO  [org.jboss.ws.common.management] (MSC service thread 1-1) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.2.3.Final-redhat-1
+12:48:42,309 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-1) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
+12:48:42,690 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) JBAS010404: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 9.3)
+12:48:44,615 INFO  [org.jboss.as.jpa] (MSC service thread 1-2) JBAS011401: Read persistence.xml for SMC_UNIT
+12:48:44,619 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) JBAS010400: Bound data source [java:/dsBANCO]
+12:48:44,832 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015893: Encountered invalid class name 'com.sun.faces.vendor.Tomcat6InjectionProvider:org.apache.catalina.util.DefaultAnnotationProcessor' for service type 'com.sun.faces.spi.injectionprovider'
+12:48:44,833 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015893: Encountered invalid class name 'com.sun.faces.vendor.Jetty6InjectionProvider:org.mortbay.jetty.plus.annotation.InjectionCollection' for service type 'com.sun.faces.spi.injectionprovider'
+12:48:46,872 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named ConsultaBean in deployment unit subdeployment "smc-ejb.jar" of deployment "smc-ear.ear" are as follows:
+
+	java:global/smc-ear/smc-ejb/ConsultaBean!br.com.baraunatecnologia.smc.ejb.interfaces.IConsultaRemote
+	java:app/smc-ejb/ConsultaBean!br.com.baraunatecnologia.smc.ejb.interfaces.IConsultaRemote
+	java:module/ConsultaBean!br.com.baraunatecnologia.smc.ejb.interfaces.IConsultaRemote
+	java:jboss/exported/smc-ear/smc-ejb/ConsultaBean!br.com.baraunatecnologia.smc.ejb.interfaces.IConsultaRemote
+	java:global/smc-ear/smc-ejb/ConsultaBean!br.com.baraunatecnologia.smc.ejb.interfaces.IConsultaLocal
+	java:app/smc-ejb/ConsultaBean!br.com.baraunatecnologia.smc.ejb.interfaces.IConsultaLocal
+	java:module/ConsultaBean!br.com.baraunatecnologia.smc.ejb.interfaces.IConsultaLocal
+
+12:48:46,879 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named UsuarioBean in deployment unit subdeployment "smc-ejb.jar" of deployment "smc-ear.ear" are as follows:
+
+	java:global/smc-ear/smc-ejb/UsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioLocal
+	java:app/smc-ejb/UsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioLocal
+	java:module/UsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioLocal
+	java:global/smc-ear/smc-ejb/UsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioRemote
+	java:app/smc-ejb/UsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioRemote
+	java:module/UsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioRemote
+	java:jboss/exported/smc-ear/smc-ejb/UsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioRemote
+
+12:48:46,884 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named MedicoBean in deployment unit subdeployment "smc-ejb.jar" of deployment "smc-ear.ear" are as follows:
+
+	java:global/smc-ear/smc-ejb/MedicoBean!br.com.baraunatecnologia.smc.ejb.interfaces.IMedicoLocal
+	java:app/smc-ejb/MedicoBean!br.com.baraunatecnologia.smc.ejb.interfaces.IMedicoLocal
+	java:module/MedicoBean!br.com.baraunatecnologia.smc.ejb.interfaces.IMedicoLocal
+	java:global/smc-ear/smc-ejb/MedicoBean!br.com.baraunatecnologia.smc.ejb.interfaces.IMedicoRemote
+	java:app/smc-ejb/MedicoBean!br.com.baraunatecnologia.smc.ejb.interfaces.IMedicoRemote
+	java:module/MedicoBean!br.com.baraunatecnologia.smc.ejb.interfaces.IMedicoRemote
+	java:jboss/exported/smc-ear/smc-ejb/MedicoBean!br.com.baraunatecnologia.smc.ejb.interfaces.IMedicoRemote
+
+12:48:46,889 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named LocalizacaoBean in deployment unit subdeployment "smc-ejb.jar" of deployment "smc-ear.ear" are as follows:
+
+	java:global/smc-ear/smc-ejb/LocalizacaoBean!br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoRemote
+	java:app/smc-ejb/LocalizacaoBean!br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoRemote
+	java:module/LocalizacaoBean!br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoRemote
+	java:jboss/exported/smc-ear/smc-ejb/LocalizacaoBean!br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoRemote
+	java:global/smc-ear/smc-ejb/LocalizacaoBean!br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoLocal
+	java:app/smc-ejb/LocalizacaoBean!br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoLocal
+	java:module/LocalizacaoBean!br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoLocal
+
+12:48:46,890 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named EspecialidadeBean in deployment unit subdeployment "smc-ejb.jar" of deployment "smc-ear.ear" are as follows:
+
+	java:global/smc-ear/smc-ejb/EspecialidadeBean!br.com.baraunatecnologia.smc.ejb.interfaces.IEspecialidadeLocal
+	java:app/smc-ejb/EspecialidadeBean!br.com.baraunatecnologia.smc.ejb.interfaces.IEspecialidadeLocal
+	java:module/EspecialidadeBean!br.com.baraunatecnologia.smc.ejb.interfaces.IEspecialidadeLocal
+	java:global/smc-ear/smc-ejb/EspecialidadeBean!br.com.baraunatecnologia.smc.ejb.interfaces.IEspecialidadeRemote
+	java:app/smc-ejb/EspecialidadeBean!br.com.baraunatecnologia.smc.ejb.interfaces.IEspecialidadeRemote
+	java:module/EspecialidadeBean!br.com.baraunatecnologia.smc.ejb.interfaces.IEspecialidadeRemote
+	java:jboss/exported/smc-ear/smc-ejb/EspecialidadeBean!br.com.baraunatecnologia.smc.ejb.interfaces.IEspecialidadeRemote
+
+12:48:46,891 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named IncidenteBean in deployment unit subdeployment "smc-ejb.jar" of deployment "smc-ear.ear" are as follows:
+
+	java:global/smc-ear/smc-ejb/IncidenteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IIncidenteLocal
+	java:app/smc-ejb/IncidenteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IIncidenteLocal
+	java:module/IncidenteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IIncidenteLocal
+	java:global/smc-ear/smc-ejb/IncidenteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IIncidenteRemote
+	java:app/smc-ejb/IncidenteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IIncidenteRemote
+	java:module/IncidenteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IIncidenteRemote
+	java:jboss/exported/smc-ear/smc-ejb/IncidenteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IIncidenteRemote
+
+12:48:46,895 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named PacienteBean in deployment unit subdeployment "smc-ejb.jar" of deployment "smc-ear.ear" are as follows:
+
+	java:global/smc-ear/smc-ejb/PacienteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IPacienteLocal
+	java:app/smc-ejb/PacienteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IPacienteLocal
+	java:module/PacienteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IPacienteLocal
+	java:global/smc-ear/smc-ejb/PacienteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IPacienteRemote
+	java:app/smc-ejb/PacienteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IPacienteRemote
+	java:module/PacienteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IPacienteRemote
+	java:jboss/exported/smc-ear/smc-ejb/PacienteBean!br.com.baraunatecnologia.smc.ejb.interfaces.IPacienteRemote
+
+12:48:46,896 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named GrupoUsuarioBean in deployment unit subdeployment "smc-ejb.jar" of deployment "smc-ear.ear" are as follows:
+
+	java:global/smc-ear/smc-ejb/GrupoUsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoUsuarioLocal
+	java:app/smc-ejb/GrupoUsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoUsuarioLocal
+	java:module/GrupoUsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoUsuarioLocal
+	java:global/smc-ear/smc-ejb/GrupoUsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoUsuarioRemote
+	java:app/smc-ejb/GrupoUsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoUsuarioRemote
+	java:module/GrupoUsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoUsuarioRemote
+	java:jboss/exported/smc-ear/smc-ejb/GrupoUsuarioBean!br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoUsuarioRemote
+
+12:48:50,087 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 48) JBAS011402: Starting Persistence Unit Service 'smc-ear.ear/smc-ejb.jar#SMC_UNIT'
+12:48:50,696 INFO  [org.jboss.web] (ServerService Thread Pool -- 64) JBAS018210: Register web context: /smc-web
+12:48:50,717 INFO  [org.apache.catalina.core] (ServerService Thread Pool -- 64) JBWEB001093: The listener com.sun.faces.config.ConfigureListener is already configured for this context, the duplicate definition has been ignored
+12:48:50,723 INFO  [org.apache.catalina.core] (ServerService Thread Pool -- 64) JBWEB001093: The listener com.sun.faces.config.ConfigureListener is already configured for this context, the duplicate definition has been ignored
+12:48:51,154 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 48) HCANN000001: Hibernate Commons Annotations {4.0.1.Final-redhat-2}
+12:48:51,166 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 48) HHH000412: Hibernate Core {4.2.7.SP1-redhat-3}
+12:48:51,351 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 48) HHH000206: hibernate.properties not found
+12:48:51,354 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 48) HHH000021: Bytecode provider name : javassist
+12:48:51,367 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (ServerService Thread Pool -- 64) Initializing Mojarra 2.1.19-jbossorg-1 20131024-0833 for context '/smc-web'
+12:48:51,564 INFO  [org.hibernate.ejb.Ejb3Configuration] (ServerService Thread Pool -- 48) HHH000204: Processing PersistenceUnitInfo [
+	name: SMC_UNIT
+	...]
+12:48:52,847 INFO  [org.hibernate.service.jdbc.connections.internal.ConnectionProviderInitiator] (ServerService Thread Pool -- 48) HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+12:48:54,747 INFO  [org.hibernate.validator.internal.util.Version] (ServerService Thread Pool -- 64) HV000001: Hibernate Validator 4.3.1.Final-redhat-1
+12:48:56,678 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 48) HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+12:48:57,129 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (ServerService Thread Pool -- 48) HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+12:48:59,620 INFO  [org.primefaces.webapp.PostConstructApplicationEventListener] (ServerService Thread Pool -- 64) Running on PrimeFaces 3.1.1
+12:48:59,828 INFO  [org.hibernate.engine.transaction.internal.TransactionFactoryInitiator] (ServerService Thread Pool -- 48) HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory
+12:48:59,910 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 48) HHH000397: Using ASTQueryTranslatorFactory
+12:49:02,050 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) HHH000228: Running hbm2ddl schema update
+12:49:02,097 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) HHH000102: Fetching database metadata
+12:49:02,176 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) HHH000396: Updating schema
+12:49:02,352 INFO  [java.sql.DatabaseMetaData] (ServerService Thread Pool -- 48) HHH000262: Table not found: consulta
+12:49:02,358 INFO  [java.sql.DatabaseMetaData] (ServerService Thread Pool -- 48) HHH000262: Table not found: especialidade
+12:49:03,725 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000261: Table found: public.grupo
+12:49:03,725 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000037: Columns: [id, id_visualizacao, nome, icone]
+12:49:03,725 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000108: Foreign keys: []
+12:49:03,726 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000126: Indexes: [pk_grupo]
+12:49:03,865 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000261: Table found: public.incidente
+12:49:03,865 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000037: Columns: [id, horario, longitude, latitude, descricao]
+12:49:03,893 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000108: Foreign keys: []
+12:49:03,893 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000126: Indexes: [pk_incidente]
+12:49:04,054 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000261: Table found: public.localizacao
+12:49:04,055 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000037: Columns: [id, horario, id_usuario, longitude, latitude]
+12:49:04,055 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000108: Foreign keys: [fk_localizacao_usuario]
+12:49:04,055 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000126: Indexes: [fki_localizacao_usuario, pk_localizacao]
+12:49:04,059 INFO  [java.sql.DatabaseMetaData] (ServerService Thread Pool -- 48) HHH000262: Table not found: medico
+12:49:04,063 INFO  [java.sql.DatabaseMetaData] (ServerService Thread Pool -- 48) HHH000262: Table not found: paciente
+12:49:04,199 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000261: Table found: public.usuario
+12:49:04,200 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000037: Columns: [id, login, nome, senha, id_grupo]
+12:49:04,200 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000108: Foreign keys: [fk_usuario_grupo]
+12:49:04,200 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 48) HHH000126: Indexes: [fki_usuario_grupo, uk_login, pk_usuario]
+12:49:04,204 INFO  [java.sql.DatabaseMetaData] (ServerService Thread Pool -- 48) HHH000262: Table not found: consulta
+12:49:04,208 INFO  [java.sql.DatabaseMetaData] (ServerService Thread Pool -- 48) HHH000262: Table not found: especialidade
+12:49:04,278 INFO  [java.sql.DatabaseMetaData] (ServerService Thread Pool -- 48) HHH000262: Table not found: medico
+12:49:04,309 INFO  [java.sql.DatabaseMetaData] (ServerService Thread Pool -- 48) HHH000262: Table not found: paciente
+12:49:04,343 INFO  [java.sql.DatabaseMetaData] (ServerService Thread Pool -- 48) HHH000262: Table not found: consulta
+12:49:04,371 INFO  [java.sql.DatabaseMetaData] (ServerService Thread Pool -- 48) HHH000262: Table not found: especialidade
+12:49:04,375 INFO  [java.sql.DatabaseMetaData] (ServerService Thread Pool -- 48) HHH000262: Table not found: medico
+12:49:04,379 INFO  [java.sql.DatabaseMetaData] (ServerService Thread Pool -- 48) HHH000262: Table not found: paciente
+12:49:04,384 INFO  [java.sql.DatabaseMetaData] (ServerService Thread Pool -- 48) HHH000262: Table not found: id
+12:49:04,757 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) HHH000388: Unsuccessful: create table consulta (id integer not null auto_increment, data_marcacao datetime not null, observacao varchar(255) not null, id_medico integer not null, id_paciente integer not null, primary key (id))
+12:49:04,757 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) ERRO: erro de sintaxe em ou próximo a "auto_increment"
+  Position: 44
+12:49:04,759 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) HHH000388: Unsuccessful: create table especialidade (id integer not null auto_increment, descricao varchar(255) not null, primary key (id))
+12:49:04,759 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) ERRO: erro de sintaxe em ou próximo a "auto_increment"
+  Position: 49
+12:49:04,762 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) HHH000388: Unsuccessful: create table medico (id integer not null auto_increment, celular varchar(255) not null, nome varchar(255) not null, id_especialidade integer not null, primary key (id))
+12:49:04,762 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) ERRO: erro de sintaxe em ou próximo a "auto_increment"
+  Position: 42
+12:49:04,763 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) HHH000388: Unsuccessful: create table paciente (id integer not null auto_increment, idade integer not null, nome varchar(255) not null, sexo char(1) not null, telefone varchar(255) not null, primary key (id))
+12:49:04,764 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) ERRO: erro de sintaxe em ou próximo a "auto_increment"
+  Position: 44
+12:49:06,291 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) HHH000388: Unsuccessful: alter table consulta add index FK_6u8povc93lphwt241arle0u0g (id_medico), add constraint FK_6u8povc93lphwt241arle0u0g foreign key (id_medico) references medico (id)
+12:49:06,292 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) ERRO: relação "consulta" não existe
+12:49:06,318 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) HHH000388: Unsuccessful: alter table consulta add index FK_6nu94vqxgtyofowc68nib14ra (id_paciente), add constraint FK_6nu94vqxgtyofowc68nib14ra foreign key (id_paciente) references paciente (id)
+12:49:06,319 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) ERRO: relação "consulta" não existe
+12:49:06,343 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) HHH000388: Unsuccessful: alter table medico add index FK_p2qfdcw4tn3x1v0em17s0txdg (id_especialidade), add constraint FK_p2qfdcw4tn3x1v0em17s0txdg foreign key (id_especialidade) references especialidade (id)
+12:49:06,343 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) ERRO: relação "medico" não existe
+12:49:06,830 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 48) HHH000232: Schema update complete
+12:49:07,819 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 26) JBAS018559: Deployed "smc-ear.ear" (runtime-name : "smc-ear.ear")
+12:49:07,819 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 26) JBAS018559: Deployed "postgresql-9.3-1102.jdbc4.jar" (runtime-name : "postgresql-9.3-1102.jdbc4.jar")
+12:49:08,543 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
+12:49:08,632 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
+12:49:08,633 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: JBoss EAP 6.2.0.GA (AS 7.3.0.Final-redhat-14) started in 48048ms - Started 560 of 629 services (67 services are passive or on-demand)
+12:53:06,029 INFO  [stdout] (http-localhost/127.0.0.1:8080-1) Hibernate: /* SELECT l from Localizacao as l JOIN l.usuario as u WHERE u.id = l.usuario.id AND u.grupo.id <> 1 AND l.horario in (select max(loc.horario) from Localizacao as loc group by loc.usuario.id) order by l.usuario.id */ select localizaca0_.id as id1_4_, localizaca0_.horario as horario2_4_, localizaca0_.latitude as latitude3_4_, localizaca0_.longitude as longitud4_4_, localizaca0_.id_usuario as id_usuar5_4_ from localizacao localizaca0_ inner join usuario usuario1_ on localizaca0_.id_usuario=usuario1_.id where usuario1_.id=localizaca0_.id_usuario and usuario1_.id_grupo<>1 and (localizaca0_.horario in (select max(localizaca2_.horario) from localizacao localizaca2_ group by localizaca2_.id_usuario)) order by localizaca0_.id_usuario
+12:53:06,357 INFO  [stdout] (http-localhost/127.0.0.1:8080-1) Hibernate: /* load br.com.baraunatecnologia.smc.ejb.entity.Usuario */ select usuario0_.id as id1_7_1_, usuario0_.id_grupo as id_grupo5_7_1_, usuario0_.login as login2_7_1_, usuario0_.nome as nome3_7_1_, usuario0_.senha as senha4_7_1_, grupousuar1_.id as id1_2_0_, grupousuar1_.icone as icone2_2_0_, grupousuar1_.id_visualizacao as id_visua3_2_0_, grupousuar1_.nome as nome4_2_0_ from usuario usuario0_ inner join grupo grupousuar1_ on usuario0_.id_grupo=grupousuar1_.id where usuario0_.id=?
+12:53:06,430 INFO  [stdout] (http-localhost/127.0.0.1:8080-1) Hibernate: /* load br.com.baraunatecnologia.smc.ejb.entity.Usuario */ select usuario0_.id as id1_7_1_, usuario0_.id_grupo as id_grupo5_7_1_, usuario0_.login as login2_7_1_, usuario0_.nome as nome3_7_1_, usuario0_.senha as senha4_7_1_, grupousuar1_.id as id1_2_0_, grupousuar1_.icone as icone2_2_0_, grupousuar1_.id_visualizacao as id_visua3_2_0_, grupousuar1_.nome as nome4_2_0_ from usuario usuario0_ inner join grupo grupousuar1_ on usuario0_.id_grupo=grupousuar1_.id where usuario0_.id=?
+12:53:06,433 INFO  [stdout] (http-localhost/127.0.0.1:8080-1) Hibernate: /* load br.com.baraunatecnologia.smc.ejb.entity.Usuario */ select usuario0_.id as id1_7_1_, usuario0_.id_grupo as id_grupo5_7_1_, usuario0_.login as login2_7_1_, usuario0_.nome as nome3_7_1_, usuario0_.senha as senha4_7_1_, grupousuar1_.id as id1_2_0_, grupousuar1_.icone as icone2_2_0_, grupousuar1_.id_visualizacao as id_visua3_2_0_, grupousuar1_.nome as nome4_2_0_ from usuario usuario0_ inner join grupo grupousuar1_ on usuario0_.id_grupo=grupousuar1_.id where usuario0_.id=?
+12:53:06,585 INFO  [stdout] (http-localhost/127.0.0.1:8080-1) Hibernate: /* from Incidente where horario in (select max(horario) from Incidente group by latitude, longitude) order by horario desc  */ select incidente0_.id as id1_3_, incidente0_.descricao as descrica2_3_, incidente0_.horario as horario3_3_, incidente0_.latitude as latitude4_3_, incidente0_.longitude as longitud5_3_ from incidente incidente0_ where incidente0_.horario in (select max(incidente1_.horario) from incidente incidente1_ group by incidente1_.latitude , incidente1_.longitude) order by incidente0_.horario desc
