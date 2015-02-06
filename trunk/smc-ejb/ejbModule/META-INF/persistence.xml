@@ -10,6 +10,7 @@
 	  <class>br.com.baraunatecnologia.smc.ejb.entity.Paciente</class>
 	  <class>br.com.baraunatecnologia.smc.ejb.entity.Localizacao</class>
 	  <class>br.com.baraunatecnologia.smc.ejb.entity.Incidente</class>
+	  <class>br.com.baraunatecnologia.smc.ejb.entity.Mensagem</class>
 	  <properties>
 		<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop"/> -->
 		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
