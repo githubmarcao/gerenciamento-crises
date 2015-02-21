@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html>
+
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+	>
+<body onload="getLocation();">
+	<form>
+		Latitude: <h:outputText id="latitude" value="#{localizacaoMB.localizacao.latitude}" /> <br/>
+	    Longitude: <h:outputText id="longitude" value="#{localizacaoMB.localizacao.longitude}" /> <br/>
+	
+		<div id="mapholder"></div>
+		
+		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script src="resources/js/jquery-1.11.1.js"></script>
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition, showError);
+	} else {
+		x.innerHTML = "Geolocalização não é suportada nesse browser.";
+	}
+}
+
+function showPosition(position) {
+	lat = position.coords.latitude;
+	lon = position.coords.longitude;
+	if (lat == null) {
+		lat = 0;
+	}
+	if (lon == null) {
+		lon = 0;
+	}
+	document.getElementById('latitude').innerHTML = lat;
+	document.getElementById('longitude').innerHTML = lon;
+	latlon = new google.maps.LatLng(lat, lon);
+	mapholder = document.getElementById('mapholder');
+	mapholder.style.height = '500px';
+	mapholder.style.width = '1000px';
+	var myOptions = {
+		center: latlon,
+		zoom: 14,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		// Tipos de MapTypeId
+		//ROADMAP (normal, default 2D map)
+		//SATELLITE (photographic map)
+		//HYBRID (photographic map + roads and city names)
+		//TERRAIN (map with mountains, rivers, etc.)
+		mapTypeControl: false,
+		navigationControlOptions: {
+			style: google.maps.NavigationControlStyle.SMALL
+		}
+	};
+	var locations = [
+		['Bondi Beach', -12.8404204, -38.465213899999995, 4],
+		['Coogee Beach', -12.9436698, -38.52521, 5],
+		['Cronulla Beach', -13.0234523, -38.6752521, 3],
+		['Manly Beach', -13.04034523, -38.989752521, 2],
+		['Maroubra Beach', -13.59034523, -39.9897525212, 1]
+	];
+	//Create a Map Object
+	var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+	var marker, i;
+	var infowindow = new google.maps.InfoWindow();
+	marker = new google.maps.Marker({
+		position: new google.maps.LatLng(lat, lon),
+		icon: '#{usuarioMB.usuarioSessao.grupo.icone}',
+		//title:"Você está Aqui!",
+		map: map
+			//,animation:google.maps.Animation.BOUNCE // Animacao
+	});
+	google.maps.event.addListener(marker, 'click', (function(marker) {
+		return function() {
+			infowindow.setContent("Meu local!!");
+			infowindow.open(map, marker);
+		}
+	})(marker));
+
+	// Tipos de overlays
+	//Marker - Single locations on a map. Markers can also display custom icon images
+	//Polyline - Series of straight lines on a map
+	//Polygon - Series of straight lines on a map, and the shape is "closed" Circle and Rectangle
+	//Info Windows - Displays content within a popup balloon on top of a map Custom overlays
+}
+
+function showError(error) {
+	switch (error.code) {
+		case error.PERMISSION_DENIED:
+			x.innerHTML = "Usuário rejeitou a solicitação de Geolocalização."
+			break;
+		case error.POSITION_UNAVAILABLE:
+			x.innerHTML = "Localização indisponível."
+			break;
+		case error.TIMEOUT:
+			x.innerHTML = "O tempo da requisição expirou."
+			break;
+		case error.UNKNOWN_ERROR:
+			x.innerHTML = "Algum erro desconhecido aconteceu."
+			break;
+	}
+}
+</script>
+	</form>
+</body>
+</html>
