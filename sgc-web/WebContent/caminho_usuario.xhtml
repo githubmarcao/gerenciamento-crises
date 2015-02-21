@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	>
+	<h:head>
+		<!-- JQuery -->
+		<script src="resources/js/jquery-1.11.1.js"></script>
+		<!-- Maps API Javascript -->
+		<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+		<script src="resources/js/geral.js"></script>
+    </h:head>
+<h:body onload="caminhoUsuario('#{caminhoUsuarioMB.getCaminhoUsuario()}');">
+	<h:form id="mapform">
+		<p id="demo"></p>
+		<!-- <label for="idUsuario">Id Usuário: </label>
+		<h:inputText id="idUsuario" value="#{caminhoUsuarioMB.idUsuario}" />
+		<br />
+
+		<h:commandButton value="Caminho do Usuário" onclick="getLocation();" />
+		<br />
+		<br /> -->
+
+		<div id="mapholder" style="height: 500px; width: 700px"></div>
+		<script src="resources/js/mapa.js"/>
+	</h:form>
+</h:body>
+</html>

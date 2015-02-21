@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+	>
+<body onload="getLocation();usuariosPorLocalizacao('#{caminhoUsuarioMB.ultimaLocalizacaoUsuarios}');">
+	<h:form id="mapform">
+		<p id="demo"></p>
+		Latitude: <h:outputText id="latitude" value="#{localizacaoMB.localizacao.latitude}" /> <br/>
+	    Longitude: <h:outputText id="longitude" value="#{localizacaoMB.localizacao.longitude}" /> <br/>
+		Data Início:
+	    <h:inputText id="dataInicio"
+			value="#{caminhoUsuarioMB.dataInicio}" maxlength="19" size="19"
+			onkeypress="DataHora(event, this);" converter="converteTimestamp" >
+		</h:inputText> Máscara (dd/mm/aaaa hh:mm:ss) <br />
+	    Data Fim:
+		<h:inputText id="dataFim"
+			value="#{caminhoUsuarioMB.dataFim}" maxlength="19" size="19"
+			onkeypress="DataHora(event, this);" converter="converteTimestamp" >
+		</h:inputText> Máscara (dd/mm/aaaa hh:mm:ss) <br />
+
+		<h:commandButton value="Usuarios neste tempo" />
+		<br />
+		<br />
+
+		<div id="mapholder" style="height: 500px; width: 700px"></div>
+
+		<!-- JQuery -->
+		<script src="resources/js/jquery-1.11.1.js"></script>
+		<!-- Maps API Javascript -->
+		<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+		<script src="resources/js/geral.js"></script>
+		<script src="resources/js/mapa.js"/>
+	</h:form>
+</body>
+</html>

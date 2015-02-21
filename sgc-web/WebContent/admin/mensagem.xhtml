@@ -1,0 +1,46 @@
+<ui:composition template="template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+	<ui:define name="conteudo">
+      <h:form>
+      	<h:inputHidden value="#{mensagemMB.mensagem.id}"/>
+		<p:panelGrid  columns="2" style="margin-top:60px;margin-left:100px">
+			<f:facet name="header">
+               Cadastrar Mensagem
+           </f:facet>
+
+			<h:outputLabel for="usuarioEnvio" value="Usuário envio: *" />
+			<p:selectOneMenu id="usuarioEnvio" value="#{mensagemMB.mensagem.usuarioEnvio.id}" required="true" label="Usuário Envio" >
+				<f:selectItem itemLabel="Selecione" itemValue="" />
+				<f:selectItems value="#{mensagemMB.usuarios}" var="nome" itemLabel="#{nome.nome}" itemValue="#{nome.id}" />                        
+            </p:selectOneMenu>
+
+			<h:outputLabel for="usuarioRecebido" value="Usuário recebido: " />
+			<p:selectOneMenu id="usuarioRecebido" value="#{mensagemMB.mensagem.usuarioRecebido.id}" required="false" label="Usuário Recebido" >
+				<f:selectItem itemLabel="Selecione" itemValue="" />
+				<f:selectItems value="#{mensagemMB.usuarios}" var="nome" itemLabel="#{nome.nome}" itemValue="#{nome.id}" />                        
+            </p:selectOneMenu>
+
+			<h:outputLabel for="grupoRecebido" value="Grupo recebido: " />
+			<p:selectOneMenu id="grupoRecebido" value="#{mensagemMB.mensagem.grupoRecebido.id}" required="false" label="Grupo Recebido" >
+				<f:selectItem itemLabel="Selecione" itemValue="" />
+				<f:selectItems value="#{mensagemMB.grupos}" var="nome" itemLabel="#{nome.nome}" itemValue="#{nome.id}" />
+			</p:selectOneMenu>
+
+			<h:outputLabel for="mensagem" value="Mensagem: " />
+			<p:inputTextarea id="mensagem" value="#{mensagemMB.mensagem.mensagem}" label="Mensagem" required="false" />
+
+			<f:facet name="footer">
+				<p:commandButton update="msg" value="Salvar" action="#{mensagemMB.inserirEditar}" icon="ui-icon-check" style="margin:0"/>
+				<p:messages id="msg"/>
+			</f:facet>
+		</p:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
