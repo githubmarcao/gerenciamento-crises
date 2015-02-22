@@ -28,22 +28,24 @@
 			onkeypress="DataHora(event, this);" converter="converteTimestamp" >
 		</h:inputText> Máscara (dd/mm/aaaa hh:mm:ss) <br />
 
-		<h:panelGroup p:title="My title" layout="block" style="width: 350px;"
-			>
-		<!-- <p:dialog rendered="true" visible="true" header="Grupos" style="width:320px; min-height:100px; z-index: 999 !important;" resizable="true" > -->
-			<h:selectManyCheckbox layout="pageDirection"
+		<h:commandButton value="Pesquisar por Data" />
+		<br />
+		<br />
+
+		<!-- <p:dialog rendered="true" visible="true" header="Grupos" style="width:320px; min-height:100px; z-index: 999 !important;" resizable="true" > 
+		
+		layout="pageDirection"
+		-->
+		<div class="tags">
+			<h:selectManyCheckbox id="itens"
 				value="#{usuarioIncidenteMB.gruposSelecionados}"
 				converter="#{grupoUsuarioConverter}"
 				>
 				<f:selectItems value="#{usuarioIncidenteMB.gruposDisponiveis}"
-					var="item" itemValue="#{item}"  itemLabel="#{item.nome}" />
+					var="item" itemValue="#{item}" itemLabel="#{item.nome}" />
 			</h:selectManyCheckbox>
+		</div>
 		<!-- </p:dialog> -->
-		</h:panelGroup>
-
-		<h:commandButton value="Situação atual" />
-		<br />
-		<br />
 
 		<div id="mapholder" style="height: 500px; width: 700px"></div>
 		<script src="resources/js/mapa.js"/>
