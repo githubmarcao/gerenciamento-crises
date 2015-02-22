@@ -105,20 +105,17 @@ public class UsuarioIncidenteMB {
 				GrupoUsuario grupo = localizacao.getUsuario().getGrupo();
 				String nomeGrupo = grupo.getNome();
 
-				// Carragar na tela apenas os grupos selecionados
-				if (gruposSelecionados == null
-						|| gruposSelecionados.size() <= 0
-						|| gruposSelecionados.contains(grupo)) {
+				// Carragar na tela todos os grupos, o filtro será feito na tela agora
 					JSONObject json = new JSONObject();
 					json.put("idUsuario", localizacao.getUsuario().getId());
 					json.put("idGrupo", grupo.getId());
+					json.put("nomeGrupo", grupo.getNome());
 					json.put("nomeUsuario", localizacao.getUsuario().getNome());
 					json.put("icone", grupo.getIconePequeno());
 					json.put("latitude", localizacao.getLatitude());
 					json.put("longitude", localizacao.getLongitude());
 					json.put("horario", DateUtil.timestampToString(localizacao.getHorario()));
 					array.put(json);
-				}
 
 				// Salvar grupo no filtro
 				if (!gruposDisponiveis.containsKey(nomeGrupo)) {

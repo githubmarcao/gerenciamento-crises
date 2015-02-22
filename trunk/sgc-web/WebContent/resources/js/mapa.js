@@ -7,6 +7,28 @@ var infowindow;
 var latlon;
 var bounds;
 var paginaCaminhoUsuario = "caminho_usuario.xhtml";
+var markers = [];
+
+// Exibir/Ocultar marcadores em tempo de execucao
+$('.tags').on('change', 'input[type="checkbox"]', function() {
+	var filter = $(this).val();
+	filterChecked = $(this).prop('checked');
+	showHideMarker(filter, filterChecked);
+});
+
+function showHideMarker(grupo, show) {
+	for (var i = 0; i < markers.length; i++) {
+		if (markers[i].nomeGrupo && grupo) {
+			if (grupo == markers[i].nomeGrupo) {
+				if (show == true) {
+					markers[i].setVisible(true);
+				} else {
+					markers[i].setVisible(false);
+				}
+			}
+		}
+	}
+}
 
 function getLocation() {
 	if (navigator.geolocation) {
@@ -83,12 +105,13 @@ function usuariosIncidentes(json) {
 		// Usuario
 		if (id != null && id != "") {
 			var idGrupo = parsedJSON[i].idGrupo;
+			var nomeGrupo = parsedJSON[i].nomeGrupo;
 			var nomeUsuario = parsedJSON[i].nomeUsuario;
 			var title = "<b>" + nomeUsuario + "</b>" +
 						 "<br />" + "Latitude: " + parsedJSON[i].latitude +
 						 "<br />" + "Longitude: " + parsedJSON[i].longitude +
 						 "<br />" + "Horario: " + horario;
-			addMarkerUsuario(latLng, i, icone, id, idGrupo, nomeUsuario, title, status);
+			addMarkerUsuario(latLng, i, icone, id, idGrupo, nomeGrupo, nomeUsuario, title, status);
 
 		//incidente
 		} else {
@@ -103,7 +126,20 @@ function usuariosIncidentes(json) {
 	}
 
 	map.fitBounds(bounds); //centralizar baseado nos marcadores
-    map.panToBounds(bounds); //centralizar baseado nos marcadores
+	map.panToBounds(bounds); //centralizar baseado nos marcadores
+
+    // Selecionar todos os grupos
+	$('input[type="checkbox"]').prop('checked', true);
+
+	// Mostrar apenas os grupos marcados
+//	$('input[type="checkbox"]').each(function() {
+//		var checkbox = $(this);
+//		for ( var i in checkbox) {
+//			if (checkbox[i].value) {
+//				showHideMarker(checkbox[i].value, checkbox[i].checked);
+//			}
+//		}
+//	});
 }
 
 function addMarkerIncidente(location, i, icone, idUsuario, descricaoIncidente, title, active) {
@@ -137,16 +173,19 @@ function addMarkerIncidente(location, i, icone, idUsuario, descricaoIncidente, t
 			//
 		};
 	})(marker, i));
+	
+	markers.push(marker);
 }
 
-function addMarkerUsuario(location, i, icone, idUsuario, idGrupo, nomeUsuario, title, active) {
+function addMarkerUsuario(location, i, icone, idUsuario, idGrupo, nomeGrupo, nomeUsuario, title, active) {
 	var marker = new google.maps.Marker({
 		position: location,
 		icon: icone,
 		//title:"Você está Aqui!",
         status: active,
 		map: map,
-		grupo: idGrupo
+		grupo: idGrupo,
+		nomeGrupo: nomeGrupo
 	});
 
 	// Adicionar informacao no marcador ao passar o mouse em cima
@@ -173,6 +212,8 @@ function addMarkerUsuario(location, i, icone, idUsuario, idGrupo, nomeUsuario, t
 			}
 		};
 	})(marker, i));
+
+	markers.push(marker);
 }
 
 function caminhoUsuario(json) {
@@ -291,6 +332,8 @@ function addMarkerCaminhoUsuario(location, i, icone, idUsuario, nomeUsuario, tit
 			//infowindow.open(map, marker);
 		};
 	})(marker, i));
+
+	markers.push(marker);
 }
 
 function showError(error) {
