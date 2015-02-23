@@ -34,7 +34,7 @@ function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPosition, showError);
 	} else {
-		alert("Geolocaliza√ß√£o n√£o √© suportada nesse browser.");
+		alert("GeolocalizaÁ„o n„o È suportada nesse browser.");
 	}
 }
 
@@ -66,7 +66,7 @@ function showPosition(position) {
 function usuariosIncidentes(json) {
 	// Caso venha vazio nao faz nada
 	if (json == null || json == '') {
-		x.innerHTML = "Nenhum usu√°rio carregado.";
+		x.innerHTML = "Nenhum usu·rio carregado.";
 		return;
 	} else {
 		x.innerHTML = "";
@@ -146,7 +146,7 @@ function addMarkerIncidente(location, i, icone, idUsuario, descricaoIncidente, t
 	var marker = new google.maps.Marker({
 		position: location,
 		icon: icone,
-		//title:"Voc√™ est√° Aqui!",
+		//title:"Voce esta Aqui!",
         status: active,
 		map: map
 	});
@@ -181,7 +181,7 @@ function addMarkerUsuario(location, i, icone, idUsuario, idGrupo, nomeGrupo, nom
 	var marker = new google.maps.Marker({
 		position: location,
 		icon: icone,
-		//title:"Voc√™ est√° Aqui!",
+		//title:"Voce esta Aqui!",
         status: active,
 		map: map,
 		grupo: idGrupo,
@@ -213,13 +213,19 @@ function addMarkerUsuario(location, i, icone, idUsuario, idGrupo, nomeGrupo, nom
 		};
 	})(marker, i));
 
+	// Botao direito do mouse
+	google.maps.event.addListener(marker, 'rightclick', function() {
+		infowindow.setContent("<div style='width:100px'>rightclick</div>");
+		infowindow.open(map, marker);
+	});
+
 	markers.push(marker);
 }
 
 function caminhoUsuario(json) {
 	// Caso venha vazio nao faz nada
 	if (json == null || json == '') {
-		x.innerHTML = "Caminho do usu√°rio n√£o carregado.";
+		x.innerHTML = "Caminho do usu·rio n„o carregado.";
 		return;
 	} else {
 		x.innerHTML = "";
@@ -249,7 +255,8 @@ function caminhoUsuario(json) {
 
 	var parsedJSON = $.parseJSON(json);
 
-	var origin, destination, usuario;
+	var origin = new google.maps.LatLng(1, 1); // Inicializando
+	var destination = new google.maps.LatLng(1, 1); // Inicializando
 	var waypoints = [];
 
 	for (var i in parsedJSON) {
@@ -285,8 +292,8 @@ function caminhoUsuario(json) {
 		origin: origin,
 		destination: destination,
 		waypoints: waypoints,
-		//travelMode: google.maps.TravelMode.DRIVING // indica rotas de tr√¢nsito padr√£o usando a rede rodovi√°ria.
-		travelMode: google.maps.TravelMode.WALKING // solicita rotas a p√© por faixas de pedestre e cal√ßadas.
+		//travelMode: google.maps.TravelMode.DRIVING // indica rotas de transito padrao usando a rede rodoviaria.
+		travelMode: google.maps.TravelMode.WALKING // solicita rotas a pe por faixas de pedestre e calcadas.
 	};
 
 	directionsService.route(request, function(result, status) {
@@ -303,7 +310,7 @@ function addMarkerCaminhoUsuario(location, i, icone, idUsuario, nomeUsuario, tit
 		position: location,
 		draggable: true,
 		icon: icone,
-		// title:"Voc√™ est√° Aqui!",
+		// title:"Voce esta Aqui!",
         status: active,
 		map: map
 	});
@@ -339,13 +346,13 @@ function addMarkerCaminhoUsuario(location, i, icone, idUsuario, nomeUsuario, tit
 function showError(error) {
 	switch (error.code) {
 		case error.PERMISSION_DENIED:
-			x.innerHTML = "Usu√°rio rejeitou a solicita√ß√£o de Geolocaliza√ß√£o.";
+			x.innerHTML = "Usu·rio rejeitou a solicitaÁ„o de GeolocalizaÁ„o.";
 			break;
 		case error.POSITION_UNAVAILABLE:
-			x.innerHTML = "Localiza√ß√£o indispon√≠vel.";
+			x.innerHTML = "LocalizaÁ„o indisponÌvel.";
 			break;
 		case error.TIMEOUT:
-			x.innerHTML = "O tempo da requisi√ß√£o expirou.";
+			x.innerHTML = "O tempo da requisiÁ„o expirou.";
 			break;
 		case error.UNKNOWN_ERROR:
 			x.innerHTML = "Algum erro desconhecido aconteceu.";

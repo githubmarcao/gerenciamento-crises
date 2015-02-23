@@ -88,7 +88,7 @@ public class GrupoUsuarioMB {
 			grupoUsuario = grupoUsuarioLocal.buscar(grupoUsuario.getId());
 
 			if (grupoUsuario == null) {
-				JSFUtil.addErrorMessage("Registro n√£o localizado!");
+				JSFUtil.addErrorMessage("Registro n„o localizado!");
 			}
 		} catch (NegocioException e) {
 			JSFUtil.addErrorMessage(e.getMessage());

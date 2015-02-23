@@ -117,7 +117,7 @@ public class MensagemMB {
 			mensagem = mensagemLocal.buscar(mensagem.getId());
 
 			if (mensagem == null) {
-				JSFUtil.addErrorMessage("Registro n√£o localizado!");
+				JSFUtil.addErrorMessage("Registro n„o localizado!");
 				return null;
 			}
 

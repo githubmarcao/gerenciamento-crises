@@ -132,7 +132,7 @@ public class MedicoMB {
 			medico = medicoLocal.buscar(medico.getId());
 
 			if(medico==null){
-				JSFUtil.addErrorMessage("Registro n√£o localizado!");
+				JSFUtil.addErrorMessage("Registro n„o localizado!");
 			}
 			
 		} catch (NegocioException e) {
