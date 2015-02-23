@@ -123,7 +123,7 @@ public class ConsultaMB {
 			consulta = consultaLocal.buscar(consulta.getId());
 
 			if(consulta==null){
-				JSFUtil.addErrorMessage("Registro n√£o localizado!");
+				JSFUtil.addErrorMessage("Registro n„o localizado!");
 			}
 		
 		} catch (NegocioException e) {

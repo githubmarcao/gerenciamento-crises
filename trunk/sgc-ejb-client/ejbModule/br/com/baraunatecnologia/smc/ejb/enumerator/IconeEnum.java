@@ -2,7 +2,7 @@ package br.com.baraunatecnologia.smc.ejb.enumerator;
 
 public enum IconeEnum {
 
-	PADRAO("Padr√£o", "resources/images/usuarios/icone.png"),
+	PADRAO("Padr„o", "resources/images/usuarios/icone.png"),
 
 	ADMINISTRADOR("Administrador", "resources/images/usuarios/administrador_36.png"),
 

@@ -134,7 +134,7 @@ function formatarData(campo) {
 }
 
 /*-----------------------------------------------------------------------
-MÃ¡scara para o campo data dd/mm/aaaa hh:mm:ss
+Máscara para o campo data dd/mm/aaaa hh:mm:ss
 Exemplo: <input maxlength="16" name="datahora" onKeyPress="DataHora(event, this)">
 http://codigofonte.uol.com.br/codigos/mascara-para-caixas-de-texto-com-data-e-hora
 -----------------------------------------------------------------------*/

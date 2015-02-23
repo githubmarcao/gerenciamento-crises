@@ -14,14 +14,14 @@
                Cadastrar Mensagem
            </f:facet>
 
-			<h:outputLabel for="usuarioEnvio" value="UsuÃ¡rio envio: *" />
-			<p:selectOneMenu id="usuarioEnvio" value="#{mensagemMB.mensagem.usuarioEnvio.id}" required="true" label="UsuÃ¡rio Envio" >
+			<h:outputLabel for="usuarioEnvio" value="Usuário envio: *" />
+			<p:selectOneMenu id="usuarioEnvio" value="#{mensagemMB.mensagem.usuarioEnvio.id}" required="true" label="Usuário Envio" >
 				<f:selectItem itemLabel="Selecione" itemValue="" />
 				<f:selectItems value="#{mensagemMB.usuarios}" var="nome" itemLabel="#{nome.nome}" itemValue="#{nome.id}" />                        
             </p:selectOneMenu>
 
-			<h:outputLabel for="usuarioRecebido" value="UsuÃ¡rio recebido: " />
-			<p:selectOneMenu id="usuarioRecebido" value="#{mensagemMB.mensagem.usuarioRecebido.id}" required="false" label="UsuÃ¡rio Recebido" >
+			<h:outputLabel for="usuarioRecebido" value="Usuário recebido: " />
+			<p:selectOneMenu id="usuarioRecebido" value="#{mensagemMB.mensagem.usuarioRecebido.id}" required="false" label="Usuário Recebido" >
 				<f:selectItem itemLabel="Selecione" itemValue="" />
 				<f:selectItems value="#{mensagemMB.usuarios}" var="nome" itemLabel="#{nome.nome}" itemValue="#{nome.id}" />                        
             </p:selectOneMenu>

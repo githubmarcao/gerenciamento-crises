@@ -104,7 +104,7 @@ public class LocalizacaoMB {
 			localizacao = localizacaoLocal.buscar(localizacao.getId());
 
 			if (localizacao == null) {
-				JSFUtil.addErrorMessage("Registro n√£o localizado!");
+				JSFUtil.addErrorMessage("Registro n„o localizado!");
 			}
 		} catch (NegocioException e) {
 			JSFUtil.addErrorMessage(e.getMessage());

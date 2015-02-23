@@ -46,7 +46,7 @@ public class LoginFilter implements Filter {
 			System.out.println("logado");
 			req.getRequestDispatcher("/login.xhtml").forward(request, response);
 		} else {
-			System.out.println("n√£o logado");
+			System.out.println("N„o logado");
 			chain.doFilter(request, response);
 		}
 	}
