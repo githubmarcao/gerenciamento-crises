@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="ejbModule"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/Marco/Barauna/javaee-api-5.0-1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/sgc-web/lib/javaee-api-5.0.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
