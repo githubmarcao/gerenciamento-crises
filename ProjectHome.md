@@ -1,0 +1,1 @@
+Gerenciamento de crises e emergências através de mapas.
