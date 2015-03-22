@@ -40,8 +40,8 @@ public class MensagemMB {
 	public void init(){
 		mensagem = new Mensagem();
 		mensagem.setUsuarioEnvio(new Usuario());
-		mensagem.setUsuarioRecebido(new Usuario());
-		mensagem.setGrupoRecebido(new GrupoUsuario());
+//		mensagem.setUsuarioRecebido(new Usuario());
+//		mensagem.setGrupoRecebido(new GrupoUsuario());
 		carregarMensagens();
 		carregarUsuarios();
 		carregarGrupoUsuarios();
@@ -82,13 +82,13 @@ public class MensagemMB {
 	public String inserirEditar() {
 
 		try {
-			if ((mensagem.getUsuarioRecebido() == null || mensagem
-					.getUsuarioRecebido().getId() == 0)
-					&& (mensagem.getGrupoRecebido() == null || mensagem
-							.getGrupoRecebido().getId() == 0)) {
-				JSFUtil.addErrorMessage("Selecione um usuário ou um grupo para receber a mensagem.");
-				return null;				
-			}
+//			if ((mensagem.getUsuarioRecebido() == null || mensagem
+//					.getUsuarioRecebido().getId() == 0)
+//					&& (mensagem.getGrupoRecebido() == null || mensagem
+//							.getGrupoRecebido().getId() == 0)) {
+//				JSFUtil.addErrorMessage("Selecione um usuário ou um grupo para receber a mensagem.");
+//				return null;				
+//			}
 			mensagemLocal.inserirEditar(mensagem);
 			JSFUtil.addInfoMessage("Registro salvo com sucesso!");
 		} catch (NegocioException e) {
@@ -121,12 +121,12 @@ public class MensagemMB {
 				return null;
 			}
 
-			if (mensagem.getUsuarioRecebido() == null) {
-				mensagem.setUsuarioRecebido(new Usuario());
-			}
-			if (mensagem.getGrupoRecebido() == null) {
-				mensagem.setGrupoRecebido(new GrupoUsuario());
-			}
+//			if (mensagem.getUsuarioRecebido() == null) {
+//				mensagem.setUsuarioRecebido(new Usuario());
+//			}
+//			if (mensagem.getGrupoRecebido() == null) {
+//				mensagem.setGrupoRecebido(new GrupoUsuario());
+//			}
 
 		} catch (NegocioException e) {
 			JSFUtil.addErrorMessage(e.getMessage());

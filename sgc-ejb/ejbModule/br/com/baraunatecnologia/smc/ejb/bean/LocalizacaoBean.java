@@ -19,7 +19,7 @@ import br.com.baraunatecnologia.smc.ejb.interfaces.ILocalizacaoRemote;
 @Stateless
 public class LocalizacaoBean implements ILocalizacaoRemote, ILocalizacaoLocal {
 
-	@PersistenceContext(unitName = "SMC_UNIT")
+	@PersistenceContext(unitName = "SGC_UNIT")
 	private EntityManager em;
 	
 

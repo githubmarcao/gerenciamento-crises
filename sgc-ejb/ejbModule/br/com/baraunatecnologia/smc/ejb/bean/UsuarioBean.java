@@ -18,7 +18,7 @@ import br.com.baraunatecnologia.smc.ejb.interfaces.IUsuarioRemote;
 @Stateless
 public class UsuarioBean implements IUsuarioRemote, IUsuarioLocal {
 
-	@PersistenceContext(unitName = "SMC_UNIT")
+	@PersistenceContext(unitName = "SGC_UNIT")
 	private EntityManager em;
 
 

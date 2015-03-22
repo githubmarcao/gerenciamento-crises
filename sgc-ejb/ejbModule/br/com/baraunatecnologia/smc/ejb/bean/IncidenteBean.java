@@ -19,7 +19,7 @@ import br.com.baraunatecnologia.smc.ejb.interfaces.IIncidenteRemote;
 @Stateless
 public class IncidenteBean implements IIncidenteRemote, IIncidenteLocal {
 
-	@PersistenceContext(unitName = "SMC_UNIT")
+	@PersistenceContext(unitName = "SGC_UNIT")
 	private EntityManager em;
 	
 

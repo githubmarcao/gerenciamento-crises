@@ -34,29 +34,21 @@ public class Mensagem implements Serializable {
 	@OneToOne
 	private Usuario usuarioEnvio;
 
-	@JoinColumn(name = "id_usuario_recebido", referencedColumnName = "id")
+	@JoinColumn(name = "id_mensagem_usuario_recebido", referencedColumnName = "id", nullable = true)
 	@OneToOne
-	private Usuario usuarioRecebido;
+	private MensagemUsuario mensagemUsuarioRecebido;
 
-	@JoinColumn(name = "id_grupo_recebido", referencedColumnName = "id")
+	@JoinColumn(name = "id_mensagem_grupo_usuario_recebido", referencedColumnName = "id", nullable = true)
 	@OneToOne
-	private GrupoUsuario grupoRecebido;
+	private MensagemGrupoUsuario mensagemGrupoUsuarioRecebido;
 
 	@Basic(optional = false)
 	@Column(name = "mensagem")
 	private String mensagem;
 
 	@Basic(optional = false)
-	@Column(name = "recebido")
-	private Boolean recebido;
-
-	@Basic(optional = false)
 	@Column(name = "horario_envio")
 	private Date horarioEnvio;
-
-	@Basic(optional = false)
-	@Column(name = "horario_recebido")
-	private Date horarioRecebido;
 
 	public Mensagem() {
 	}
@@ -81,20 +73,20 @@ public class Mensagem implements Serializable {
 		this.usuarioEnvio = usuarioEnvio;
 	}
 
-	public Usuario getUsuarioRecebido() {
-		return usuarioRecebido;
+	public MensagemUsuario getMensagemUsuarioRecebido() {
+		return mensagemUsuarioRecebido;
 	}
 
-	public void setUsuarioRecebido(Usuario usuarioRecebido) {
-		this.usuarioRecebido = usuarioRecebido;
+	public void setMensagemUsuarioRecebido(MensagemUsuario mensagemUsuarioRecebido) {
+		this.mensagemUsuarioRecebido = mensagemUsuarioRecebido;
 	}
 
-	public GrupoUsuario getGrupoRecebido() {
-		return grupoRecebido;
+	public MensagemGrupoUsuario getMensagemGrupoUsuarioRecebido() {
+		return mensagemGrupoUsuarioRecebido;
 	}
 
-	public void setGrupoRecebido(GrupoUsuario grupoRecebido) {
-		this.grupoRecebido = grupoRecebido;
+	public void setMensagemGrupoUsuarioRecebido(MensagemGrupoUsuario mensagemGrupoRecebido) {
+		this.mensagemGrupoUsuarioRecebido = mensagemGrupoRecebido;
 	}
 
 	public String getMensagem() {
@@ -105,28 +97,12 @@ public class Mensagem implements Serializable {
 		this.mensagem = mensagem;
 	}
 
-	public Boolean getRecebido() {
-		return recebido;
-	}
-
-	public void setRecebido(Boolean recebido) {
-		this.recebido = recebido;
-	}
-
 	public Date getHorarioEnvio() {
 		return horarioEnvio;
 	}
 
 	public void setHorarioEnvio(Date horarioEnvio) {
 		this.horarioEnvio = horarioEnvio;
-	}
-
-	public Date getHorarioRecebido() {
-		return horarioRecebido;
-	}
-
-	public void setHorarioRecebido(Date horarioRecebido) {
-		this.horarioRecebido = horarioRecebido;
 	}
 
 	@Override
@@ -154,9 +130,9 @@ public class Mensagem implements Serializable {
 	@Override
 	public String toString() {
 		return "Mensagem [id=" + id + ", usuarioEnvio=" + usuarioEnvio
-				+ ", usuarioRecebido=" + usuarioRecebido + ", grupoRecebido="
-				+ grupoRecebido + ", mensagem=" + mensagem + ", recebido="
-				+ recebido + ", horarioEnvio=" + horarioEnvio
-				+ ", horarioRecebido=" + horarioRecebido + "]";
+				+ ", mensagemUsuarioRecebido=" + mensagemUsuarioRecebido
+				+ ", mensagemGrupoRecebido=" + mensagemGrupoUsuarioRecebido
+				+ ", mensagem=" + mensagem + ", horarioEnvio=" + horarioEnvio
+				+ "]";
 	}
 }

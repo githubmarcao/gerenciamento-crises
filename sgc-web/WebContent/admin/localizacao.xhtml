@@ -1,4 +1,4 @@
-<ui:composition template="template.xhtml"
+ï»¿<ui:composition template="template.xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -11,10 +11,10 @@
       	<h:inputHidden value="#{localizacaoMB.localizacao.id}"/>
 		<p:panelGrid  columns="2" style="margin-top:60px;margin-left:100px">
 			<f:facet name="header">
-               Cadastrar Localização
+               Cadastrar LocalizaÃ§Ã£o
            </f:facet>
 
-			<h:outputLabel for="nome" value="Usuário: *" />
+			<h:outputLabel for="nome" value="Usuario: *" />
 			<p:selectOneMenu id="nome" value="#{localizacaoMB.localizacao.usuario.id}" required="true" label="Nome" >
 				<f:selectItem itemLabel="Selecione" itemValue="" />
 				<f:selectItems value="#{localizacaoMB.usuarios}" var="nome" itemLabel="#{nome.nome}" itemValue="#{nome.id}" />                        
@@ -26,8 +26,8 @@
 			<h:outputLabel for="longitude" value="Longitude: *" />
 			<p:inputText id="longitude" value="#{localizacaoMB.localizacao.longitude}" label="Longitude" required="true" />
 
-			<h:outputLabel for="horario" value="Horário: " />
-			<p:inputText id="horario" value="#{localizacaoMB.localizacao.horario}" label="Horário" required="false" />
+			<h:outputLabel for="horario" value="Horario: " />
+			<p:inputText id="horario" value="#{localizacaoMB.localizacao.horario}" label="Horario" required="false" />
 
 			<f:facet name="footer">
 				<p:commandButton update="msg" value="Salvar" action="#{localizacaoMB.inserirEditar}" icon="ui-icon-check" style="margin:0"/>

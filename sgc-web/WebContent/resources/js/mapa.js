@@ -34,7 +34,7 @@ function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPosition, showError);
 	} else {
-		alert("GeolocalizaÁ„o n„o È suportada nesse browser.");
+		alert("Geolocaliza√ß√£o n√£o √© suportada nesse browser.");
 	}
 }
 
@@ -66,7 +66,7 @@ function showPosition(position) {
 function usuariosIncidentes(json) {
 	// Caso venha vazio nao faz nada
 	if (json == null || json == '') {
-		x.innerHTML = "Nenhum usu·rio carregado.";
+		x.innerHTML = "Nenhum usu√°rio carregado.";
 		return;
 	} else {
 		x.innerHTML = "";
@@ -225,7 +225,7 @@ function addMarkerUsuario(location, i, icone, idUsuario, idGrupo, nomeGrupo, nom
 function caminhoUsuario(json) {
 	// Caso venha vazio nao faz nada
 	if (json == null || json == '') {
-		x.innerHTML = "Caminho do usu·rio n„o carregado.";
+		x.innerHTML = "Caminho do usu√°rio n√£o carregado.";
 		return;
 	} else {
 		x.innerHTML = "";
@@ -346,13 +346,13 @@ function addMarkerCaminhoUsuario(location, i, icone, idUsuario, nomeUsuario, tit
 function showError(error) {
 	switch (error.code) {
 		case error.PERMISSION_DENIED:
-			x.innerHTML = "Usu·rio rejeitou a solicitaÁ„o de GeolocalizaÁ„o.";
+			x.innerHTML = "Usu√°rio rejeitou a solicita√ß√£o de Geolocaliza√ß√£o.";
 			break;
 		case error.POSITION_UNAVAILABLE:
-			x.innerHTML = "LocalizaÁ„o indisponÌvel.";
+			x.innerHTML = "Localiza√ß√£o indispon√≠vel.";
 			break;
 		case error.TIMEOUT:
-			x.innerHTML = "O tempo da requisiÁ„o expirou.";
+			x.innerHTML = "O tempo da requisi√ß√£o expirou.";
 			break;
 		case error.UNKNOWN_ERROR:
 			x.innerHTML = "Algum erro desconhecido aconteceu.";

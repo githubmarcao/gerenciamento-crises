@@ -18,7 +18,7 @@ import br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoUsuarioRemote;
 @Stateless
 public class GrupoUsuarioBean implements IGrupoUsuarioRemote, IGrupoUsuarioLocal {
 
-	@PersistenceContext(unitName = "SMC_UNIT")
+	@PersistenceContext(unitName = "SGC_UNIT")
 	private EntityManager em;
 	
 
