@@ -9,6 +9,8 @@ import javax.faces.bean.RequestScoped;
 
 import br.com.baraunatecnologia.smc.ejb.entity.GrupoUsuario;
 import br.com.baraunatecnologia.smc.ejb.entity.Mensagem;
+import br.com.baraunatecnologia.smc.ejb.entity.MensagemGrupoUsuario;
+import br.com.baraunatecnologia.smc.ejb.entity.MensagemUsuario;
 import br.com.baraunatecnologia.smc.ejb.entity.Usuario;
 import br.com.baraunatecnologia.smc.ejb.exception.NegocioException;
 import br.com.baraunatecnologia.smc.ejb.interfaces.IGrupoUsuarioLocal;
@@ -31,20 +33,18 @@ public class MensagemMB {
 
 	private List<Mensagem> mensagens;
 
-	private List<Usuario> usuarios;
-
-	private List<GrupoUsuario> grupos;
-
 
 	@PostConstruct
 	public void init(){
 		mensagem = new Mensagem();
 		mensagem.setUsuarioEnvio(new Usuario());
-//		mensagem.setUsuarioRecebido(new Usuario());
-//		mensagem.setGrupoRecebido(new GrupoUsuario());
+		MensagemUsuario msgUsuario = new MensagemUsuario();
+		msgUsuario.setUsuarioRecebido(new Usuario());
+		mensagem.setMensagemUsuarioRecebido(msgUsuario);
+		MensagemGrupoUsuario msgGrupoUsuario = new MensagemGrupoUsuario();
+		msgGrupoUsuario.setGrupoUsuarioRecebido(new GrupoUsuario());
+		mensagem.setMensagemGrupoUsuarioRecebido(msgGrupoUsuario);
 		carregarMensagens();
-		carregarUsuarios();
-		carregarGrupoUsuarios();
 	}
 
 	public Mensagem getMensagem() {
@@ -61,22 +61,6 @@ public class MensagemMB {
 
 	public void setMensagens(List<Mensagem> mensagens) {
 		this.mensagens = mensagens;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-
-	public List<GrupoUsuario> getGrupos() {
-		return grupos;
-	}
-
-	public void setGrupos(List<GrupoUsuario> grupos) {
-		this.grupos = grupos;
 	}
 
 	public String inserirEditar() {
@@ -144,26 +128,6 @@ public class MensagemMB {
 			return null;
 		}
 		return "listarMensagens";
-	}
-
-	public List<Usuario> carregarUsuarios() {
-		try {
-			usuarios = usuarioLocal.listar();
-		} catch (NegocioException e) {
-			JSFUtil.addErrorMessage(e.getMessage());
-			return null;
-		}
-		return usuarios;
-	}
-
-	public List<GrupoUsuario> carregarGrupoUsuarios() {
-		try {
-			grupos = grupoUsuarioLocal.listar();
-		} catch (NegocioException e) {
-			JSFUtil.addErrorMessage(e.getMessage());
-			return null;
-		}
-		return grupos;
 	}
 
 }
