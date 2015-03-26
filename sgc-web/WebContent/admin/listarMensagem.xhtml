@@ -21,12 +21,12 @@
 					<h:outputText value="#{mensagem.usuarioEnvio.nome}" />
 				</p:column>
 
-				<p:column headerText="Usuario destinatario" >
-					<h:outputText value="#{mensagem.usuarioRecebido.nome}" />
+				<p:column headerText="Usuario destinatario" rendered="#{not empty mensagem.mensagemUsuarioRecebido}" >
+					<h:outputText value="#{mensagem.mensagemUsuarioRecebido.nome}" />
 				</p:column>
 
-				<p:column headerText="Grupo destinatario" >
-					<h:outputText value="#{mensagem.grupoRecebido.nome}" />
+				<p:column headerText="Grupo destinatario" rendered="#{not empty mensagem.mensagemGrupoUsuarioRecebido}" >
+					<h:outputText value="#{mensagem.mensagemGrupoUsuarioRecebido.nome}" />
 				</p:column>
 
 				<p:column headerText="Mensagem">
@@ -37,12 +37,20 @@
 					<h:outputText value="#{mensagem.horarioEnvio}" />
 				</p:column>
 
-				<p:column headerText="Recebido?">
-					<h:outputText value="#{mensagem.recebido}" />
+				<p:column headerText="Recebido?" rendered="#{not empty mensagem.mensagemUsuarioRecebido}" >
+					<h:outputText value="#{mensagem.mensagemUsuarioRecebido.recebido}" />
 				</p:column>
 
-				<p:column headerText="Horario Recebido" rendered="#{mensagem.recebido eq true}">
-					<h:outputText value="#{mensagem.horarioRecebido}" />
+				<p:column headerText="Recebido?" rendered="#{not empty mensagem.mensagemGrupoUsuarioRecebido}" >
+					<h:outputText value="#{mensagem.mensagemGrupoUsuarioRecebido.recebido}" />
+				</p:column>
+
+				<p:column headerText="Horario Recebido" rendered="#{not empty mensagem.mensagemUsuarioRecebido and mensagem.mensagemGrupoUsuarioRecebido.recebido eq true}" >
+					<h:outputText value="#{mensagem.mensagemUsuarioRecebido.horarioRecebido}" />
+				</p:column>
+
+				<p:column headerText="Horario Recebido" rendered="#{not empty mensagem.mensagemGrupoUsuarioRecebido and mensagem.mensagemGrupoUsuarioRecebido.recebido eq true}" >
+					<h:outputText value="#{mensagem.mensagemGrupoUsuarioRecebido.horarioRecebido}" />
 				</p:column>
 
 				<p:column headerText="Alterar" style="width:40px">

@@ -30,6 +30,8 @@ public class MensagemMB {
 	private IGrupoUsuarioLocal grupoUsuarioLocal;
 
 	private Mensagem mensagem;
+	private MensagemUsuario mensagemUsuario;
+	private MensagemGrupoUsuario mensagemGrupoUsuario;
 
 	private List<Mensagem> mensagens;
 
@@ -38,12 +40,10 @@ public class MensagemMB {
 	public void init(){
 		mensagem = new Mensagem();
 		mensagem.setUsuarioEnvio(new Usuario());
-		MensagemUsuario msgUsuario = new MensagemUsuario();
-		msgUsuario.setUsuarioRecebido(new Usuario());
-		mensagem.setMensagemUsuarioRecebido(msgUsuario);
-		MensagemGrupoUsuario msgGrupoUsuario = new MensagemGrupoUsuario();
-		msgGrupoUsuario.setGrupoUsuarioRecebido(new GrupoUsuario());
-		mensagem.setMensagemGrupoUsuarioRecebido(msgGrupoUsuario);
+		mensagemUsuario = new MensagemUsuario();
+		mensagemUsuario.setUsuarioRecebido(new Usuario());
+		mensagemGrupoUsuario = new MensagemGrupoUsuario();
+		mensagemGrupoUsuario.setGrupoUsuarioRecebido(new GrupoUsuario());
 		carregarMensagens();
 	}
 
@@ -53,6 +53,22 @@ public class MensagemMB {
 
 	public void setMensagem(Mensagem mensagem) {
 		this.mensagem = mensagem;
+	}
+
+	public MensagemUsuario getMensagemUsuario() {
+		return mensagemUsuario;
+	}
+
+	public void setMensagemUsuario(MensagemUsuario mensagemUsuario) {
+		this.mensagemUsuario = mensagemUsuario;
+	}
+
+	public MensagemGrupoUsuario getMensagemGrupoUsuario() {
+		return mensagemGrupoUsuario;
+	}
+
+	public void setMensagemGrupoUsuario(MensagemGrupoUsuario mensagemGrupoUsuario) {
+		this.mensagemGrupoUsuario = mensagemGrupoUsuario;
 	}
 
 	public List<Mensagem> getMensagens() {
@@ -66,14 +82,7 @@ public class MensagemMB {
 	public String inserirEditar() {
 
 		try {
-//			if ((mensagem.getUsuarioRecebido() == null || mensagem
-//					.getUsuarioRecebido().getId() == 0)
-//					&& (mensagem.getGrupoRecebido() == null || mensagem
-//							.getGrupoRecebido().getId() == 0)) {
-//				JSFUtil.addErrorMessage("Selecione um usuário ou um grupo para receber a mensagem.");
-//				return null;				
-//			}
-			mensagemLocal.inserirEditar(mensagem);
+			mensagemLocal.inserirEditar(mensagem, mensagemUsuario, mensagemGrupoUsuario);
 			JSFUtil.addInfoMessage("Registro salvo com sucesso!");
 		} catch (NegocioException e) {
 			JSFUtil.addErrorMessage(e.getMessage());
