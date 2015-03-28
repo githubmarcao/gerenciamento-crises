@@ -29,7 +29,8 @@ public class MensagemBean implements IMensagemRemote, IMensagemLocal {
 
 	@Override
 	public Mensagem inserirEditar(Mensagem mensagem) throws NegocioException {
-		return new MensagemDAO(em).inserirEditar(mensagem);
+		// return new MensagemDAO(em).inserirEditar(mensagem);
+		throw new NegocioException("Nao e possivel inserir mensagem sem um destinatario.");
 	}
 
 	public Mensagem inserirEditar(Mensagem mensagem, MensagemUsuario mensagemUsuario, MensagemGrupoUsuario mensagemGrupoUsuario) throws NegocioException {
@@ -76,17 +77,45 @@ public class MensagemBean implements IMensagemRemote, IMensagemLocal {
 	}
 
 	@Override
-	public void deletar(Mensagem mensagem) throws NegocioException {	
+	public void deletar(Mensagem mensagem) throws NegocioException {
+		MensagemUsuario mensagemUsuario = new MensagemUsuarioDAO(em).buscarPorMensagem(mensagem.getId());
+		MensagemGrupoUsuario mensagemGrupoUsuario = new MensagemGrupoUsuarioDAO(em).buscarPorMensagem(mensagem.getId());
+
+		if (mensagemUsuario != null) {
+			new MensagemUsuarioDAO(em).deletar(mensagemUsuario);
+		}
+		if (mensagemGrupoUsuario != null) {
+			new MensagemGrupoUsuarioDAO(em).deletar(mensagemGrupoUsuario);
+		}
+
 		new MensagemDAO(em).deletar(mensagem);
 	}
 
 	@Override
 	public Mensagem buscar(Integer id) {
-		return new MensagemDAO(em).buscar(id);
+		Mensagem retorno = new MensagemDAO(em).buscar(id);
+
+		MensagemUsuario mensagemUsuario = new MensagemUsuarioDAO(em).buscarPorMensagem(id);
+		MensagemGrupoUsuario mensagemGrupoUsuario = new MensagemGrupoUsuarioDAO(em).buscarPorMensagem(id);
+
+		retorno.setMensagemUsuarioRecebido(mensagemUsuario);
+		retorno.setMensagemGrupoUsuarioRecebido(mensagemGrupoUsuario);
+
+		return retorno;
 	}
 
 	@Override
 	public List<Mensagem> listar() {
-		return new MensagemDAO(em).listar();
+		List<Mensagem> retorno = new MensagemDAO(em).listar();
+
+		MensagemUsuarioDAO mensagemUsuarioDAO = new MensagemUsuarioDAO(em);
+		MensagemGrupoUsuarioDAO mensagemGrupoUsuarioDAO = new MensagemGrupoUsuarioDAO(em);
+
+		for (Mensagem mensagem : retorno) {
+			mensagem.setMensagemUsuarioRecebido(mensagemUsuarioDAO.buscarPorMensagem(mensagem.getId()));
+			mensagem.setMensagemGrupoUsuarioRecebido(mensagemGrupoUsuarioDAO.buscarPorMensagem(mensagem.getId()));
+		}
+
+		return retorno;
 	}
 }
