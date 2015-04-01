@@ -7,8 +7,6 @@
     xmlns:p="http://primefaces.org/ui"
 	>
 	<h:head>
-		<!-- JQuery -->
-		<script src="resources/js/jquery-1.11.1.js"></script>
 		<!-- Maps API Javascript -->
 		<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
@@ -17,6 +15,14 @@
 <h:body onload="usuariosIncidentes('#{usuarioIncidenteMB.situacaoAtual}');">
 	<h:form id="mapform">
 		<p id="demo"/>
+		
+		<p:commandButton value="Modal" type="button" onclick="PF('dlg2').show();" />
+		
+		<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+		    <h:outputText value="This is a Modal Dialog." />
+		</p:dialog>
+		
+		
 		Data Início:
 	    <h:inputText id="dataInicio"
 			value="#{usuarioIncidenteMB.dataInicio}" maxlength="19" size="19"
