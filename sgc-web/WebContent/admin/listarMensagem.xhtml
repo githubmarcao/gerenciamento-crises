@@ -1,4 +1,3 @@
-
 <ui:composition template="template.xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -35,24 +34,30 @@
 						rendered="#{not empty mensagem.mensagemUsuarioRecebido}" />
 				</p:column>
 
+				<p:column headerText="Usuario Receb.?" >
+					<h:outputText value="#{mensagem.mensagemUsuarioRecebido.recebido}"
+						rendered="#{not empty mensagem.mensagemUsuarioRecebido}" />
+				</p:column>
+
+				<p:column headerText="Usuario Hora Receb." >
+					<h:outputText
+						value="#{mensagem.mensagemUsuarioRecebido.horarioRecebido}"
+						rendered="#{not empty mensagem.mensagemUsuarioRecebido and mensagem.mensagemGrupoUsuarioRecebido.recebido eq true}" />
+				</p:column>
+
 				<p:column headerText="Grupo destinatario" >
 					<h:outputText
 						value="#{mensagem.mensagemGrupoUsuarioRecebido.grupoUsuarioRecebido.nome}"
 						rendered="#{not empty mensagem.mensagemGrupoUsuarioRecebido}" />
 				</p:column>
 
-				<p:column headerText="Recebido?" >
-					<h:outputText value="#{mensagem.mensagemUsuarioRecebido.recebido}"
-						rendered="#{not empty mensagem.mensagemUsuarioRecebido}" />
+				<p:column headerText="Grupo Receb.?" >
 					<h:outputText
 						value="#{mensagem.mensagemGrupoUsuarioRecebido.recebido}"
 						rendered="#{not empty mensagem.mensagemGrupoUsuarioRecebido}" />
 				</p:column>
 
-				<p:column headerText="Horario Recebido" >
-					<h:outputText
-						value="#{mensagem.mensagemUsuarioRecebido.horarioRecebido}"
-						rendered="#{not empty mensagem.mensagemUsuarioRecebido and mensagem.mensagemGrupoUsuarioRecebido.recebido eq true}" />
+				<p:column headerText="Grupo Hora Receb." >
 					<h:outputText
 						value="#{mensagem.mensagemGrupoUsuarioRecebido.horarioRecebido}"
 						rendered="#{not empty mensagem.mensagemGrupoUsuarioRecebido and mensagem.mensagemGrupoUsuarioRecebido.recebido eq true}" />

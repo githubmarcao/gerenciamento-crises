@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 import br.com.baraunatecnologia.smc.ejb.entity.GrupoUsuario;
@@ -21,6 +22,10 @@ import br.com.baraunatecnologia.web.jsf.util.JSFUtil;
 @ManagedBean
 @RequestScoped
 public class MensagemMB {
+
+	@ManagedProperty("#{param.usuarioEnvioId}")
+	private Integer usuarioEnvioId;
+
 	@EJB
 	private IMensagemLocal mensagemLocal;
 
@@ -45,6 +50,14 @@ public class MensagemMB {
 		mensagemGrupoUsuario = new MensagemGrupoUsuario();
 		mensagemGrupoUsuario.setGrupoUsuarioRecebido(new GrupoUsuario());
 		carregarMensagens();
+	}
+
+	public Integer getUsuarioEnvioId() {
+		return usuarioEnvioId;
+	}
+
+	public void setUsuarioEnvioId(Integer usuarioEnvioId) {
+		this.usuarioEnvioId = usuarioEnvioId;
 	}
 
 	public Mensagem getMensagem() {
@@ -82,6 +95,7 @@ public class MensagemMB {
 	public String inserirEditar() {
 
 		try {
+//			mensagem.getUsuarioEnvio().setId(usuarioEnvioId);
 			mensagemLocal.inserirEditar(mensagem, mensagemUsuario, mensagemGrupoUsuario);
 			JSFUtil.addInfoMessage("Registro salvo com sucesso!");
 		} catch (NegocioException e) {
@@ -114,12 +128,16 @@ public class MensagemMB {
 				return null;
 			}
 
-//			if (mensagem.getUsuarioRecebido() == null) {
-//				mensagem.setUsuarioRecebido(new Usuario());
-//			}
-//			if (mensagem.getGrupoRecebido() == null) {
-//				mensagem.setGrupoRecebido(new GrupoUsuario());
-//			}
+			if (mensagem.getMensagemUsuarioRecebido() == null) {
+				mensagem.setMensagemUsuarioRecebido(new MensagemUsuario());
+			} else {
+				mensagemUsuario = mensagem.getMensagemUsuarioRecebido();
+			}
+			if (mensagem.getMensagemGrupoUsuarioRecebido() == null) {
+				mensagem.setMensagemGrupoUsuarioRecebido(new MensagemGrupoUsuario());
+			} else {
+				mensagemGrupoUsuario = mensagem.getMensagemGrupoUsuarioRecebido();
+			}
 
 		} catch (NegocioException e) {
 			JSFUtil.addErrorMessage(e.getMessage());

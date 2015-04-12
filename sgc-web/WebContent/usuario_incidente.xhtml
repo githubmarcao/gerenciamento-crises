@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -17,9 +17,10 @@
 		<p id="demo"/>
 		
 		<p:commandButton value="Modal" type="button" onclick="PF('dlg2').show();" />
-		
-		<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+
+		<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="350">
 		    <h:outputText value="This is a Modal Dialog." />
+		    <ui:include src="/admin/mensagem_template.xhtml" />
 		</p:dialog>
 		
 		

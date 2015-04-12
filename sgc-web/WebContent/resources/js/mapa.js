@@ -200,21 +200,31 @@ function addMarkerUsuario(location, i, icone, idUsuario, idGrupo, nomeGrupo, nom
 	// Remover informacao do marcador ao retirar o mouse de cima
 	google.maps.event.addListener(marker, 'mouseout', (function(marker, i) {
 		return function() {
-			infowindow.close(map, marker);
+			//infowindow.close(map, marker);
 		};
 	})(marker, i));
 
 	// Evento de clicar
 	google.maps.event.addListener(marker, 'click', (function(marker, i) {
 		return function() {
-			if (confirm("Deseja rastrear '" + nomeUsuario + "' ?")) {
-				window.location = paginaCaminhoUsuario + "?idUsuario=" + idUsuario;
-			}
+			infowindow = new google.maps.InfoWindow();
+			infowindow.setContent(
+					"<div style='width:110px;height:35px;'>" +
+					"<button id='mapform:j_idt6' name='mapform:j_idt6' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' onclick='PF(\"dlg2\").show();;' type='button' role='button' aria-disabled='false'>" +
+						"<span class='ui-button-text ui-c'>Mensagem</span>" +
+					"</button>" +
+					"</div>");
+			infowindow.open(map, marker);
+
+//			if (confirm("Deseja rastrear '" + nomeUsuario + "' ?")) {
+//				window.location = paginaCaminhoUsuario + "?idUsuario=" + idUsuario;
+//			}
 		};
 	})(marker, i));
 
 	// Botao direito do mouse
 	google.maps.event.addListener(marker, 'rightclick', function() {
+		infowindow = new google.maps.InfoWindow();
 		infowindow.setContent("<div style='width:100px'>rightclick</div>");
 		infowindow.open(map, marker);
 	});
