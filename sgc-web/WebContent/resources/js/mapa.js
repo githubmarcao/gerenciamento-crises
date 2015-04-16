@@ -89,7 +89,6 @@ function usuariosIncidentes(json) {
 
 	// Create a Map Object
 	map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-	infowindow = new google.maps.InfoWindow();
 	bounds = new google.maps.LatLngBounds(); //centralizar automaticamente o mapa
 
 	var parsedJSON = $.parseJSON(json);
@@ -200,25 +199,26 @@ function addMarkerUsuario(location, i, icone, idUsuario, idGrupo, nomeGrupo, nom
 	// Remover informacao do marcador ao retirar o mouse de cima
 	google.maps.event.addListener(marker, 'mouseout', (function(marker, i) {
 		return function() {
-			//infowindow.close(map, marker);
+			infowindow.close(map, marker);
 		};
 	})(marker, i));
 
 	// Evento de clicar
 	google.maps.event.addListener(marker, 'click', (function(marker, i) {
 		return function() {
-			infowindow = new google.maps.InfoWindow();
-			infowindow.setContent(
-					"<div style='width:110px;height:35px;'>" +
-					"<button id='mapform:j_idt6' name='mapform:j_idt6' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' onclick='PF(\"dlg2\").show();;' type='button' role='button' aria-disabled='false'>" +
-						"<span class='ui-button-text ui-c'>Mensagem</span>" +
-					"</button>" +
+			var infowindowClick = new google.maps.InfoWindow();
+			infowindowClick.setContent(
+					"<div style='width:160px;height:60px;text-align:center;'>" +
+						"<button id='mapform:j_idt6' name='mapform:j_idt6' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' onclick='PF(\"dlg2\").show();' type='button' role='button' aria-disabled='false'>" +
+							"<span class='ui-button-text ui-c'>Enviar Mensagem</span>" +
+						"</button>" +
+						"</br>" +
+						// TODO colocar o painel aqui e nao na pagina principal, para poder ir o numero o usuario recebido com o click
+						"<button id='mapform:j_idt6' name='mapform:j_idt6' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' onclick='confirmarRastreioUsuario("+idUsuario+", \""+nomeUsuario+"\", \""+paginaCaminhoUsuario+"\");' type='button' role='button' aria-disabled='false'>" +
+							"<span class='ui-button-text ui-c'>Rastreiar Usuario</span>" +
+						"</button>" +
 					"</div>");
-			infowindow.open(map, marker);
-
-//			if (confirm("Deseja rastrear '" + nomeUsuario + "' ?")) {
-//				window.location = paginaCaminhoUsuario + "?idUsuario=" + idUsuario;
-//			}
+			infowindowClick.open(map, marker);
 		};
 	})(marker, i));
 
@@ -230,6 +230,12 @@ function addMarkerUsuario(location, i, icone, idUsuario, idGrupo, nomeGrupo, nom
 	});
 
 	markers.push(marker);
+}
+
+function confirmarRastreioUsuario(idUsuario, nomeUsuario, paginaCaminhoUsuario) {
+	if (confirm("Deseja rastrear '" + nomeUsuario + "' ?")) {
+		window.location = paginaCaminhoUsuario + "?idUsuario=" + idUsuario;
+	}
 }
 
 function caminhoUsuario(json) {
@@ -258,7 +264,6 @@ function caminhoUsuario(json) {
 
 	// Create a Map Object
 	map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-	infowindow = new google.maps.InfoWindow();
 
 	// Relacionamos o directionsDisplay com o mapa desejado
 	directionsDisplay.setMap(map);

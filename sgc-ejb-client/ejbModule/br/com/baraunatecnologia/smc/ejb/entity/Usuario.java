@@ -22,6 +22,8 @@ import javax.persistence.Table;
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public static final Integer USUARIO_ADMINISTRADOR = 1;
+
     @Id
 	@SequenceGenerator(name = "seq_usuario", sequenceName = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")

@@ -3,6 +3,10 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
+	<f:metadata>
+	  <f:event type="preRenderView" listener="#{mensagemMB.initializeUsuarioRecebido(usuarioRecebidoId)}"/>
+	</f:metadata>
+
 	<h:form>
 		<h:inputHidden value="#{mensagemMB.mensagem.id}" />
 		<p:panelGrid columns="2" >
@@ -10,28 +14,34 @@
                Cadastrar Mensagem
            </f:facet>
 
-			<h:outputLabel for="usuarioEnvio" value="Usuario envio: *" />
+			<h:outputLabel for="usuarioEnvio" value="Usuario envio: *"
+				rendered="#{empty usuarioRecebidoId}" />
 			<p:selectOneMenu id="usuarioEnvio"
 				value="#{mensagemMB.mensagem.usuarioEnvio.id}" required="true"
-				label="Usuario Envio">
+				label="Usuario Envio"
+				rendered="#{empty usuarioRecebidoId}">
 				<f:selectItem itemLabel="Selecione" itemValue="" />
 				<f:selectItems value="#{usuarioMB.usuarios}" var="nome"
 					itemLabel="#{nome.nome}" itemValue="#{nome.id}" />
 			</p:selectOneMenu>
 
-			<h:outputLabel for="usuarioRecebido" value="Usuario recebido: " />
+			<h:outputLabel for="usuarioRecebido" value="Enviar p/ Usuario: "
+				rendered="#{empty usuarioRecebidoId}" />
 			<p:selectOneMenu id="usuarioRecebido"
 				value="#{mensagemMB.mensagemUsuario.usuarioRecebido.id}"
-				required="false" label="Usuario Recebido">
+				required="false" label="Usuario Recebido"
+				rendered="#{empty usuarioRecebidoId}">
 				<f:selectItem itemLabel="Selecione" itemValue="" />
 				<f:selectItems value="#{usuarioMB.usuarios}" var="nome"
 					itemLabel="#{nome.nome}" itemValue="#{nome.id}" />
 			</p:selectOneMenu>
 
-			<h:outputLabel for="grupoRecebido" value="Grupo recebido: " />
+			<h:outputLabel for="grupoRecebido" value="Enviar p/ Grupo: "
+				rendered="#{empty usuarioRecebidoId}" />
 			<p:selectOneMenu id="grupoRecebido"
 				value="#{mensagemMB.mensagemGrupoUsuario.grupoUsuarioRecebido.id}"
-				required="false" label="Grupo Recebido">
+				required="false" label="Grupo Recebido"
+				rendered="#{empty usuarioRecebidoId}">
 				<f:selectItem itemLabel="Selecione" itemValue="" />
 				<f:selectItems value="#{grupoUsuarioMB.gruposUsuario}" var="nome"
 					itemLabel="#{nome.nome}" itemValue="#{nome.id}" />

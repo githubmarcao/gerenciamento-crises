@@ -18,9 +18,15 @@
 		
 		<p:commandButton value="Modal" type="button" onclick="PF('dlg2').show();" />
 
+		<ui:remove>
+			<!-- TODO colocar o painel no mapa.js e nao aqui, para poder ir o numero o usuario recebido como parametro -->
+		</ui:remove>
+
 		<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="350">
 		    <h:outputText value="This is a Modal Dialog." />
-		    <ui:include src="/admin/mensagem_template.xhtml" />
+		    <ui:include src="/admin/mensagem_template.xhtml">
+		    	<ui:param name="usuarioRecebidoId" value="1" />
+		    </ui:include>
 		</p:dialog>
 		
 		

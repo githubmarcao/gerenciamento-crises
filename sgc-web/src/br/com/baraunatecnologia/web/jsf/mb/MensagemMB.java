@@ -5,7 +5,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 import br.com.baraunatecnologia.smc.ejb.entity.GrupoUsuario;
@@ -22,9 +21,6 @@ import br.com.baraunatecnologia.web.jsf.util.JSFUtil;
 @ManagedBean
 @RequestScoped
 public class MensagemMB {
-
-	@ManagedProperty("#{param.usuarioEnvioId}")
-	private Integer usuarioEnvioId;
 
 	@EJB
 	private IMensagemLocal mensagemLocal;
@@ -52,12 +48,13 @@ public class MensagemMB {
 		carregarMensagens();
 	}
 
-	public Integer getUsuarioEnvioId() {
-		return usuarioEnvioId;
-	}
-
-	public void setUsuarioEnvioId(Integer usuarioEnvioId) {
-		this.usuarioEnvioId = usuarioEnvioId;
+	@PostConstruct
+	public void initializeUsuarioRecebido(Integer usuarioRecebidoId) {
+		if (usuarioRecebidoId != null && usuarioRecebidoId > 0) {
+			mensagem.getUsuarioEnvio().setId(Usuario.USUARIO_ADMINISTRADOR);
+			mensagemUsuario.getUsuarioRecebido().setId(usuarioRecebidoId);
+			mensagemGrupoUsuario.getGrupoUsuarioRecebido().setId(null); // Limpar para nao enviar mensagem para o grupo
+		}
 	}
 
 	public Mensagem getMensagem() {
