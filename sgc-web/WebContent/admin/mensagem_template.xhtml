@@ -3,10 +3,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-	<f:metadata>
-	  <f:event type="preRenderView" listener="#{mensagemMB.initializeUsuarioRecebido(usuarioRecebidoId)}"/>
-	</f:metadata>
-
 	<h:form>
 		<h:inputHidden value="#{mensagemMB.mensagem.id}" />
 		<p:panelGrid columns="2" >
@@ -55,7 +51,8 @@
 			<f:facet name="footer">
 				<p:commandButton update="msg" value="Salvar"
 					action="#{mensagemMB.inserirEditar}" icon="ui-icon-check"
-					style="margin:0" />
+					style="margin:0" 
+					onclick="PF('dlg2').hide();"/>
 				<p:messages id="msg" />
 			</f:facet>
 		</p:panelGrid>

@@ -253,3 +253,13 @@ function toJavascriptArray(string) {
 	}
 	return new Array();
 }
+
+function getValorInputPorId(id) {
+	return document.getElementById(id).value;
+}
+
+function setValorInputPorId(id, valor) {
+	//alert('setValorInputPorId, id: '+id+', valor: '+valor);
+	document.getElementById(id).value = valor;
+	//alert('valor: '+document.getElementById(id).value);
+}

@@ -36,6 +36,8 @@ public class MensagemMB {
 
 	private List<Mensagem> mensagens;
 
+	private Integer usuarioRecebidoId; // Usuario que ira receber a mensagem do centro de comando
+
 
 	@PostConstruct
 	public void init(){
@@ -46,15 +48,6 @@ public class MensagemMB {
 		mensagemGrupoUsuario = new MensagemGrupoUsuario();
 		mensagemGrupoUsuario.setGrupoUsuarioRecebido(new GrupoUsuario());
 		carregarMensagens();
-	}
-
-	@PostConstruct
-	public void initializeUsuarioRecebido(Integer usuarioRecebidoId) {
-		if (usuarioRecebidoId != null && usuarioRecebidoId > 0) {
-			mensagem.getUsuarioEnvio().setId(Usuario.USUARIO_ADMINISTRADOR);
-			mensagemUsuario.getUsuarioRecebido().setId(usuarioRecebidoId);
-			mensagemGrupoUsuario.getGrupoUsuarioRecebido().setId(null); // Limpar para nao enviar mensagem para o grupo
-		}
 	}
 
 	public Mensagem getMensagem() {
@@ -89,10 +82,22 @@ public class MensagemMB {
 		this.mensagens = mensagens;
 	}
 
+	public Integer getUsuarioRecebidoId() {
+		return usuarioRecebidoId;
+	}
+
+	public void setUsuarioRecebidoId(Integer usuarioRecebidoId) {
+		this.usuarioRecebidoId = usuarioRecebidoId;
+	}
+
 	public String inserirEditar() {
+		if (usuarioRecebidoId != null && usuarioRecebidoId > 0) {
+			mensagem.getUsuarioEnvio().setId(Usuario.USUARIO_ADMINISTRADOR);
+			mensagemUsuario.getUsuarioRecebido().setId(usuarioRecebidoId);
+			mensagemGrupoUsuario.getGrupoUsuarioRecebido().setId(null); // Limpar para nao enviar mensagem para o grupo
+		}
 
 		try {
-//			mensagem.getUsuarioEnvio().setId(usuarioEnvioId);
 			mensagemLocal.inserirEditar(mensagem, mensagemUsuario, mensagemGrupoUsuario);
 			JSFUtil.addInfoMessage("Registro salvo com sucesso!");
 		} catch (NegocioException e) {
@@ -121,7 +126,7 @@ public class MensagemMB {
 			mensagem = mensagemLocal.buscar(mensagem.getId());
 
 			if (mensagem == null) {
-				JSFUtil.addErrorMessage("Registro não localizado!");
+				JSFUtil.addErrorMessage("Registro nï¿½o localizado!");
 				return null;
 			}
 

@@ -15,12 +15,12 @@
 <h:body onload="usuariosIncidentes('#{usuarioIncidenteMB.situacaoAtual}');">
 	<h:form id="mapform">
 		<p id="demo"/>
-		
-		<p:commandButton value="Modal" type="button" onclick="PF('dlg2').show();" />
 
-		<ui:remove>
-			<!-- TODO colocar o painel no mapa.js e nao aqui, para poder ir o numero o usuario recebido como parametro -->
-		</ui:remove>
+		<h:inputHidden id="inputSalvarValorUsuarioRecebido" value="#{mensagemMB.usuarioRecebidoId}" />
+
+		<p:commandButton value="Modal" type="button" 
+			onclick="setValorInputPorId('mapform:inputSalvarValorUsuarioRecebido',15);PF('dlg2').show();"
+			immediate="true" />
 
 		<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="350">
 		    <h:outputText value="This is a Modal Dialog." />

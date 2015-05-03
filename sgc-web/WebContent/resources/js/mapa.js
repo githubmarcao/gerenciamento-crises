@@ -209,7 +209,10 @@ function addMarkerUsuario(location, i, icone, idUsuario, idGrupo, nomeGrupo, nom
 			var infowindowClick = new google.maps.InfoWindow();
 			infowindowClick.setContent(
 					"<div style='width:160px;height:60px;text-align:center;'>" +
-						"<button id='mapform:j_idt6' name='mapform:j_idt6' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' onclick='PF(\"dlg2\").show();' type='button' role='button' aria-disabled='false'>" +
+						"<button type='button' id='mapform:j_idt"+idUsuario+"' name='mapform:j_idt"+idUsuario+"' " +
+								"class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' " +
+								"onclick='setValorInputPorId(\"mapform:inputSalvarValorUsuarioRecebido\","+idUsuario+");PF(\"dlg2\").show();' " +
+								"role='button' aria-disabled='false'>" +
 							"<span class='ui-button-text ui-c'>Enviar Mensagem</span>" +
 						"</button>" +
 						"</br>" +
