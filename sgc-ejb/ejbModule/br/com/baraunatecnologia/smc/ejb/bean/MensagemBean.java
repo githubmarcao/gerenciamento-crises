@@ -55,6 +55,7 @@ public class MensagemBean implements IMensagemRemote, IMensagemLocal {
 		if (mensagem != null) {
 			if (mensagemUsuario != null 
 					&& mensagemUsuario.getUsuarioRecebido() != null
+					&& mensagemUsuario.getUsuarioRecebido().getId() != null
 					&& mensagemUsuario.getUsuarioRecebido().getId() != 0) {
 				mensagemUsuario.setRecebido(false);
 				mensagemUsuario.setHorarioRecebido(null);
@@ -65,6 +66,7 @@ public class MensagemBean implements IMensagemRemote, IMensagemLocal {
 	
 			if (mensagemGrupoUsuario != null 
 					&& mensagemGrupoUsuario.getGrupoUsuarioRecebido() != null
+					&& mensagemGrupoUsuario.getGrupoUsuarioRecebido().getId() != null
 					&& mensagemGrupoUsuario.getGrupoUsuarioRecebido().getId() != 0) {
 				mensagemGrupoUsuario.setRecebido(false);
 				mensagemGrupoUsuario.setHorarioRecebido(null);

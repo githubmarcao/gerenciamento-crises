@@ -208,15 +208,14 @@ function addMarkerUsuario(location, i, icone, idUsuario, idGrupo, nomeGrupo, nom
 		return function() {
 			var infowindowClick = new google.maps.InfoWindow();
 			infowindowClick.setContent(
-					"<div style='width:160px;height:60px;text-align:center;'>" +
+					"<div id='mensagemDoAdministrador' style='width:160px;height:65px;text-align:center;'>" +
 						"<button type='button' id='mapform:j_idt"+idUsuario+"' name='mapform:j_idt"+idUsuario+"' " +
 								"class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' " +
-								"onclick='setValorInputPorId(\"mapform:inputSalvarValorUsuarioRecebido\","+idUsuario+");PF(\"dlg2\").show();' " +
+								"onclick='setValorInputPorId(\"mapform:inputSalvarValorUsuarioRecebido\","+idUsuario+");PF(\"dlgEnviarMensagem\").show();' " +
 								"role='button' aria-disabled='false'>" +
 							"<span class='ui-button-text ui-c'>Enviar Mensagem</span>" +
 						"</button>" +
 						"</br>" +
-						// TODO colocar o painel aqui e nao na pagina principal, para poder ir o numero o usuario recebido com o click
 						"<button id='mapform:j_idt6' name='mapform:j_idt6' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' onclick='confirmarRastreioUsuario("+idUsuario+", \""+nomeUsuario+"\", \""+paginaCaminhoUsuario+"\");' type='button' role='button' aria-disabled='false'>" +
 							"<span class='ui-button-text ui-c'>Rastreiar Usuario</span>" +
 						"</button>" +
