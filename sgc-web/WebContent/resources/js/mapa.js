@@ -109,7 +109,8 @@ function usuariosIncidentes(json) {
 			var title = "<b>" + nomeUsuario + "</b>" +
 						 "<br />" + "Latitude: " + parsedJSON[i].latitude +
 						 "<br />" + "Longitude: " + parsedJSON[i].longitude +
-						 "<br />" + "Horario: " + horario;
+						 "<br />" + "Horario: " + horario +
+						 "<br /><b>Clique para outras opções.</b>";
 			addMarkerUsuario(latLng, i, icone, id, idGrupo, nomeGrupo, nomeUsuario, title, status);
 
 		//incidente
