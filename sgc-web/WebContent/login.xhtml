@@ -28,7 +28,9 @@
                         <p:password  value="#{usuarioMB.usuario.senha}" />
                     </p>
                     <p>
-                    	<h:commandButton action="#{usuarioMB.autenticar}" image="resources/images/bt_entrar.png" />
+                    	<h:commandLink action="#{usuarioMB.autenticar}" > 
+							<h:graphicImage library="images" name="bt_entrar.png" />
+						</h:commandLink>	
                     </p>
                     <p:messages />                    
                 </p:panel>

@@ -17,8 +17,16 @@
         </p:submenu>
 
         <p:submenu label="Localizacao Usuario">
-            <p:menuitem value="Cadastrar" url="/admin/localizacao.xhtml" icon="ui-icon-disk" />
+            <ui:remove>
+            	<!-- Item que serve apenas para incluir localizacao sem o app movel -->
+            	<p:menuitem value="Cadastrar" url="/admin/localizacao.xhtml" icon="ui-icon-disk" />
+            </ui:remove>
             <p:menuitem value="Listar"    url="/admin/listarLocalizacao.xhtml" icon="ui-icon-arrowrefresh-1-w" />
+        </p:submenu>
+
+        <p:submenu label="Incidente">
+            <p:menuitem value="Cadastrar" url="/admin/incidente.xhtml" icon="ui-icon-disk" />
+            <p:menuitem value="Listar"    url="/admin/listarIncidente.xhtml" icon="ui-icon-arrowrefresh-1-w" />
         </p:submenu>
 
         <p:submenu label="Mensagem">

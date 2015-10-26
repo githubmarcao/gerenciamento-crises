@@ -84,7 +84,7 @@ public class UsuarioMB {
 			return "admin\\principal";
 //			return "localizacao";
 		}else{
-			JSFUtil.addErrorMessage("Usuario ou senha não confere.");
+			JSFUtil.addErrorMessage("Usuario ou senha nao confere.");
 			return null;
 		}
 	}
@@ -142,7 +142,7 @@ public class UsuarioMB {
 			usuarioNaoLogado = usuarioLocal.buscar(usuarioNaoLogado.getId());
 
 			if(usuarioNaoLogado==null){
-				JSFUtil.addErrorMessage("Registro não localizado!");
+				JSFUtil.addErrorMessage("Registro nao localizado!");
 			}
 		} catch (NegocioException e) {
 			JSFUtil.addErrorMessage(e.getMessage());

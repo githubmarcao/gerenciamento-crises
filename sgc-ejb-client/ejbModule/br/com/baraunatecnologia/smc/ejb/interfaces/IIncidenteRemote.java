@@ -11,5 +11,6 @@ public interface IIncidenteRemote extends ICRUDBean<Incidente> {
 
 	public List<Incidente> listarIncidenteIntervalo();
 	public List<Incidente> listarIncidenteIntervalo(Date inicio, Date fim);
+	public Integer quantidadeIncidenteIntervalo(Date inicio, Date fim);
 
 }

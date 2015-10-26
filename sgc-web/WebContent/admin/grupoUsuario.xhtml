@@ -9,6 +9,7 @@
 	<ui:define name="conteudo">
       <h:form>
       	<h:inputHidden value="#{grupoUsuarioMB.grupoUsuario.id}"/>
+		<h:panelGrid>
 		<p:panelGrid  columns="2" style="margin-top:60px;margin-left:100px">
 			<f:facet name="header">
                Cadastrar Grupo de Usuário
@@ -25,6 +26,13 @@
 				<p:messages id="msg"/>
 			</f:facet>
 		</p:panelGrid>
+		<p:panelGrid columns="1" style="margin-top:60px;margin-left:230px" rendered="#{not empty grupoUsuarioMB.grupoUsuario.icone}" >
+			<f:facet name="header">
+				Icone
+			</f:facet>
+			<img src="../#{grupoUsuarioMB.grupoUsuario.icone}" height="175" width="175" />
+		</p:panelGrid>
+		</h:panelGrid>
 		</h:form>
 	</ui:define>
 

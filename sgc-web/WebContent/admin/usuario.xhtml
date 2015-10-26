@@ -9,8 +9,7 @@
 	<ui:define name="conteudo">
       <h:form>
       	<h:inputHidden value="#{usuarioMB.usuarioNaoLogado.id}"/>
-		<h:panelGrid columns="2">
-		<p:panelGrid  columns="2" style="margin-top:30px;margin-left:30px">
+		<p:panelGrid  columns="2" style="margin-top:60px;margin-left:100px">
 			<f:facet name="header">
                Cadastrar Usuário  
            </f:facet>
@@ -34,15 +33,7 @@
 				<p:commandButton update="msg" value="Salvar" action="#{usuarioMB.inserirEditar}" icon="ui-icon-check" style="margin:0"/>
 				<p:messages id="msg"/>
 			</f:facet>
-		</p:panelGrid>
-		<p:panelGrid  columns="1" style="margin-top:30px;margin-left:30px" >
-			<f:facet name="header">
-				Icone
-			</f:facet>
-			<img src="../#{usuarioMB.usuarioNaoLogado.grupo.icone}" height="175" width="175" />
-		</p:panelGrid>
-		</h:panelGrid>
-
+		  </p:panelGrid>
 		</h:form>
 	</ui:define>
 

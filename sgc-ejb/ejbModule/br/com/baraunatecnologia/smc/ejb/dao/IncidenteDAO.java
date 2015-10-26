@@ -18,7 +18,6 @@ public class IncidenteDAO extends GenericDAO<Incidente> {
 
 	@Override
 	public Class<Incidente> getEntityClass() {
-		// TODO Auto-generated method stub
 		return Incidente.class;
 	}
 
@@ -54,6 +53,31 @@ public class IncidenteDAO extends GenericDAO<Incidente> {
 			retorno = query.getResultList();
 		} catch (NoResultException ex) {
 			return null;
+		}
+
+		return retorno;
+	}
+
+	public Integer quantidadeIncidenteIntervalo(Date inicio, Date fim) {
+		StringBuffer sb = new StringBuffer();
+		sb.append("SELECT count(1) from Incidente as i ");
+
+		if (inicio != null && fim != null) {
+			sb.append("where horario BETWEEN :inicio AND :fim ");
+		}
+
+		Query query = super.getEntityManager().createQuery(sb.toString());
+
+		if (inicio != null && fim != null) {
+			query.setParameter("inicio", inicio);
+			query.setParameter("fim", fim);
+		}
+
+		Integer retorno = 0;
+		try {
+			retorno = (Integer) query.getSingleResult();
+		} catch (NoResultException ex) {
+			return 0;
 		}
 
 		return retorno;
