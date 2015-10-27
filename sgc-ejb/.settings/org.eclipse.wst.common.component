@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="sgc-ejb">
-        <wb-resource deploy-path="/" source-path="/ejbModule"/>
-        <property name="java-output-path" value="/sgc-ejb/build/classes"/>
-        <property name="ClientProject" value="sgc-ejb-client"/>
-        <property name="ClientJARURI" value="sgc-ejb-client.jar"/>
-    </wb-module>
-</project-modules>
