@@ -1,0 +1,57 @@
+﻿
+<ui:composition template="template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+	<ui:define name="conteudo">
+
+		<h:form>
+			<p:dataTable value="#{localizacaoMB.localizacoes}" style="margin-top:60px;"
+				var="localizacao" paginator="true" rows="10" paginatorPosition="bottom">
+
+				<f:facet name="header">  
+            		Lista de Localizacoes
+        		</f:facet>
+
+				<p:column headerText="Usuario">
+					<h:outputText value="#{localizacao.usuario.nome}" />
+				</p:column>
+
+				<p:column headerText="Latitude">
+					<h:outputText value="#{localizacao.latitude}" />
+				</p:column>
+
+				<p:column headerText="Longitude">
+					<h:outputText value="#{localizacao.longitude}" />
+				</p:column>
+
+				<p:column headerText="Horario">
+					<h:outputText value="#{localizacao.horario}" />
+				</p:column>
+
+				<p:column headerText="Alterar" style="width:40px">
+					<p:commandButton id="alterar" ajax="false" icon="ui-icon-search"
+						action="#{localizacaoMB.buscar}">
+						<f:setPropertyActionListener target="#{localizacaoMB.localizacao}"
+							value="#{localizacao}" />
+					</p:commandButton>
+				</p:column>
+
+				<p:column headerText="Excluir" style="width:40px">
+					<p:commandButton id="excluir" ajax="false" icon="ui-icon-trash"
+						action="#{localizacaoMB.excluir}">
+						<f:setPropertyActionListener target="#{localizacaoMB.localizacao}"
+							value="#{localizacao}" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

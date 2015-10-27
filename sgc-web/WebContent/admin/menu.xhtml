@@ -1,0 +1,39 @@
+﻿<ui:fragment xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:form>
+   <p:menu toggleable="true" style="width:180px">
+
+        <p:submenu label="Usuario">
+            <p:menuitem value="Cadastrar" url="/admin/usuario.xhtml" icon="ui-icon-disk" />
+            <p:menuitem value="Listar"    url="/admin/listarUsuario.xhtml" icon="ui-icon-arrowrefresh-1-w" />
+            <p:menuitem value="Usuarios e Incidentes" url="/usuario_incidente.xhtml" icon="" />
+        </p:submenu>
+
+        <p:submenu label="Grupo Usuario">
+            <p:menuitem value="Cadastrar" url="/admin/grupoUsuario.xhtml" icon="ui-icon-disk" />
+            <p:menuitem value="Listar"    url="/admin/listarGrupoUsuario.xhtml" icon="ui-icon-arrowrefresh-1-w" />
+        </p:submenu>
+
+        <p:submenu label="Localizacao Usuario">
+            <ui:remove>
+            	<!-- Item que serve apenas para incluir localizacao sem o app movel -->
+            	<p:menuitem value="Cadastrar" url="/admin/localizacao.xhtml" icon="ui-icon-disk" />
+            </ui:remove>
+            <p:menuitem value="Listar"    url="/admin/listarLocalizacao.xhtml" icon="ui-icon-arrowrefresh-1-w" />
+        </p:submenu>
+
+        <p:submenu label="Incidente">
+            <p:menuitem value="Cadastrar" url="/admin/incidente.xhtml" icon="ui-icon-disk" />
+            <p:menuitem value="Listar"    url="/admin/listarIncidente.xhtml" icon="ui-icon-arrowrefresh-1-w" />
+        </p:submenu>
+
+        <p:submenu label="Mensagem">
+            <p:menuitem value="Cadastrar" url="/admin/mensagem.xhtml" icon="ui-icon-disk" />
+            <p:menuitem value="Listar"    url="/admin/listarMensagem.xhtml" icon="ui-icon-arrowrefresh-1-w" />
+        </p:submenu>
+
+    </p:menu>
+</h:form>     	
+</ui:fragment>

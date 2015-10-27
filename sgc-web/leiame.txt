@@ -1,0 +1,10 @@
+Para funcionar adicionar variavel de ambiente:
+
+1-
+JBOSS_HOME - D:\Marco\workspace\jboss-eap
+Local onde esta o JBoss, ex:
+D:\Marco\workspace\jboss-eap
+
+2-
+E no sevidor JBoss em VM arguments:
+-Djava.util.logging.manager=org.jboss.logmanager.LogManager 

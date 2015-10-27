@@ -1,0 +1,87 @@
+<ui:composition template="template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+	<ui:define name="conteudo">
+
+		<h:form>
+			<p:dataTable value="#{mensagemMB.mensagens}" style="margin-top:60px;"
+				var="mensagem" paginator="true" rows="10" paginatorPosition="bottom">
+
+				<f:facet name="header">  
+            		Lista de Mensagens
+        		</f:facet>
+
+				<p:column headerText="Usuario envio">
+					<h:outputText value="#{mensagem.usuarioEnvio.nome}" />
+				</p:column>
+
+				<p:column headerText="Horario Envio">
+					<h:outputText value="#{mensagem.horarioEnvio}" />
+				</p:column>
+
+				<p:column headerText="Mensagem">
+					<h:outputText value="#{mensagem.mensagem}" />
+				</p:column>
+
+				<p:column headerText="Usuario destinatario" >
+					<h:outputText
+						value="#{mensagem.mensagemUsuarioRecebido.usuarioRecebido.nome}"
+						rendered="#{not empty mensagem.mensagemUsuarioRecebido}" />
+				</p:column>
+
+				<p:column headerText="Usuario Receb.?" >
+					<h:outputText value="#{mensagem.mensagemUsuarioRecebido.recebido}"
+						rendered="#{not empty mensagem.mensagemUsuarioRecebido}" />
+				</p:column>
+
+				<p:column headerText="Usuario Hora Receb." >
+					<h:outputText
+						value="#{mensagem.mensagemUsuarioRecebido.horarioRecebido}"
+						rendered="#{not empty mensagem.mensagemUsuarioRecebido and mensagem.mensagemGrupoUsuarioRecebido.recebido eq true}" />
+				</p:column>
+
+				<p:column headerText="Grupo destinatario" >
+					<h:outputText
+						value="#{mensagem.mensagemGrupoUsuarioRecebido.grupoUsuarioRecebido.nome}"
+						rendered="#{not empty mensagem.mensagemGrupoUsuarioRecebido}" />
+				</p:column>
+
+				<p:column headerText="Grupo Receb.?" >
+					<h:outputText
+						value="#{mensagem.mensagemGrupoUsuarioRecebido.recebido}"
+						rendered="#{not empty mensagem.mensagemGrupoUsuarioRecebido}" />
+				</p:column>
+
+				<p:column headerText="Grupo Hora Receb." >
+					<h:outputText
+						value="#{mensagem.mensagemGrupoUsuarioRecebido.horarioRecebido}"
+						rendered="#{not empty mensagem.mensagemGrupoUsuarioRecebido and mensagem.mensagemGrupoUsuarioRecebido.recebido eq true}" />
+				</p:column>
+
+				<p:column headerText="Alterar" style="width:40px">
+					<p:commandButton id="alterar" ajax="false" icon="ui-icon-search"
+						action="#{mensagemMB.buscar}">
+						<f:setPropertyActionListener target="#{mensagemMB.mensagem}"
+							value="#{mensagem}" />
+					</p:commandButton>
+				</p:column>
+
+				<p:column headerText="Excluir" style="width:40px">
+					<p:commandButton id="excluir" ajax="false" icon="ui-icon-trash"
+						action="#{mensagemMB.excluir}">
+						<f:setPropertyActionListener target="#{mensagemMB.mensagem}"
+							value="#{mensagem}" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
